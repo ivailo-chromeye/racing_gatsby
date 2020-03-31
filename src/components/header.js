@@ -64,10 +64,13 @@ const Header = () => {
             <div className="head-menu">
               <ul>
                 {menus.map(item => {
-                  console.log(item);
+                  let slug = item.object_slug;
+                  if(slug === 'home') {
+                    slug = 'homepage'
+                  }
                   return (
                     <li key={item.wordpress_id}>
-                      <Link to={item.object_slug}>{item.title}</Link>
+                      <Link to={slug}>{item.title}</Link>
                     </li>
                   )
                   })}

@@ -24,7 +24,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      Homepage
+      Index page.
       {races.map(race => {
         race = race.acf
         return (
