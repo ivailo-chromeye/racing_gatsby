@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import "../styles/header.css"
 
 const Header = () => {
@@ -14,6 +14,7 @@ const Header = () => {
           order
           title
           wordpress_id
+          object_slug
         }
       }
     }
@@ -30,16 +31,6 @@ const Header = () => {
 
   const menus = wpdata.wordpressWpApiMenusMenusItems.items
 
-  const myRef = React.createRef()
-
-  // function toggleMenu() {
-  //   console.log("asd")
-  //   if (myRef.current.style.display === "block") {
-  //     myRef.current.style.display = "none"
-  //   } else {
-  //     myRef.current.style.display = "block"
-  //   }
-  // }
 
   function showMenuFn() {
     console.log("click")
@@ -70,13 +61,16 @@ const Header = () => {
           </div>
 
           {whenToShowMenu() ? (
-            <div ref={myRef} className="head-menu">
+            <div className="head-menu">
               <ul>
-                {menus.map(item => (
-                  <li key={item.wordpress_id}>
-                    <a href={item.url}>{item.title}</a>
-                  </li>
-                ))}
+                {menus.map(item => {
+                  console.log(item);
+                  return (
+                    <li key={item.wordpress_id}>
+                      <Link to={item.object_slug}>{item.title}</Link>
+                    </li>
+                  )
+                  })}
               </ul>
             </div>
           ) : null}
