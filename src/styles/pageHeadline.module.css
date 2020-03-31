@@ -1,0 +1,17 @@
+.topHeadline {
+  background: #006838;
+  padding: 2em 10px;
+  text-align: center;
+  color: #fff;
+}
+.sectionTitle {
+  text-transform: uppercase;
+  font-size: 4em;
+  margin: 0;
+  font-family: ProximaNovaA-Bold;
+}
+.sectionSubtitle {
+  font-weight: normal;
+  font-size: 2em;
+  margin: 0.4em auto 0;
+}

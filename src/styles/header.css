@@ -1,0 +1,133 @@
+header {
+  border-bottom: 2px solid #e31013;
+  background: #fff;
+  font-size: 10px;
+}
+header .container {
+  background: #fff;
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 15px 12px;
+  box-sizing: border-box;
+  align-items: center;
+}
+header .logo-wrap {
+  width: 275px;
+}
+header .logo-wrap img {
+  width: 220px;
+}
+header ul {
+  padding: 0;
+  display: flex;
+  padding-left: 2.5em;
+  font-size: 9px;
+}
+header li {
+  list-style-type: none;
+}
+header li a {
+  font-size: 1.7em;
+  text-decoration: none;
+  color: #000;
+  margin-right: 2.1em;
+  list-style-type: none;
+}
+header .menu-trigger span {
+  width: 30px;
+  height: 4px;
+  background: #e31013;
+  margin: 5px 0;
+  display: block;
+}
+header .menu-trigger {
+  cursor: pointer;
+  display: none;
+}
+header .head-menu {
+  width: 100%;
+}
+header ul li:last-child:before {
+  content: "Go back to ";
+  font-size: 1.8em;
+  margin-right: 4px;
+}
+header ul li:last-child a:hover {
+  border: 2px solid #171717;
+  background: #171717;
+  color: #fff;
+}
+header ul li:last-child a {
+  background: #fff;
+  color: #171717;
+  border-radius: 4px;
+  padding: 4px 8px 6px;
+  margin-right: 0 !important;
+  border: 2px solid #d11f25;
+}
+header ul li:last-child {
+  margin-left: auto;
+}
+header .menu-trigger span {
+  width: 30px;
+  height: 4px;
+  background: #e31013;
+  margin: 5px 0;
+  display: block;
+}
+header .menu-trigger {
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  header ul li:last-child {
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-self: center;
+  }
+  header ul {
+    flex-direction: column;
+    padding: 0 15px;
+  }
+  header .container {
+    padding: 5px 14px;
+  }
+  header .logo-wrap svg {
+    width: 180px;
+  }
+  header ul li a:hover {
+    border: none;
+  }
+  header .container {
+    justify-content: space-between;
+  }
+  header {
+    position: relative;
+  }
+  header .menu-trigger {
+    display: block;
+  }
+  header .head-menu {
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    z-index: 2;
+    left: 0;
+    top: 100%;
+    border-top: 2px solid #e31013;
+    box-shadow: 0px 2px 2px #000;
+    /* display: none; */
+  }
+  header ul li a {
+    font-size: 18px;
+    margin-right: 0;
+    display: block;
+    text-align: center;
+    padding: 8px 0;
+  }
+}

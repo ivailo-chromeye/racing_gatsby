@@ -1,0 +1,46 @@
+.races_list {
+  margin-top: 10px;
+  font-family: ProximaNovaA-SemiBold, sans-serif;
+}
+.list_top {
+  padding: 0px 0px 10px 0px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  border-bottom: 1px solid #ed1c24;
+}
+.list_content {
+  background-color: #f0eff1;
+  padding: 15px 5px;
+  font-family: ProximaNovaA-SemiBold, sans-serif;
+}
+.card {
+  display: flex;
+  cursor: pointer;
+}
+.card_name {
+  color: #859298;
+}
+.card_name_active {
+  color: #171717;
+}
+.race {
+  color: #171717;
+  text-decoration: none;
+}
+.race_top {
+  padding: 5px;
+}
+.race_top_active {
+  color: var(--red);
+}
+.race_top:hover {
+  text-decoration: underline;
+}
+.race_top_time {
+  font-family: ProximaNovaA-Bold, sans-serif;
+  font-size: 20px;
+}
+.race_top_title {
+  padding-left: 5px;
+}

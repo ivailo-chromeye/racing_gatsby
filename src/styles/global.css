@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  font-family: ProximaNovaA-Regular;
+  line-height: 1;
+  background: #e0e0e0;
+  color: #171717;
+}
+.container {
+  background: #e0e0e0;
+  max-width: 1440px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+a {
+  outline: none;
+}
+a img {
+  outline: none;
+}
+img {
+  border: 0;
+}
