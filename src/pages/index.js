@@ -4,38 +4,37 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const IndexPage = () => {
-  const wpdata = useStaticQuery(graphql`
-    query Races {
-      allWordpressAcfRace {
-        nodes {
-          acf {
-            title
-            raceid
-            race_datetime
-          }
-        }
-      }
-    }
-  `)
+import PageHeadlineComponent from "../components/pageHeadline"
+import FreeBetsComponent from "../components/freeBets"
 
-  const races = wpdata.allWordpressAcfRace.nodes
-  console.log(races)
-  return (
-    <Layout>
-      <SEO title="Home" />
-      Index page.
-      {races.map(race => {
-        race = race.acf
-        return (
-          <div key={race.raceid}>
-            {race.title} - {race.race_datetime}
-            <Link to={`/races/${race.raceid}`}>Link to one race</Link>
-          </div>
-        )
-      })}
-    </Layout>
-  )
+const Homepage = () => {
+    const pageData = useStaticQuery(graphql`
+        query MyQuery {
+            wordpressPage(wordpress_id: {eq: 290}) {
+            id
+            slug
+            title
+            wordpress_id
+                acf {
+                    title
+                    subtitle
+                }
+            }
+        }      
+    `)
+
+    const pageTitle = pageData.wordpressPage.acf.title
+    const pageSubtitle = pageData.wordpressPage.acf.subtitle
+    
+    return (
+        <>
+            <Layout>
+                <SEO title="Home" />
+                <PageHeadlineComponent title={pageTitle} subtitle={pageSubtitle}/>
+                <FreeBetsComponent place="homepage"/>
+            </Layout>
+        </>
+    )
 }
 
-export default IndexPage
+export default Homepage
