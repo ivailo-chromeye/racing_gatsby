@@ -1,0 +1,122 @@
+.racesAndAds {
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  min-width: 1440px;
+  margin: 0 65px;
+}
+.smallAdContainer {
+
+}
+.racesContainer {
+  min-width: 900px;
+  margin-bottom: 10px;
+  width: 1000px;
+  padding-right: 10px;
+}
+.daysContainer {
+  width: 100%;
+  margin: 0 auto;
+}
+.day {
+  cursor: pointer;
+  background-color: #F0EFF1;
+  border-radius: 6px;
+  padding: 10px;
+  margin: 1px 0px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dayLeft {
+  font-family: ProximaNovaA-SemiBold;
+  color: #171717;
+  font-size: 25px;
+  display: inherit;
+  align-items: center;
+}
+.dayRight {
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+}
+.dayImage {
+  width: 180px;
+  height: 45px;
+  margin-right: 10px;
+}
+.racesLength {
+  color: #171717;
+  font-size: 16px;
+  margin-right: 10px;
+}
+.dayImage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 180px;
+  height: 45px;
+  margin-right: 10px;
+}
+.img10 {
+  background-image: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200131133618/rp_220x60_vis2_v1.jpg);
+}
+.img11 {
+  background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200131133619/rp_220x60_vis3_v1.jpg);
+}
+.img12 {
+  background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200131133616/rp_220x60_vis4_v1.jpg);
+}
+.img13 {
+  background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200131133618/rp_220x60_vis1_v1.jpg);
+}
+
+/* expanded race */
+.racecardBox {
+  /* padding: 10px 0px; */
+}
+.cardTop {
+  border-bottom: 1px solid #cdcccb;
+  padding: 10px;
+  margin: 10px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cardLeft {
+  display: flex;
+}
+.cardRight {
+  display: flex;
+}
+.timeAndLocation {
+  font-family: ProximaNovaA-SemiBold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.raceTitle {
+  cursor: pointer;
+  padding: 0px 10px;
+  line-height: 1.3em;
+  font-size: 16px;
+}
+.raceTitle:hover {
+  text-decoration: underline;
+}
+.distance {
+  padding-left: 5px;
+}
+.offer {
+  color: #171717;
+  background-color: #fdd835;
+  font-weight: 600;
+  height: 14px;
+  font-size: 13px;
+  padding: 1px 4px;
+}
+.countRunners {
+  margin-right: 10px;
+  font-size: 16px;
+}

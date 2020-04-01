@@ -4,7 +4,7 @@ import "../styles/header.css"
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
-  // const [w, setW] = useState(window.innerWidth)
+  const [w, setW] = useState(null);
 
   const wpdata = useStaticQuery(graphql`
     query WPMenus {
@@ -20,14 +20,18 @@ const Header = () => {
     }
   `)
 
-  // useEffect(() => {
-  //   function resizeFn() {
-  //     setW(window.innerWidth)
-  //   }
+  useEffect(() => {
+    setW(window.innerWidth);
+  }, []);
 
-  //   window.addEventListener("resize", resizeFn)
-  //   return () => window.removeEventListener("resize", resizeFn)
-  // })
+  useEffect(() => {
+    function resizeFn() {
+      setW(window.innerWidth)
+    }
+
+    window.addEventListener("resize", resizeFn)
+    return () => window.removeEventListener("resize", resizeFn)
+  })
 
   const menus = wpdata.wordpressWpApiMenusMenusItems.items
 
@@ -37,41 +41,38 @@ const Header = () => {
     setShowMenu(!showMenu)
   }
 
-  // function whenToShowMenu() {
-  //   if (w > 1024) {
-  //     return true
-  //   }
-  //   if (w <= 1024 && showMenu) {
-  //     return true
-  //   }
-  //   return false
-  // }
+  function whenToShowMenu() {
+    if(!w) return null;
+    if (w > 1024) {
+      return true
+    }
+    if (w <= 1024 && showMenu) {
+      return true
+    }
+    return false
+  }
 
   return (
     <>
       <header>
         <div className="container">
           <div className="logo-wrap">
-            <a href="/">
+            <Link to="/">
               <img
                 alt=""
                 src="https://www.racingpost.com/cheltenham-festival/wp-content/themes/Cheltenham/images/logo.svg"
               />
-            </a>
+            </Link>
           </div>
 
-          {/* { */}
-            // whenToShowMenu() ? (
+          { whenToShowMenu() ? (
             <div className="head-menu">
               <ul>
                 {menus.map(item => {
                   let slug = item.object_slug;
-                  if(slug === 'home') {
-                    slug = 'homepage'
-                  }
                   return (
                     <li key={item.wordpress_id}>
-                      <Link to={slug}>{item.title}</Link>
+                      <Link to={slug !== 'home' ? slug : ''}>{item.title}</Link>
                     </li>
                   )
                   }
@@ -79,7 +80,7 @@ const Header = () => {
             }
               </ul>
             </div>
-          {/* ) : null} */}
+           ) : null} 
 
           <div className="menu-trigger" onClick={showMenuFn}>
             <span />

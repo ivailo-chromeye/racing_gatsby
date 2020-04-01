@@ -1,8 +1,9 @@
 import React from 'react';
+import Layout from '../components/layout';
 
 const Tips = () => {
   return (
-    <div>Tips page</div>
+    <Layout>Tips page</Layout>
   )
 }
 

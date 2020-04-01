@@ -1,4 +1,4 @@
-const axios = require("axios")
+const axios = require("axios");
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
@@ -25,7 +25,7 @@ exports.createPages = async ({ actions, graphql }) => {
     //const feed = await axios.get("https://jsonplaceholder.typicode.com/posts")
 
     // Create Page for Every Race
-    races.nodes.map(race => {
+    races.nodes.forEach(race => {
       createPage({
         path: `/races/${race.acf.raceid}`,
         component: require.resolve(`./src/templates/race.js`),
@@ -33,7 +33,10 @@ exports.createPages = async ({ actions, graphql }) => {
           race: race.acf,
           feed: JSON.stringify(feed.data),
         },
-      })
-    })
-  })
+      });
+    });
+  });
+
+
+  
 }

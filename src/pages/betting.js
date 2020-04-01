@@ -1,8 +1,9 @@
 import React from 'react';
+import Layout from '../components/layout';
 
 const Betting = () => {
   return (
-    <div>Betting page</div>
+    <Layout>Betting page</Layout>
   )
 }
 

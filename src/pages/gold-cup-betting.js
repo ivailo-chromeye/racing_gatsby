@@ -1,8 +1,9 @@
 import React from 'react';
+import Layout from '../components/layout';
 
 const GoldCupBetting = () => {
   return (
-    <div>GoldCupBetting page</div>
+    <Layout>GoldCupBetting page</Layout>
   )
 }
 
