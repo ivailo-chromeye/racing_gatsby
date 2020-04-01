@@ -4,7 +4,7 @@ import "../styles/header.css"
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
-  const [w, setW] = useState(window.innerWidth)
+  // const [w, setW] = useState(window.innerWidth)
 
   const wpdata = useStaticQuery(graphql`
     query WPMenus {
@@ -20,14 +20,14 @@ const Header = () => {
     }
   `)
 
-  useEffect(() => {
-    function resizeFn() {
-      setW(window.innerWidth)
-    }
+  // useEffect(() => {
+  //   function resizeFn() {
+  //     setW(window.innerWidth)
+  //   }
 
-    window.addEventListener("resize", resizeFn)
-    return () => window.removeEventListener("resize", resizeFn)
-  })
+  //   window.addEventListener("resize", resizeFn)
+  //   return () => window.removeEventListener("resize", resizeFn)
+  // })
 
   const menus = wpdata.wordpressWpApiMenusMenusItems.items
 
@@ -37,15 +37,15 @@ const Header = () => {
     setShowMenu(!showMenu)
   }
 
-  function whenToShowMenu() {
-    if (w > 1024) {
-      return true
-    }
-    if (w <= 1024 && showMenu) {
-      return true
-    }
-    return false
-  }
+  // function whenToShowMenu() {
+  //   if (w > 1024) {
+  //     return true
+  //   }
+  //   if (w <= 1024 && showMenu) {
+  //     return true
+  //   }
+  //   return false
+  // }
 
   return (
     <>
@@ -60,7 +60,8 @@ const Header = () => {
             </a>
           </div>
 
-          {whenToShowMenu() ? (
+          {/* { */}
+            // whenToShowMenu() ? (
             <div className="head-menu">
               <ul>
                 {menus.map(item => {
@@ -73,10 +74,12 @@ const Header = () => {
                       <Link to={slug}>{item.title}</Link>
                     </li>
                   )
-                  })}
+                  }
+              )
+            }
               </ul>
             </div>
-          ) : null}
+          {/* ) : null} */}
 
           <div className="menu-trigger" onClick={showMenuFn}>
             <span />
