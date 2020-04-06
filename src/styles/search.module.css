@@ -1,0 +1,27 @@
+.horses_container {
+  text-align: center;
+  margin: 0 65px 20px;
+  background: #F0EFF1;
+  padding: 10px;
+  position: relative;
+  overflow-x: hidden;
+}
+.search_horses {
+  padding: 1px;
+}
+.horse_feed {
+  padding: 10px;
+}
+.horse_feed_name {
+  line-height: 1.5;
+  font-size: 20px;
+  font-family: ProximaNovaA-SemiBold, sans-serif;
+}
+.horse_feed_races {
+  padding: 1px;
+}
+.horse_feed_name:hover,.horse_feed_races:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+

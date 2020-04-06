@@ -73,7 +73,7 @@ const FreeBetsComponent = (props) => {
         )
     }
 
-    console.log(freeBets)
+    // console.log(freeBets)
 
     function FreeBetsSlider() {
         return (

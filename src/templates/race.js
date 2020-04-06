@@ -2,6 +2,9 @@ import { Link } from "gatsby"
 import React, { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import RacesListTop from "../components/racesListTop"
+import Search from '../components/search';
+
+
 
 const Race = props => {
   const raceID = props.location.pathname.split("/")[2]
@@ -40,6 +43,8 @@ const Race = props => {
         feed={feed[activeTab]}
         setActiveTab={setActiveTab}
       />
+
+      <Search />
 
       <h3>title: {race.title}</h3>
       <h3>raceid: {race.raceid}</h3>

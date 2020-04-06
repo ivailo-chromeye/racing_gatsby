@@ -34,7 +34,7 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
 
       <div className={s.list_content}>
         {feed.races.map((raceArg, raceIndex) => {
-          console.log(raceArg)
+          // console.log(raceArg)
           return (
             <div key={raceIndex}>
               <Link

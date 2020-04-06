@@ -23,6 +23,15 @@ module.exports = {
         hostingWPCOM: false,
         // does your site use the Advanced Custom Fields Plugin?
         useACF: true,
+        perPage: 100,
+        excludedRoutes: [
+          // "**/yoast/v1/configurator",
+          // "**/yoast/v1/reindex_posts",
+          // "**/yoast/v1/ryte",
+          // "**/yoast/v1/file_size",
+          // "**/yoast/v1/statistics",
+          // "**/yoast/v1/connect",
+        ],
       },
     },
     `gatsby-transformer-sharp`,

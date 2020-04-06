@@ -5,7 +5,8 @@ import { useStaticQuery, graphql, Link, navigate } from "gatsby";
 import s from '../styles/races.module.css';
 import PageHeadline from '../components/pageHeadline';
 
-const Races = () => {
+
+const Races = props => {
   const [expanded, setExpanded] = useState('10');
   const days = {
     '10': {
@@ -52,7 +53,6 @@ const Races = () => {
   
   const races = query.allWordpressAcfRace.nodes;
   const page = query.wordpressPage;
-  console.log(page);
 
   const daysWithRaces = races.map(i => i.acf).reduce((object, race, index, array) => {
     let day = +race.race_datetime.split(' ')[1].split('-')[0];
@@ -97,6 +97,7 @@ const Races = () => {
   return (
     <Layout>
       <PageHeadline title={page.acf.heading} subtitle={page.acf.subheading} />
+      
       <div className={s.racesAndAds}>
         <div className={s.racesContainer}>
           <div className={s.daysContainer}>
