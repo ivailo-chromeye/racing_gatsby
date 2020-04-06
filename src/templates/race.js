@@ -4,12 +4,25 @@ import Layout from "../components/layout"
 import RacesListTop from "../components/racesListTop"
 import Search from '../components/search';
 
-
-
 const Race = props => {
   const raceID = props.location.pathname.split("/")[2]
   const race = props.pageContext.race
   const feed = JSON.parse(props.pageContext.feed)
+
+  const horsesWithRaces = [];
+  feed.map(day => {
+    day.races.map(race => {
+      race.API_runners.map(runner => {
+        horsesWithRaces.push({
+          date: day.race_date_diffusion,
+          race_instance_title: race.race_instance_title,
+          race_instance_uid: race.race_instance_uid,
+          horse_name: runner.horse_name,
+          horse_uid: runner.horse_uid,
+        })
+      })
+    })
+  })
 
   function getDayObject() {
     let dayObject = {
@@ -44,7 +57,7 @@ const Race = props => {
         setActiveTab={setActiveTab}
       />
 
-      <Search />
+      <Search horsesWithRaces={horsesWithRaces} />
 
       <h3>title: {race.title}</h3>
       <h3>raceid: {race.raceid}</h3>

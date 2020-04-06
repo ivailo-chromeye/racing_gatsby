@@ -3,24 +3,24 @@ import { useStaticQuery, graphql } from 'gatsby';
 import s from '../styles/search.module.css';
 import { f } from '../helper/index'
 
-const Search = props => {
+const Search = ({ horsesWithRaces }) => {
   const [input, setInput] = useState('');
 
-  const horses = (useStaticQuery(graphql`
-    {
-      allWordpressWpHorse {
-        nodes {
-          acf {
-            horse_name
-            horse_uid
-          }
-        }
-      }
-    }
-  `)).allWordpressWpHorse.nodes;
+  // const horses = (useStaticQuery(graphql`
+  //   {
+  //     allWordpressWpHorse {
+  //       nodes {
+  //         acf {
+  //           horse_name
+  //           horse_uid
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)).allWordpressWpHorse.nodes;
 
-  let fHorses = input.length !== 0 ? 
-    horses.filter(h => h.acf.horse_name.indexOf(input) > -1) : [];
+  // let fHorses = input.length !== 0 ? 
+  //   horses.filter(h => h.acf.horse_name.indexOf(input) > -1) : [];
 
   const showHorse = ({ horse_name, horse_uid}) => {
     horse_name = f(horse_name);
@@ -30,6 +30,18 @@ const Search = props => {
       "width=750,height=800"
     );
   }
+
+  const showRace = ({ race_instance_uid, date }) => {
+    window.open(
+      `https://www.racingpost.com/results/11/cheltenham/${date}/${race_instance_uid}/`,
+      "horse",
+      "width=750,height=800"
+    );
+  }
+
+  let filtered = horsesWithRaces.filter(h => {
+    return h.horse_name.indexOf(input) > -1
+  });
 
   return (
     <div>
@@ -43,8 +55,8 @@ const Search = props => {
         {input.length > 0 ? <div className={s.horses_container}>
           <div className={s.search_horses}>
 
-            {fHorses.map(h => {
-              h = h.acf;
+            {filtered.map(h => {
+              
               return (
                 <div key={h.horse_uid} className={s.horse_feed}>
                   <span 
@@ -54,7 +66,12 @@ const Search = props => {
                     })}
                     className={s.horse_feed_name}>{h.horse_name}</span>
                   <br />
-                  <span className={s.horse_feed_races}>lorem ipsum</span>
+                  <span 
+                    onClick={() => showRace({ 
+                      date: h.date,
+                      race_instance_uid: h.race_instance_uid,
+                    })}
+                  className={s.horse_feed_races}>{h.race_instance_title}</span>
                 </div>
               )
             })}

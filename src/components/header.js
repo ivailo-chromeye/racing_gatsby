@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import "../styles/header.css";
 
-
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [w, setW] = useState(null);
@@ -89,7 +88,10 @@ const Header = () => {
             <span />
           </div>
         </div>
+
       </header>
+
+
     </>
   )
 }

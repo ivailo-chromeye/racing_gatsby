@@ -23,3 +23,21 @@ a img {
 img {
   border: 0;
 }
+
+/* Transition demo start */
+.my-node-enter {
+  opacity: 0;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+/* Transition demo end */
