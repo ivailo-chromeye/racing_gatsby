@@ -5,6 +5,11 @@ import Header from "./header"
 import Footer from "./footer";
 import "./layout.css"
 
+Date.prototype.addHours = function(h) {
+  this.setTime(this.getTime() + (h*60*60*1000));
+  return this;
+}
+
 const Layout = ({ children }) => {
 
   const data = useStaticQuery(graphql`

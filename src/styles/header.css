@@ -16,7 +16,7 @@ header .logo-wrap {
   width: 275px;
 }
 header .logo-wrap img {
-  width: 220px;
+  /* width: 220px; */
 }
 header ul {
   padding: 0;

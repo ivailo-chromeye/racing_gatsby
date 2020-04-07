@@ -1,0 +1,17 @@
+.item {
+  border: 1px solid black;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 10px;
+  height: 400px;
+}
+.info {
+  width: 100%;
+  top: 80px;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+}
+.container {
+  margin-top: 50px;
+}

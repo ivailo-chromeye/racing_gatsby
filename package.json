@@ -20,8 +20,10 @@
     "react-device-detect": "^1.11.14",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-infinite-scroll-component": "^5.0.4",
     "react-slick": "^0.25.2",
-    "react-transition-group": "^4.3.0"
+    "react-transition-group": "^4.3.0",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "prettier": "^1.19.1"

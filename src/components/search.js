@@ -40,7 +40,7 @@ const Search = ({ horsesWithRaces }) => {
   }
 
   let filtered = horsesWithRaces.filter(h => {
-    return h.horse_name.indexOf(input) > -1
+    return h.horse_name.toLowerCase().indexOf(input.toLowerCase()) > -1
   });
 
   return (
