@@ -31,6 +31,7 @@ const Homepage = () => {
             <Layout>
                 <SEO title="Home" />
                 <PageHeadlineComponent title={pageTitle} subtitle={pageSubtitle}/>
+                <p>Hello!</p>
                 <FreeBetsComponent place="homepage"/>
             </Layout>
         </>
