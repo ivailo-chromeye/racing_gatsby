@@ -17,8 +17,8 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // your WordPress source
-        baseUrl: `http://chromeye.com/iv/racing-post/cheltenham/`,
-        protocol: `http`,
+        baseUrl: `https://development.chromeye.com/rp/hubs/cheltenham/`,
+        protocol: `https`,
         // is it hosted on wordpress.com, or self-hosted?
         hostingWPCOM: false,
         // does your site use the Advanced Custom Fields Plugin?

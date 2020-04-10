@@ -3,7 +3,7 @@ const api = axios.create({
   headers: {
     'Cache-Control': 'no-cache',
   },
-  baseURL: 'http://chromeye.com/iv/racing-post/cheltenham/wp-json/',
+  baseURL: 'https://development.chromeye.com/rp/hubs/cheltenham/',
 })
 
 export class API {
