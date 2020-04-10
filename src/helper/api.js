@@ -1,8 +1,5 @@
 import axios from 'axios';
 const api = axios.create({
-  headers: {
-    'Cache-Control': 'no-cache',
-  },
   baseURL: 'https://development.chromeye.com/rp/hubs/cheltenham/wp-json/',
 })
 
