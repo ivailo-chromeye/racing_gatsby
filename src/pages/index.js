@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 
 import PageHeadlineComponent from "../components/pageHeadline"
 import FreeBetsComponent from "../components/freeBets"
+import FeedRaces from "../components/feedRaces"
 
 const Homepage = () => {
     const pageData = useStaticQuery(graphql`
@@ -31,7 +32,7 @@ const Homepage = () => {
             <Layout>
                 <SEO title="Home" />
                 <PageHeadlineComponent title={pageTitle} subtitle={pageSubtitle}/>
-                <p>Hello!</p>
+                <FeedRaces/>
                 <FreeBetsComponent place="homepage"/>
             </Layout>
         </>

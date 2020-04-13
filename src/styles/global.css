@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'ProximaNovaA-SemiBold';
+  font-display: swap;
+  src: url(../fonts/proxima_nova_a_semibold.otf);
+}
+@font-face {
+  font-family: 'ProximaNovaA-Bold';
+  font-display: swap;
+  src: url(../fonts/proxima_nova_a_bold.otf);
+}
+@font-face {
+  font-family: 'ProximaNovaA-Regular';
+  font-display: swap;
+  src: url(../fonts/proxima_nova_a.otf);
+}
 body {
   margin: 0;
   font-family: Arial;

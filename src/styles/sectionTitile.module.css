@@ -1,0 +1,12 @@
+.sectionTitle {
+    background-color: #009444;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 400;
+    margin: 0 0 2px;
+    padding: 9px 0;
+    text-decoration: none;
+    display: block;
+}

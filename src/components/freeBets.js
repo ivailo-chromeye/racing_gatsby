@@ -2,8 +2,10 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Slider from "react-slick";
 
-import styles from "../styles/pageHeadline.module.css"
+import st from "../styles/freeBetsShortform.module.css"
 import '../styles/slickSlider.css';
+
+import SectionTitleComponent from "../components/sectionTitle"
 
 const FreeBetsComponent = (props) => {
     const freeBetsData = useStaticQuery(graphql`
@@ -55,19 +57,11 @@ const FreeBetsComponent = (props) => {
         var offerData = data.node.acf
         return (
             <>
-                <div key={offerData.offer_title}>
-                    <div>
-                        <h3 className={styles.fbCopy}>{offerData.offer_title}</h3>
-                        <h3 className={styles.fbSubcopy}>{offerData.offer_subtitle}</h3>
-
-                        <div className={styles.fbBtn}>
-                            <div>
-                                <a className={styles.offerButton} target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a>
-                            </div>
-                        </div>
-
-                        <div className={styles.fbTerms} dangerouslySetInnerHTML={{ __html: offerData.terms }}></div>
-                    </div>
+                <div className={st.freeBetsOffer} key={offerData.offer_title}>
+                    <h3 className={st.fbCopy}>{offerData.offer_title}</h3>
+                    <h3 className={st.fbSubcopy}>{offerData.offer_subtitle}</h3>
+                    <a className={st.freeBetsButton} target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a>
+                    <div className={st.freeBetsTerms} dangerouslySetInnerHTML={{ __html: offerData.terms }}></div>
                 </div>
             </>
         )
@@ -78,6 +72,7 @@ const FreeBetsComponent = (props) => {
     function FreeBetsSlider() {
         return (
             <>
+                <SectionTitleComponent title={'Free bets'}/>
                 <Slider className="free-bets-slider" {...settings}>
                 {freeBets.map(fb => {
                     if (props.place == 'homepage') {
