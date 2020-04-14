@@ -15,7 +15,7 @@ const FeedRaces = () => {
 
 
     useEffect(() => {
-        fetch("https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/feed.json")
+        fetch("https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/test.json")
           .then(res => res.json())
           .then(
             (result) => {
