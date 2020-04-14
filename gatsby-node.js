@@ -1,4 +1,43 @@
 const axios = require("axios");
+const fs = require('fs').promises;
+
+class RpApi {
+
+  runnersFields =  [
+    "start_number", "figures", 
+    "horse_uid", "horse_name", "horse_age",
+    "jockey_uid", "jockey_name",
+    "trainer_id", "trainer_stylename",
+    "spotlight",
+    "silk_image_path",
+  ];
+
+  pick = (obj, ...keys) => Object.fromEntries(
+    Object.entries(obj)
+    .filter(([key]) => keys.includes(key))
+  );
+
+  async getMockRunners() {
+
+    const mockRunners = Object.values(
+      (JSON.parse(await fs.readFile('rp_api/runners.json', 'utf8')))['runners']
+    );
+
+    return mockRunners.map(runner => {
+      const subset = this.pick(runner, ...this.runnersFields); 
+      // assign default values for testing.
+      subset['wgt'] = '11-7';
+      subset['rpr'] = 158;
+      subset['or'] = 153;
+
+      return subset;
+    });
+
+  }
+
+  
+
+}
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
@@ -6,7 +45,9 @@ exports.createPages = async ({ actions, graphql }) => {
   const feed = await axios.get(
     "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/feed.json"
   );
-  
+  const api = new RpApi();
+  console.log(api);
+  const mockRunners = await api.getMockRunners();
 
   // const horses = {};
 
@@ -62,6 +103,7 @@ exports.createPages = async ({ actions, graphql }) => {
           context: {
             race: race.acf,
             feed: JSON.stringify(feed.data),
+            mockRunners: JSON.stringify(mockRunners),
           },
         });
       });
