@@ -8,8 +8,8 @@ const Race = ({ pageContext, location }) => {
   const raceID = location.pathname.split("/")[2]
   const race = pageContext.race
   const feed = JSON.parse(pageContext.feed)
-  // const runners = JSON.parse(pageContext.mockRunners);
-  // console.log(runners);
+  const runners = JSON.parse(pageContext.mockRunners);
+  console.log(runners);
 
   const horsesWithRaces = [];
   feed.map(day => {

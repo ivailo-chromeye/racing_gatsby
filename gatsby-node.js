@@ -1,5 +1,6 @@
 const axios = require("axios");
 const fs = require('fs').promises;
+const fromEntries = require('object.fromentries')
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
@@ -8,39 +9,52 @@ exports.createPages = async ({ actions, graphql }) => {
     "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/feed.json"
   );
 
-  // const runnersFields =  [
-  //   "start_number", "figures", 
-  //   "horse_uid", "horse_name", "horse_age",
-  //   "jockey_uid", "jockey_name",
-  //   "trainer_id", "trainer_stylename",
-  //   "spotlight",
-  //   "silk_image_path",
-  // ];
-  // const pick = (obj, ...keys) => Object.fromEntries(
-  //   Object.entries(obj)
-  //   .filter(([key]) => keys.includes(key))
-  // );
+  const runnersFields =  [
+    "start_number", "figures", 
+    "horse_uid", "horse_name", "horse_age",
+    "jockey_uid", "jockey_name",
+    "trainer_id", "trainer_stylename",
+    "spotlight",
+    "silk_image_path",
+  ];
 
-  // const getMockRunners = async() => {
+  if (!Object.entries) {
+    Object.entries = function( obj ){
+      var ownProps = Object.keys( obj ),
+          i = ownProps.length,
+          resArray = new Array(i); // preallocate the Array
+      while (i--)
+        resArray[i] = [ownProps[i], obj[ownProps[i]]];
+      
+      return resArray;
+    };
+  }
 
-  //   const mockRunners = Object.values(
-  //     (JSON.parse(await fs.readFile('rp_api/runners.json', 'utf8')))['runners']
-  //   );
+  const pick = (obj, ...keys) => Object.fromEntries(
+    Object.entries(obj)
+    .filter(([key]) => keys.includes(key))
+  );
 
-  //   return mockRunners.map(runner => {
-  //     const subset = pick(runner, ...runnersFields); 
-  //     // assign default values for testing.
-  //     subset['wgt'] = '11-7';
-  //     subset['rpr'] = 158;
-  //     subset['or'] = 153;
+  const getMockRunners = async() => {
 
-  //     return subset;
-  //   });
+    const mockRunners = Object.values(
+      (JSON.parse(await fs.readFile('rp_api/runners.json', 'utf8')))['runners']
+    );
 
-  // }
+    return mockRunners.map(runner => {
+      const subset = pick(runner, ...runnersFields); 
+      // assign default values for testing.
+      subset['wgt'] = '11-7';
+      subset['rpr'] = 158;
+      subset['or'] = 153;
+
+      return subset;
+    });
+
+  }
 
 
-  // const mockRunners = await getMockRunners();
+  const mockRunners = await getMockRunners();
 
   // const horses = {};
 
@@ -96,7 +110,7 @@ exports.createPages = async ({ actions, graphql }) => {
           context: {
             race: race.acf,
             feed: JSON.stringify(feed.data),
-            // mockRunners: JSON.stringify(mockRunners),
+            mockRunners: JSON.stringify(mockRunners),
           },
         });
       });
