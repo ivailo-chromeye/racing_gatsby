@@ -40,7 +40,7 @@ exports.createPages = async ({ actions, graphql }) => {
   }
 
 
-  const mockRunners = await api.getMockRunners();
+  const mockRunners = await getMockRunners();
 
   // const horses = {};
 
