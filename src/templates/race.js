@@ -4,10 +4,12 @@ import Layout from "../components/layout"
 import RacesListTop from "../components/racesListTop"
 import Search from '../components/search';
 
-const Race = props => {
-  const raceID = props.location.pathname.split("/")[2]
-  const race = props.pageContext.race
-  const feed = JSON.parse(props.pageContext.feed)
+const Race = ({ pageContext, location }) => {
+  const raceID = location.pathname.split("/")[2]
+  const race = pageContext.race
+  const feed = JSON.parse(pageContext.feed)
+  const runners = JSON.parse(pageContext.mockRunners);
+  console.log(runners);
 
   const horsesWithRaces = [];
   feed.map(day => {
