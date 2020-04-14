@@ -47,7 +47,6 @@ exports.createPages = async ({ actions, graphql }) => {
       subset['wgt'] = '11-7';
       subset['rpr'] = 158;
       subset['or'] = 153;
-
       return subset;
     });
 
