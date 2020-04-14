@@ -1,9 +1,14 @@
 const axios = require("axios");
 const fs = require('fs').promises;
 
-class RpApi {
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions
 
-  runnersFields =  [
+  const feed = await axios.get(
+    "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/feed.json"
+  );
+
+  const runnersFields =  [
     "start_number", "figures", 
     "horse_uid", "horse_name", "horse_age",
     "jockey_uid", "jockey_name",
@@ -11,20 +16,19 @@ class RpApi {
     "spotlight",
     "silk_image_path",
   ];
-
-  pick = (obj, ...keys) => Object.fromEntries(
+  const pick = (obj, ...keys) => Object.fromEntries(
     Object.entries(obj)
     .filter(([key]) => keys.includes(key))
   );
 
-  async getMockRunners() {
+  const getMockRunners = async() => {
 
     const mockRunners = Object.values(
       (JSON.parse(await fs.readFile('rp_api/runners.json', 'utf8')))['runners']
     );
 
     return mockRunners.map(runner => {
-      const subset = this.pick(runner, ...this.runnersFields); 
+      const subset = pick(runner, ...runnersFields); 
       // assign default values for testing.
       subset['wgt'] = '11-7';
       subset['rpr'] = 158;
@@ -35,18 +39,7 @@ class RpApi {
 
   }
 
-  
 
-}
-
-exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions
-
-  const feed = await axios.get(
-    "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/feed.json"
-  );
-  const api = new RpApi();
-  console.log(api);
   const mockRunners = await api.getMockRunners();
 
   // const horses = {};
