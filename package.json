@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@kunukn/react-collapse": "^2.2.8",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "gatsby": "^2.19.45",
@@ -16,6 +17,7 @@
     "gatsby-source-filesystem": "^2.1.56",
     "gatsby-source-wordpress": "^3.2.2",
     "gatsby-transformer-sharp": "^2.3.19",
+    "lodash": "^4.17.15",
     "object.fromentries": "^2.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",

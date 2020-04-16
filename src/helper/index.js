@@ -27,3 +27,7 @@ export const timeSince = timeStamp => {
     return day + " " + month + year;
   }
 }
+
+export const openInNewWindow = () => {
+  
+}

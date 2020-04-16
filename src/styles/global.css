@@ -38,7 +38,51 @@ a img {
 img {
   border: 0;
 }
-
+/* table styles from race template need to refactor them into module */
+th {
+  text-align: start;
+  padding: 10px 10px 5px 10px;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  border: 1px solid #f0eff1;
+  color: #262626;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 2px 2px 6px grey;
+  top: 35px;
+  left: -52px;
+}
+.tooltiptext:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 51%;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent;
+  border-bottom-color: #ffffff;
+  border-top: 0;
+  margin-left: -15px;
+  margin-top: -10px;
+}
+.runner_tr td {
+  border-top: 1px solid gainsboro;
+  text-align: left;
+  padding-left: 10px;
+}
+/* table styles from race template need to refactor them into module */
 /* Transition demo start */
 .my-node-enter {
   opacity: 0;

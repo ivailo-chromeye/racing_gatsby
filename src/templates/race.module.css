@@ -1,0 +1,18 @@
+.runners_and_ad {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.runners {
+  width: 100%;
+  height: auto;
+}
+
+
+.th_div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 13px;
+  justify-content: flex-start;
+}
