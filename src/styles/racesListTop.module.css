@@ -33,6 +33,7 @@
 }
 .race_top_active {
   color: var(--red);
+  padding: 5px;
 }
 .race_top:hover {
   text-decoration: underline;

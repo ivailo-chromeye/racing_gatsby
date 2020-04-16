@@ -1,18 +1,51 @@
 .runners_and_ad {
   display: flex;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: var(--white);
 }
 .runners {
   width: 100%;
   height: auto;
 }
-
-
 .th_div {
   display: flex;
   align-items: center;
   cursor: pointer;
   font-size: 13px;
   justify-content: flex-start;
+}
+.horse_box {
+  padding: 10px 10px 10px 0px;
+}
+.horse_box_flex {
+  display: flex;
+}
+.horse_box_left {
+
+}
+.horse_box_right {
+  padding-left: 10px;
+  font-size: 17px;
+  font-family: proximanovaa-bold, sans-serif;
+}
+.horse_box_right_top {
+  cursor: pointer;
+}
+.horse_box_right_bottom {
+  display: flex;
+  padding-top: 3px;
+}
+.spotlight {
+  cursor: pointer;
+  height: 14px;
+  width: 14px;
+}
+.trainerSpan {
+  color: var(--dark_gray);
+  cursor: pointer;
+}
+.horse_box_right_top:hover, .trainer:hover {
+  text-decoration: underline;
+  color: var(--hover_red);
+  cursor: pointer;
 }

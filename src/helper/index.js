@@ -28,6 +28,17 @@ export const timeSince = timeStamp => {
   }
 }
 
-export const openInNewWindow = () => {
-  
+export const rpModal = ({ type, id, name, date }) => {
+  const baseURL = "https://www.racingpost.com/";
+  const participantUrl = `${baseURL}/profile/${type}/${id}/${f(name)}`;
+  const raceURL = `${baseURL}/results/11/cheltenham/${date}/${id}/`;
+
+  window.open(
+    type === "race" ? raceURL : participantUrl,
+    `${type}`,
+    "width=750,height=800"
+  );
 }
+
+
+

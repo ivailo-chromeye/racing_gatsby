@@ -4,17 +4,19 @@ import Layout from "../components/layout"
 import RacesListTop from "../components/racesListTop"
 import Search from '../components/search';
 import s from './race.module.css';
+import {
+  rpModal,
+} from '../helper/index';
 
-    // subset['wgt'] = '11-7';
-    //   subset['rpr'] = 158;
-    //   subset['or'] = 153;
+import TooltipSVG from '../images/tooltip.svg';
 
 const Race = ({ pageContext, location }) => {
+  
   const raceID = location.pathname.split("/")[2]
   const race = pageContext.race
   const feed = JSON.parse(pageContext.feed)
   const runners = JSON.parse(pageContext.runners);
-  console.log(pageContext);
+  // console.log(pageContext);
 
   const horsesWithRaces = [];
   feed.map(day => {
@@ -76,6 +78,7 @@ const Race = ({ pageContext, location }) => {
                     <span>NO.DRAW FORM</span>
                     <div className="tooltip">
                       <span className="tooltiptext">Sort by Saddle Number</span>
+                      <TooltipSVG />
                     </div>
                   </div>
                 </th>
@@ -84,6 +87,7 @@ const Race = ({ pageContext, location }) => {
                     <span>HORSE</span>
                     <div className="tooltip">
                       <span className="tooltiptext">Sort by Horse Name</span>
+                      <TooltipSVG />
                     </div>
                   </div>
                 </th>
@@ -91,6 +95,7 @@ const Race = ({ pageContext, location }) => {
                   <div className={s.th_div}>
                   <span>ODDS</span><div className="tooltip">
                     <span className="tooltiptext">Sort by Best Odds</span>
+                    <TooltipSVG />
                   </div>
                   </div>
                 </th>
@@ -100,6 +105,7 @@ const Race = ({ pageContext, location }) => {
                     <span>TRAINER</span>
                     <div className="tooltip">
                       <span className="tooltiptext">Sort by Trainer</span>
+                      <TooltipSVG />
                     </div>
                   </div>
                 </th>
@@ -108,6 +114,7 @@ const Race = ({ pageContext, location }) => {
                     <span>AGE</span>
                     <div className="tooltip">
                       <span className="tooltiptext">Sort by Horse Age</span>
+                      <TooltipSVG />
                     </div>
                   </div>
                 </th>
@@ -116,6 +123,7 @@ const Race = ({ pageContext, location }) => {
                     <span>WGT</span>
                     <div className="tooltip">
                       <span className="tooltiptext">Sort by Weight</span>
+                      <TooltipSVG />
                     </div>
                   </div>
                 </th>
@@ -124,6 +132,7 @@ const Race = ({ pageContext, location }) => {
                     <span>OR</span>
                     <div className="tooltip">
                       <span className="tooltiptext">Sort by Official Rating</span>
+                      <TooltipSVG />
                     </div>
                   </div>
                 </th>
@@ -132,6 +141,7 @@ const Race = ({ pageContext, location }) => {
                     <span>RPR</span>
                     <div className="tooltip">
                       <span className="tooltiptext">Sort by Racing Post Rating</span>
+                      <TooltipSVG />
                     </div>
                   </div>
                 </th>
@@ -140,6 +150,7 @@ const Race = ({ pageContext, location }) => {
             <tbody>
               
               {runners.map(runner => {
+                console.log({runner});
                 return (
                   <tr className={'runner_tr'} key={runner.horse_uid}>
                     <td>
@@ -147,17 +158,31 @@ const Race = ({ pageContext, location }) => {
                       <div className="form">{runner.figures}</div>
                     </td>
 
-                    <td className="horse_box">
-                      <div className="horse-box-flex">
-                        <div className="horse-box-left">
+                    <td className={s.horse_box}>
+                      <div className={s.horse_box_flex}>
+                        <div className={s.horse_box_left}>
                           <img src="https://images.racingpost.com/png_silks/8/4/5/170548.png" />
                         </div>
-                        <div className="horse-box-right">
-                          <div className="horse-box-right-top">
+                        <div className={s.horse_box_right}>
+                          <div 
+                            onClick={() => rpModal({
+                              type: 'horse', 
+                              id: runner.horse_uid, 
+                              name: runner.horse_name,
+                              date: null,
+                            })}
+                            className={s.horse_box_right_top}>
                             {runner.horse_name}
                           </div>
                           <div className="horse-box-right-bottom">
-                            spotlight
+                            <svg className={s.spotlight} viewBox="0 0 100 100">
+                              <title>icon-spotlight</title>
+                                <path id="XMLID_9722_" d="M60.7,79H39.5c-2.1,0-3.5-0.8-3.5-2.9c0-6.4-4.9-11.1-9.9-16c-4.9-5.6-11.3-12.7-11.3-24.7
+                                    C14.8,15.5,30.3,0,50.1,0s35.3,16.2,35.3,35.3c0,12.7-6.4,21.2-12,26.1c-4.2,4.2-9.2,8.3-9.2,13.9C64.2,78.2,62.8,79,60.7,79z
+                                    M43.2,71h14c1.4-7.1,7-10.9,11.3-15.1c4.9-4.9,9.9-11.4,9.9-20.5c0-15.5-12.7-27.6-27.5-27.6s-28.2,12-28.2,27.5
+                                    c0,8.5,4.2,14.2,9.2,19.2C36,58.7,41.7,63.9,43.2,71z"></path>
+                                <path d="M64.2,94c0,2.8-2.2,5-5,5h-18c-2.8,0-5-2.2-5-5v-4c0-2.8,2.2-5,5-5h18c2.8,0,5,2.2,5,5V94z"></path>
+                            </svg>
                           </div>
                         </div>
                       </div>
@@ -172,14 +197,30 @@ const Race = ({ pageContext, location }) => {
 
                     <td>
                       <div
-                        className="jockey"><span>J:</span>{runner.jockey_name}
+                        onClick={() => rpModal({
+                          type: 'jockey',
+                          id: runner.jockey_uid,
+                          name: runner.jockey_name,
+                          date: null,
+                        })}
+                        className={s.trainer}>
+                          <span className={s.trainerSpan}>J:</span>
+                          {runner.jockey_name}
                       </div>   
                       <div
-                        className="trainer"><span>T:</span>{runner.trainer_stylename}
+                        onClick={() => rpModal({
+                          type: 'trainer',
+                          id: runner.trainer_id,
+                          name: runner.trainer_stylename,
+                          date: null,
+                        })}
+                        className={s.trainer}>
+                          <span className={s.trainerSpan}>T:</span>
+                          {runner.trainer_stylename}
                       </div>   
                     </td>
 
-                    <td>horse_age</td>
+                    <td>{runner.horse_age}</td>
 
                     <td><div className="wgt">11-7</div></td>
                     <td>155</td>

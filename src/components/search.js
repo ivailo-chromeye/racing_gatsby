@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import s from '../styles/search.module.css';
-import { f } from '../helper/index'
+import { openInNewWindowRace, rpModal } from '../helper/index'
 
 const Search = ({ horsesWithRaces }) => {
   const [input, setInput] = useState('');
@@ -22,22 +22,7 @@ const Search = ({ horsesWithRaces }) => {
   // let fHorses = input.length !== 0 ? 
   //   horses.filter(h => h.acf.horse_name.indexOf(input) > -1) : [];
 
-  const showHorse = ({ horse_name, horse_uid}) => {
-    horse_name = f(horse_name);
-    window.open(
-      `https://www.racingpost.com/profile/horse/${horse_uid}/${horse_name}`,
-      "horse",
-      "width=750,height=800"
-    );
-  }
 
-  const showRace = ({ race_instance_uid, date }) => {
-    window.open(
-      `https://www.racingpost.com/results/11/cheltenham/${date}/${race_instance_uid}/`,
-      "horse",
-      "width=750,height=800"
-    );
-  }
 
   let filtered = horsesWithRaces.filter(h => {
     return h.horse_name.toLowerCase().indexOf(input.toLowerCase()) > -1
@@ -60,16 +45,20 @@ const Search = ({ horsesWithRaces }) => {
               return (
                 <div key={h.horse_uid} className={s.horse_feed}>
                   <span 
-                    onClick={() => showHorse({ 
-                      horse_name: h.horse_name,
-                      horse_uid: h.horse_uid,
+                    onClick={() => rpModal({ 
+                      type: 'horse',
+                      id: h.horse_uid,
+                      name: h.horse_name,
+                      date: null,
                     })}
                     className={s.horse_feed_name}>{h.horse_name}</span>
                   <br />
                   <span 
-                    onClick={() => showRace({ 
+                    onClick={() => rpModal({
+                      type: 'race',
+                      id: h.race_instance_uid,
+                      name: null,
                       date: h.date,
-                      race_instance_uid: h.race_instance_uid,
                     })}
                   className={s.horse_feed_races}>{h.race_instance_title}</span>
                 </div>

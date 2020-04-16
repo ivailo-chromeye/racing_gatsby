@@ -13,16 +13,24 @@
   font-display: swap;
   src: url(../fonts/proxima_nova_a.otf);
 }
+/* COLORS start */
+:root {
+  --white: #fff;
+  --hover_red: #d11f25;
+  --dark_gray: #7f7f7f;
+  --bg_gray: #e0e0e0;
+}
+/* COLORS end */
 body {
   margin: 0;
   font-family: Arial;
   font-family: ProximaNovaA-Regular;
   line-height: 1;
-  background: #e0e0e0;
+  background: var(--bg_gray);
   color: #171717;
 }
 .container {
-  background: #e0e0e0;
+  background: var(--bg_gray);
   max-width: 1440px;
   width: 100%;
   box-sizing: border-box;
@@ -38,7 +46,10 @@ a img {
 img {
   border: 0;
 }
-/* table styles from race template need to refactor them into module */
+
+
+
+/* table styles from race template until i figure out how to refactor them into module */
 th {
   text-align: start;
   padding: 10px 10px 5px 10px;
@@ -81,6 +92,9 @@ th {
   border-top: 1px solid gainsboro;
   text-align: left;
   padding-left: 10px;
+}
+.tooltip svg {
+  width: 13px;
 }
 /* table styles from race template need to refactor them into module */
 /* Transition demo start */
