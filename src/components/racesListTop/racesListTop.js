@@ -1,14 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
-import s from "../styles/racesListTop.module.css"
+import s from "./racesListTop.module.css"
+
+import ArrowSVG from '../svg/arrow';
 
 const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
+
+
   const days = [
     { label: "Tuesday's Races" },
     { label: "Wednesday's Races" },
     { label: "Thursday's Races" },
     { label: "Friday's Races" },
   ]
+
 
   return (
     <>
@@ -17,14 +22,17 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
           {days.map((day, i) => {
             return (
               <div
-                onClick={() => setActiveTab(i)}
+                onClick={() => setActiveTab(activeTab !== i ? i : null)}
                 key={day.label}
                 className={s.card}
               >
-                <div
-                  className={activeTab === i ? s.card_name_active : s.card_name}
-                >
-                  {day.label}
+                <div className={activeTab === i ? s.card_name_active : s.card_name}>
+                  <div className={s.list_top_card_name}>
+                    {day.label}
+                  </div>
+                  <div className={s.list_top_arrow}>
+                    <ArrowSVG className={s.arrow_svg} active={activeTab === i} />
+                  </div>
                 </div>
               </div>
             )
@@ -33,7 +41,7 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
       </div>
 
       <div className={s.list_content}>
-        {feed.races.map((raceArg, raceIndex) => {
+        {!feed ? null : feed.races.map((raceArg, raceIndex) => {
           // console.log(raceArg)
           return (
             <div key={raceIndex}>

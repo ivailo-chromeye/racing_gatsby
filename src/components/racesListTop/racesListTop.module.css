@@ -19,13 +19,15 @@
   cursor: pointer;
 }
 .card_name {
-  color: #859298;
+  display: flex;
+  color: var(--inactive_gray);
 }
 .card_name_active {
-  color: #171717;
+  display: flex;
+  color: var(--black);
 }
 .race {
-  color: #171717;
+  color: var(--black);
   text-decoration: none;
 }
 .race_top {
@@ -44,4 +46,21 @@
 }
 .race_top_title {
   padding-left: 5px;
+}
+.list_top_card_name {
+  
+}
+.list_top_arrow {
+  padding: 0px 0px 0px 10px;
+}
+.arrow_svg {
+  width: 16px;
+  height: 16px;
+  position: static;
+  top: 18px;
+  bottom: 0;
+  right: 8px;
+  margin: 0;
+  display: inline-block;
+  fill: var(--arrow_red);
 }

@@ -16,9 +16,12 @@
 /* COLORS start */
 :root {
   --white: #fff;
+  --black: #171717;
   --hover_red: #d11f25;
+  --arrow_red: #ed1c24;
   --dark_gray: #7f7f7f;
   --bg_gray: #e0e0e0;
+  --inactive_gray: #859298;
 }
 /* COLORS end */
 body {
@@ -27,7 +30,7 @@ body {
   font-family: ProximaNovaA-Regular;
   line-height: 1;
   background: var(--bg_gray);
-  color: #171717;
+  color: var(--black);
 }
 .container {
   background: var(--bg_gray);
