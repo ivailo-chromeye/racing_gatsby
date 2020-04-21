@@ -81,7 +81,7 @@ th {
   left: -52px;
 }
 .tooltiptext:after {
-  content: '';
+  /* content: ''; */
   position: absolute;
   top: 0;
   left: 51%;

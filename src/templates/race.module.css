@@ -49,3 +49,6 @@
   color: var(--hover_red);
   cursor: pointer;
 }
+.active_sort {
+  border-bottom: 2px solid var(--yellow_active_filter);
+}

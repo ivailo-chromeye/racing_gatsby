@@ -1,12 +1,24 @@
 import React from 'react'
-
 import TooltipSVG from '../../images/tooltip.svg';
 import SpotlightSVG from '../../images/spotlight.svg';
-
 import s from '../../templates/race.module.css';
 import styleRacecards from '../../styles/racecards.module.css'
+import {rpModal} from '../../helper/index';
+import ReactTooltip from "react-tooltip";
 
-const RaceRunners = ({ runners, applyFilter }) => {
+const tableTop = [
+  {filter: "start_number", label: "NO.DRAW FORM", tooltip: "Sort by Saddle Number"},
+  {filter: "horse_name", label: "HORSE", tooltip: "Sort by Haddle Name"},
+  {filter: "odds", label: "ODDS", tooltip: "Sort by Best Odds"},
+  {filter: "jockey|trainer", label: "JOCKEY|TRAINER", tooltip: "Sort by Trainer"},
+  {filter: "age", label: "AGE", tooltip: "Sort by Horse age"},
+  {filter: "wgt", label: "WGT", tooltip: "Sort by Weight"},
+  {filter: "or", label: "OR", tooltip: "Sort by Official Rating"},
+  {filter: "rpr", label: "RPR", tooltip: "Sort by Racing Post Rating"},
+];
+const active = {borderBottom: "2px solid var(--yellow_active_filter)"};
+
+const RaceRunners = ({ runners, applyFilter, activeFilter, setModal }) => {
 
 
 
@@ -16,85 +28,50 @@ const RaceRunners = ({ runners, applyFilter }) => {
       <table>
         <thead>
           <tr>
-            <th>
-              <div
-                className={s.th_div}>
-                <span onClick={() => applyFilter("start_number")}>NO.DRAW FORM</span>
-                <div className="tooltip">
-                  <span className="tooltiptext">Sort by Saddle Number</span>
-                  <TooltipSVG />
-                </div>
-              </div>
-            </th>
-            <th>
-              <div 
-                className={s.th_div}>
-                <span onClick={() => applyFilter("horse_name")}>HORSE</span>
-                <div className="tooltip">
-                  <span className="tooltiptext">Sort by Horse Name</span>
-                  <TooltipSVG />
-                </div>
-              </div>
-            </th>
-            <th>
-              <div 
-                className={s.th_div}>
-              <span onClick={() => applyFilter("odds")}>ODDS</span><div className="tooltip">
-                <span className="tooltiptext">Sort by Best Odds</span>
-                <TooltipSVG />
-              </div>
-              </div>
-            </th>
-            <th>
-              <div className={s.th_div}>
-                <span onClick={() => applyFilter("jockey")}>JOCKEY</span>&
-                <span onClick={() => applyFilter("trainer")}>TRAINER</span>
-                <div className="tooltip">
-                  <span className="tooltiptext">Sort by Trainer</span>
-                  <TooltipSVG />
-                </div>
-              </div>
-            </th>
-            <th>
-              <div className={s.th_div}>
-                <span onClick={() => applyFilter("age")}>AGE</span>
-                <div className="tooltip">
-                  <span className="tooltiptext">Sort by Horse Age</span>
-                  <TooltipSVG />
-                </div>
-              </div>
-            </th>
-            <th>
-              <div className={s.th_div}>
-                <span onClick={() => applyFilter("wgt")}>WGT</span>
-                <div className="tooltip">
-                  <span className="tooltiptext">Sort by Weight</span>
-                  <TooltipSVG />
-                </div>
-              </div>
-            </th>
-            <th>
-              <div className={s.th_div}>
-                <span onClick={() => applyFilter("or")}>OR</span>
-                <div className="tooltip">
-                  <span className="tooltiptext">Sort by Official Rating</span>
-                  <TooltipSVG />
-                </div>
-              </div>
-            </th>
-            <th>
-              <div className={s.th_div}>
-                <span onClick={() => applyFilter()}>RPR</span>
-                <div className="tooltip">
-                  <span className="tooltiptext">Sort by Racing Post Rating</span>
-                  <TooltipSVG />
-                </div>
-              </div>
-            </th>
+            {
+              tableTop.map(({label, filter, tooltip}, i) => {
+                console.log(activeFilter);
+                return (
+                    <th key={i}>
+                    <div
+                      className={s.th_div}>
+
+
+
+                      {filter !== "jockey|trainer" ? 
+
+                        <span 
+                          style={activeFilter === filter ? active : null}
+                          onClick={() => applyFilter(filter)}>{label}</span> :
+
+                        <>
+                          <span 
+                            style={activeFilter === filter.split("|")[0] ? active : null}
+                            onClick={() => applyFilter(filter.split("|")[0])}>{label.split("|")[0]}</span>&
+                          <span 
+                            style={activeFilter === filter.split("|")[1] ? active : null}
+                            onClick={() => applyFilter(filter.split("|")[1])}>{label.split("|")[1]}</span>
+                        </>
+                      }
+
+
+
+                      <div className="tooltip">
+                        <ReactTooltip />
+                        <TooltipSVG 
+                          data-effect="solid"
+                          data-place="bottom"
+                          data-tip={tooltip} />
+                      </div>
+                    </div>
+                    </th>
+                  )
+              })
+            }
+            
           </tr>
         </thead>
         <tbody>
-          
           {runners.map(runner => {
             // console.log({runner});
             return (
@@ -128,7 +105,14 @@ const RaceRunners = ({ runners, applyFilter }) => {
                 </td>
 
                 <td className="padding-2">
-                  <div className={styleRacecards.odd}>33/1</div>
+                  <div onClick={() => setModal(prevState => {
+                    console.log(prevState);
+                    return {
+                      ...prevState,
+                      open: true,
+                      runner,
+                    };
+                  })} className={styleRacecards.odd}>33/1</div>
                 </td>  
 
                 <td>
@@ -157,8 +141,7 @@ const RaceRunners = ({ runners, applyFilter }) => {
                 </td>
 
                 <td>{runner.horse_age}</td>
-
-                <td><div className="wgt">11-7</div></td>
+                <td>11-7</td>
                 <td>155</td>
                 <td>158</td>
               </tr>

@@ -5,8 +5,8 @@ import RacesListTop from "../components/racesListTop/racesListTop"
 import Search from '../components/search/search';
 import s from './race.module.css';
 import styleRacecards from '../styles/racecards.module.css'
-import {rpModal} from '../helper/index';
 
+import Modal from '../components/modal/modal'
 
 import RaceInfo from '../components/raceInfo/raceInfo';
 
@@ -58,16 +58,69 @@ const Race = ({ pageContext, location }) => {
   const [activeTab, setActiveTab] = useState(dayObject.activeDay)
   const [activeRace, setActiveRace] = useState(dayObject.activeRace)
   const [state, setState] = useState(JSON.parse(pageContext.data));
+  const [sortObj, setSortObj] = useState({
+    filter: "start_number",
+    dir: false,
+  });
+  const [modal, setModal] = useState({open: false, runner: null});
 
   let activeDay = !isNaN(activeTab) ? feed[activeTab] : null;
 
-  const applyFilter = () => {
-    console.log('apply filter');
+  const applyFilter = (filter) => {
+    setSortObj({
+      ...sortObj,
+      filter,
+      dir: !sortObj.dir,
+    })
   }
-  console.log('racejs');
+
+  const sortedRunners = () => {
+    return runners.sort((a,b)=> {
+
+      switch(sortObj.filter) {
+        case "start_number": {
+          if(sortObj.dir) {
+            return a.start_number > b.start_number ? 1 : -1;
+          } else {
+            return a.start_number > b.start_number ? -1 : 1;
+          }
+        }
+        case "horse_name": {
+          if(sortObj.dir) {
+            return b["horse_name"].localeCompare(a["horse_name"])
+          } else {
+            return a["horse_name"].localeCompare(b["horse_name"]);
+          }
+        }
+        case "jockey": {
+          if(sortObj.dir) {
+            return b["jockey_name"].localeCompare(a["jockey_name"])
+          } else {
+            return a["jockey_name"].localeCompare(b["jockey_name"]);
+          }
+        }
+        case "trainer": {
+          if(sortObj.dir) {
+            return b["trainer_stylename"].localeCompare(a["trainer_stylename"])
+          } else {
+            return a["trainer_stylename"].localeCompare(b["trainer_stylename"]);
+          }
+        }
+        case "age": {
+          if(sortObj.dir) {
+            return a.horse_age > b.horse_age ? 1 : -1;
+          } else {
+            return a.horse_age < b.horse_age ? 1 : -1;
+          }
+        }
+        default: return 1;
+      }
+    });
+  }
 
   return (
     <Layout>
+      <Modal modal={modal} setModal={setModal} />
       <RacesListTop
         dayObject={dayObject}
         activeTab={activeTab}
@@ -79,7 +132,7 @@ const Race = ({ pageContext, location }) => {
 
       <RaceInfo card={state.racecard} />
 
-      <RaceRunners runners={runners} applyFilter={applyFilter} />
+      <RaceRunners setModal={setModal} activeFilter={sortObj.filter} runners={sortedRunners()} applyFilter={applyFilter} />
 
 
 

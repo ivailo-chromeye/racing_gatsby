@@ -1,5 +1,6 @@
 const axios = require("axios");
 const _ = require("lodash");
+const runners = require('./runners.json');
 // const fs = require('fs').promises;
 // const fromEntries = require('object.fromentries')
 
@@ -18,16 +19,14 @@ exports.createPages = async ({ actions, graphql }) => {
     "trainer_id", "trainer_stylename",
     "spotlight",
     "silk_image_path",
+    "weight_carried_lbs"
   ];
 
-  const response = await axios.get('https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/runners.json');
-
-  
 
   const runnersArray = [];
 
-  for(let key in response.data.runners) {
-    runnersArray.push(_.pick(response.data.runners[key], runnersFields));
+  for(let key in runners.runners) {
+    runnersArray.push(_.pick(runners.runners[key], runnersFields));
   }
 
   await graphql(`
