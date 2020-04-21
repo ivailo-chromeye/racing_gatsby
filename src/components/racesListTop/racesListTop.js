@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import s from "./racesListTop.module.css"
 
-import ArrowSVG from '../svg/arrow';
+import ArrowSVG from '../svg/arrowSvg';
 
 const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
 

@@ -1,0 +1,40 @@
+.race_card {
+  display: flex;
+  justify-content: space-between;
+}
+.left {
+
+}
+.right {
+  font-family: proximanovaa-semibold, sans-serif;
+  padding: 5px 0px;
+}
+.race_box {
+
+}
+.race_title {
+  font-size: 42px;
+}
+.race_time {
+  padding: 5px 0px 10px;
+  color: var(--race_time_gray);
+}
+.race_distance {
+  font-family: proximanovaa-semibold, sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  line-height: 1.1em;
+}
+.prize, .no_of_runners, .going_type_desc, .no_of_fenses {
+  padding: 5px 0px 10px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.prize span:first-child, 
+.no_of_runners span:first-child, 
+.going_type_desc span:first-child, 
+.no_of_fenses span:first-child {
+  color: #7b7a78;
+}
+/* .raceInfo-module--right--pG4GJ > div:first-child { */
+  /* color: #7b7a78; */
+/* } */

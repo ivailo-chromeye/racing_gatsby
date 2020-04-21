@@ -1,0 +1,65 @@
+.horses_container {
+  text-align: center;
+  margin: 0 65px 20px;
+  background: #F0EFF1;
+  padding: 10px;
+  position: relative;
+  overflow-x: hidden;
+}
+.search_horses {
+  padding: 1px;
+}
+.horse_feed {
+  padding: 10px;
+}
+.horse_feed_name {
+  line-height: 1.5;
+  font-size: 20px;
+  font-family: ProximaNovaA-SemiBold, sans-serif;
+}
+.horse_feed_races {
+  padding: 1px;
+}
+.horse_feed_name:hover,.horse_feed_races:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.search_flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search_box {
+  text-align: right;
+  position: relative;
+  align-items: center;
+  margin: 10px 0px;
+  display: flex;
+  flex-direction: column;
+}
+.search_fields {
+  display: flex;
+}
+.search_btn {
+  font-family: ProximaNovaA-regular, sans-serif;
+  background-color: inherit;
+  border-radius: 20px;
+  border: 1px solid var(--black);
+  cursor: pointer;
+  padding: 0px 20px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+}
+.search_label {
+  font-family: ProximaNovaA-SemiBold, sans-serif;
+}
+.input {
+  color: #7b7a78;
+  font-size: 16px;
+  width: 200px;
+  padding: 8px;
+  margin: 0px 20px;
+  border: 1px solid #7b7a78;
+  border-radius: 4px;
+}

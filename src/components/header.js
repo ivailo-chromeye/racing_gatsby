@@ -41,16 +41,16 @@ const Header = () => {
     setShowMenu(!showMenu)
   }
 
-  function whenToShowMenu() {
-    if(!w) return null;
-    if (w > 1024) {
-      return true
-    }
-    if (w <= 1024 && showMenu) {
-      return true
-    }
-    return false
-  }
+  // function whenToShowMenu() {
+  //   if(!w) return null;
+  //   if (w > 1024) {
+  //     return true
+  //   }
+  //   if (w <= 1024 && showMenu) {
+  //     return true
+  //   }
+  //   return false
+  // }
 
   return (
     <>
@@ -65,7 +65,7 @@ const Header = () => {
             </Link>
           </div>
 
-          { whenToShowMenu() ? (
+          {/* { whenToShowMenu() ? ( */}
             <div className="head-menu">
               <ul>
                 {menus.map(item => {
@@ -80,7 +80,7 @@ const Header = () => {
             }
               </ul>
             </div>
-           ) : null} 
+           {/* ) : null}  */}
 
           <div className="menu-trigger" onClick={showMenuFn}>
             <span />

@@ -1,43 +1,41 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import s from '../styles/search.module.css';
-import { openInNewWindowRace, rpModal } from '../helper/index'
+import s from './search.module.css';
+import { openInNewWindowRace, rpModal } from '../../helper/index'
+import SearchSVG from '../svg/searchSvg';
 
 const Search = ({ horsesWithRaces }) => {
-  const [input, setInput] = useState('');
-
-  // const horses = (useStaticQuery(graphql`
-  //   {
-  //     allWordpressWpHorse {
-  //       nodes {
-  //         acf {
-  //           horse_name
-  //           horse_uid
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)).allWordpressWpHorse.nodes;
-
-  // let fHorses = input.length !== 0 ? 
-  //   horses.filter(h => h.acf.horse_name.indexOf(input) > -1) : [];
-
-
+  const [input, setInput] = useState({
+    value: '',
+    show: false,
+  });
 
   let filtered = horsesWithRaces.filter(h => {
-    return h.horse_name.toLowerCase().indexOf(input.toLowerCase()) > -1
+    return h.horse_name.toLowerCase().indexOf(input.value.toLowerCase()) > -1
   });
 
   return (
-    <div>
-      <div>
-        <input 
-          onChange={e => setInput(e.target.value)}
-          value={input} 
-          type="text" 
-          placeholder="Enter horse name" />
+    <div className={s.search_flex}>
+      <div className={s.search_box}>
+        <div className={s.search_fields}>
+          {input.show && <div className={s.field}>
+            <label className={s.search_label}>Horse search:</label>
+            <input 
+              className={s.input}
+              onChange={e => setInput({...input, value: e.target.value})}
+              value={input.value} 
+              type="text" 
+              placeholder="Enter horse name" /></div>}
 
-        {input.length > 0 ? <div className={s.horses_container}>
+          <div 
+            onClick={() => setInput({...input, show: !input.show})}
+            className={s.search_btn}>
+            Search
+            <span><SearchSVG /></span>
+        </div>
+        </div>
+
+        {(input.value.length > 0 && filtered.length > 0) ? <div className={s.horses_container}>
           <div className={s.search_horses}>
 
             {filtered.map(h => {

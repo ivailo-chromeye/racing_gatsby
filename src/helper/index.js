@@ -8,6 +8,8 @@ export const f = name => {
     .toLowerCase();
 }
 
+export const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
 export const timeSince = timeStamp => {
   let now = new Date(),
     secondsPast = (now.getTime() - timeStamp) / 1000;
