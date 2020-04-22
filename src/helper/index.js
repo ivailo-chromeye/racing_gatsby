@@ -35,11 +35,13 @@ export const rpModal = ({ type, id, name, date }) => {
   const participantUrl = `${baseURL}/profile/${type}/${id}/${f(name)}`;
   const raceURL = `${baseURL}/results/11/cheltenham/${date}/${id}/`;
 
-  window.open(
-    type === "race" ? raceURL : participantUrl,
-    `${type}`,
-    "width=750,height=800"
-  );
+  if(window) {
+    window.open(
+      type === "race" ? raceURL : participantUrl,
+      `${type}`,
+      "width=750,height=800"
+    );
+  }
 }
 
 

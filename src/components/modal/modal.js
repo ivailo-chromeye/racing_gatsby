@@ -14,12 +14,6 @@ const customStyles = {
 
 const Modal = ({ modal, setModal }) => {
   
-
-  let handleAfterOpenFunc = () => {}
-
-  let handleAfterCloseFunc= () => {}
-  let handleRequestCloseFunc= () => {}
-
   return (
     <div>
       <ReactModal
@@ -27,24 +21,6 @@ const Modal = ({ modal, setModal }) => {
         contentLabel="Example Modal"
         style={customStyles}
         ariaHideApp={false}
-      // onAfterOpen={handleAfterOpenFunc}
-      // onAfterClose={handleAfterCloseFunc}
-      // onRequestClose={handleRequestCloseFunc}
-      // closeTimeoutMS={0}
-      // portalClassName={"ReactModalPortal"}
-      // overlayClassName={"ReactModal__Overlay"}
-      // id={"modal"}
-      // className={"ReactModal__Content"}
-      // bodyOpenClassName={"ReactModal__Body--open"}
-      // htmlOpenClassName={"ReactModal__Html--open"}
-      // shouldFocusAfterRender={true}
-      // shouldCloseOnOverlayClick={true}
-      // shouldCloseOnEsc={true}
-      // shouldReturnFocusAfterClose={true}
-      // parentSelector={() => document.body}
-      // data={{ background: "white" }}
-      // overlayRef={node => (this.overlayRef = node)}
-      // contentRef={node => (this.overlayRef = node)}
       >
           <p>{modal.runner ? modal.runner.horse_name : null}</p>
           <button onClick={() => {
