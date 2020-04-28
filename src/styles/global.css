@@ -24,7 +24,18 @@
   --inactive_gray: #859298;
   --race_time_gray: #7b7a8d;
   --yellow_active_filter: #fdd835;
+
+  --bet365_brand: #037a5b;
+  --coral_brand: #024596;
+  --betfair_brand: #feba0b;
+  --unibet_brand: #137b43;
+  --williamhill_brand: #01123b;
+  --paddypower_brand: #064635;
+  --racebets_brand: #ffc60b;
+  --skybet_brand: #000847;
+  --ladbrokes_brand: #ed1b24;
 }
+
 /* COLORS end */
 body {
   margin: 0;

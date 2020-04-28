@@ -38,6 +38,27 @@ const FeedRaces = () => {
 
     const tabsDays = ['Friday', 'Saturday', 'Sunday', 'Monday']
 
+    function sideScroll(element,direction,speed,distance,step){
+      var scrollAmount = 0;
+      var slideTimer = setInterval(function(){
+          if (direction == 'left') {
+              element.scrollLeft -= step;
+          } else {
+              element.scrollLeft += step;
+          }
+          scrollAmount += step;
+          if (scrollAmount >= distance) {
+              window.clearInterval(slideTimer);
+          }
+      }, speed);
+    }
+    
+    function slideRight (event) {
+        sideScroll(event.currentTarget.parentElement,'right',25,150,10);
+    }
+    function slideLeft (event) {
+        sideScroll(event.currentTarget.parentElement,'left',25,150,10);
+    }
 
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -58,17 +79,19 @@ const FeedRaces = () => {
 
           {feedItems.map(day => {
               return (
-                <>
-                <TabPanel className={st.racecardsWrapper}>
-                  {
-                    day.races.map(race => {
-                      return (
-                          <MiniRaceCard key={race.race_instance_uid} {...race}/>
-                      )
-                    })
-                  }
-                  </TabPanel>
-                </>
+                <div style={{position: 'relative'}}>
+                  <TabPanel className={[st.racecardsWrapper, 'scrollit'].join(' ')}>
+                    <button onClick={slideLeft} className={st.slidePrev} type="button"></button>
+                    {
+                      day.races.map(race => {
+                        return (
+                            <MiniRaceCard key={race.race_instance_uid} {...race}/>
+                        )
+                      })
+                    }
+                    <button onClick={slideRight} className={st.slideNext} type="button"></button>
+                    </TabPanel>
+                  </div>
               )
           })}
         </Tabs>

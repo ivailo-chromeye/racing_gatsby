@@ -47,7 +47,7 @@ const FreeBetsComponent = (props) => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 1
     };
 
@@ -55,15 +55,15 @@ const FreeBetsComponent = (props) => {
 
     function FreeBetOffer(data) {
         var offerData = data.node.acf
+        var bookmaker = offerData.bookmaker_name
         return (
-            <>
-                <div className={st.freeBetsOffer} key={offerData.offer_title}>
-                    <h3 className={st.fbCopy}>{offerData.offer_title}</h3>
-                    <h3 className={st.fbSubcopy}>{offerData.offer_subtitle}</h3>
-                    <a className={st.freeBetsButton} target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a>
-                    <div className={st.freeBetsTerms} dangerouslySetInnerHTML={{ __html: offerData.terms }}></div>
-                </div>
-            </>
+            <div className={st.freeBetsOffer} key={offerData.offer_title}>
+                <div className={[st[bookmaker], st.fbTop].join(' ')} style={{backgroundImage: `url(https://www.racingpost.com/cheltenham-festival/wp-content/themes/Cheltenham/images/free-bet-logos/${offerData.bookmaker_name}.jpg)`}}></div>
+                <h3 className={st.fbCopy}>{offerData.offer_title}</h3>
+                <h3 className={st.fbSubcopy}>{offerData.offer_subtitle}</h3>
+                <a className={st.freeBetsButton} target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a>
+                <div className={st.freeBetsTerms} dangerouslySetInnerHTML={{ __html: offerData.terms }}></div>
+            </div>
         )
     }
 

@@ -44,8 +44,6 @@ const MiniRaceCard = (race) => {
                 <table>
                     <tr>
                         <th>Bookmaker</th>
-                        <th>Price</th>
-                        <th>E.W.</th>
                     </tr>
                 </table>
             </div>
