@@ -49,9 +49,11 @@ const MiniRaceCard = (race) => {
 
             <div className={[st.oddsPad, activePad ? st.opened : ''].join(' ')}>
                 <table>
+                    <tbody>
                     <tr>
                         <th>Bookmaker</th>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

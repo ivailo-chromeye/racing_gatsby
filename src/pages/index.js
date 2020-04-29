@@ -7,6 +7,10 @@ import SEO from "../components/seo"
 import PageHeadlineComponent from "../components/pageHeadline"
 import FreeBetsComponent from "../components/freeBets"
 import FeedRaces from "../components/feedRaces"
+import NewsItemsComponent from "../components/newsSlider"
+
+import FreeBetsShortform from "../components/freeBetsShortform"
+import GridLayout from "../components/GridLayout"
 
 const Homepage = () => {
     const pageData = useStaticQuery(graphql`
@@ -33,7 +37,18 @@ const Homepage = () => {
                 <SEO title="Home" />
                 <PageHeadlineComponent title={pageTitle} subtitle={pageSubtitle}/>
                 <FeedRaces/>
-                <FreeBetsComponent place="homepage"/>
+                <FreeBetsShortform filter="homepage"/>
+                <NewsItemsComponent/>
+
+                <GridLayout responsiveFull={1024}>
+                    <div style={{height: '60px', background: 'coral'}} width="60%"></div>
+                    <div style={{height: '60px', background: 'coral'}} width="40%"></div>
+                    <div style={{height: '60px', background: 'coral'}} width="100%"></div>
+                    <div style={{height: '60px', background: 'coral'}}></div>
+                    <div style={{height: '60px', background: 'coral'}}></div>
+                    <div style={{height: '60px', background: 'coral'}}></div>
+                    <div style={{height: '60px', background: 'coral'}}></div>
+                </GridLayout>
             </Layout>
         </>
     )
