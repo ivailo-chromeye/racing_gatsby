@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import st from '../styles/racecards.module.css';
+import BlackBtn from '../smallComponents/blackBtn'
+import RedBtn from '../smallComponents/redBtn/redBtn';
 
 const MiniRaceCard = (race) => {
     const [activePad, setActivePad] = useState(false);
@@ -30,13 +32,18 @@ const MiniRaceCard = (race) => {
                                     <p className={st.jokey}>{runner.jockey_name}</p>
                                     <p className={st.trainer}>{runner.trainer_stylename}</p>
                                 </div>
-                                <p onClick={togglePad} className={st.odd}>{runner.odds['#BESTODDS']}</p>
+                                <BlackBtn 
+                                    togglePad={togglePad}>
+                                        {runner.odds['#BESTODDS']}
+                                </BlackBtn>
+                                {/* <p onClick={togglePad} className={st.odd}>{runner.odds['#BESTODDS']}</p> */}
                             </div>
                         </div>
                     )
                 })}
                 <div className={st.button}>
-                    <a className={st.cardBtn} href="#">View Race</a>
+                    <RedBtn background="#e21012" cta_url="#">View Race</RedBtn>
+                    {/* <a className={st.cardBtn} href="#">View Race</a> */}
                 </div>
             </div>
 

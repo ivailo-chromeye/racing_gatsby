@@ -1,0 +1,22 @@
+.odd {
+  background-color: #262626;
+  color: #fff;
+  padding: 2px;
+  margin: 0 0 0 auto;
+  font-size: 14px;
+  font-family: ProximaNovaA-SemiBold;
+  border-radius: 4px;
+  text-align: center;
+  width: 100%;
+  max-width: 48px;
+  box-sizing: border-box;
+  box-shadow: #b3b3b3 0 2px 4px;
+  cursor: pointer;
+}
+.odd::after {
+  content: 'PLACE BET';
+  font-size: 7px;
+  font-family: ProximaNovaA-Regular;
+  display: block;
+  white-space: nowrap;
+}
