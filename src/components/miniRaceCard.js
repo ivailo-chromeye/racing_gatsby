@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import st from '../styles/racecards.module.css';
 import BlackBtn from '../smallComponents/blackBtn'
 import RedBtn from '../smallComponents/redBtn/redBtn';
+import { rpModal } from "../helper/index"
 
 const MiniRaceCard = (race) => {
     const [activePad, setActivePad] = useState(false);
@@ -28,9 +29,23 @@ const MiniRaceCard = (race) => {
                                 <p className={st.position}>{runner.start_number}</p>
                                 <img className={st.silk} src={runner.silk_image_png}/>
                                 <div>
-                                    <h3 className={st.name}>{runner.horse_name}</h3>
+                                    <h3
+                                        onClick={() => rpModal({
+                                            type: 'horse', 
+                                            id: runner.horse_uid, 
+                                            name: runner.horse_name,
+                                            date: null,
+                                          })} 
+                                        className={st.name}>{runner.horse_name}</h3>
                                     <p className={st.jokey}>{runner.jockey_name}</p>
-                                    <p className={st.trainer}>{runner.trainer_stylename}</p>
+                                    <p 
+                                        onClick={() => rpModal({
+                                            type: 'trainer',
+                                            id: runner.trainer_id,
+                                            name: runner.trainer_stylename,
+                                            date: null,
+                                          })}
+                                        className={st.trainer}>{runner.trainer_stylename}</p>
                                 </div>
                                 <BlackBtn 
                                     togglePad={togglePad}>
@@ -42,7 +57,7 @@ const MiniRaceCard = (race) => {
                     )
                 })}
                 <div className={st.button}>
-                    <RedBtn background="#e21012" cta_url="#">View Race</RedBtn>
+                    <RedBtn type="link" background="#e21012" cta_url={`/races/${race.race_instance_uid}`}>View Race</RedBtn>
                     {/* <a className={st.cardBtn} href="#">View Race</a> */}
                 </div>
             </div>

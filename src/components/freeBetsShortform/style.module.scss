@@ -1,3 +1,11 @@
+.parent {
+    border: 1px solid black;
+    padding: 20px;
+    .child {
+        color: pink;
+    }
+}
+
 .freeBetOffer {
     position: relative;
     margin: 16px 10px 0;

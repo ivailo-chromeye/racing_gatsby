@@ -11,7 +11,7 @@ const GridLayout = props => {
       handleWindowSizeChange()
       window.addEventListener("resize", handleWindowSizeChange)
       return () => window.removeEventListener("resize", handleWindowSizeChange)
-    })
+    }, [windowWidth])
 
     const result = [];
 
@@ -32,6 +32,7 @@ const GridLayout = props => {
           </div>
         );
     }
+    console.log('render');
 
     return (
       <div style={{ overflow: 'hidden' }}>

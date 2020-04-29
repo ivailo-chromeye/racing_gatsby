@@ -76,6 +76,7 @@
     width: 10px;
 }
 .name {
+    cursor: pointer;
     margin: 0;
     font-size: 12px;
     line-height: 1.2em;
@@ -89,6 +90,7 @@
     color: #7F7F7F;
 }
 .trainer {
+    cursor: pointer;
     margin: 0;
     font-size: 8px;
     line-height: 1;

@@ -43,7 +43,9 @@ const Homepage = () => {
                 <GridLayout responsiveFull={1024}>
                     <div style={{height: '60px', background: 'coral'}} width="60%"></div>
                     <div style={{height: '60px', background: 'coral'}} width="40%"></div>
-                    <div style={{height: '60px', background: 'coral'}} width="100%"></div>
+                    <div style={{height: '60px', background: 'coral'}} width="100%">
+                        qweqwe
+                    </div>
                     <div style={{height: '60px', background: 'coral'}}></div>
                     <div style={{height: '60px', background: 'coral'}}></div>
                     <div style={{height: '60px', background: 'coral'}}></div>
