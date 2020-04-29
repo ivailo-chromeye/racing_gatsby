@@ -6,6 +6,7 @@ import st from "../styles/freeBetsShortform.module.css"
 import '../styles/slickSlider.css';
 
 import SectionTitleComponent from "../components/sectionTitle"
+import RedBtn from "../smallComponents/redBtn/redBtn";
 
 const FreeBetsComponent = (props) => {
     const freeBetsData = useStaticQuery(graphql`
@@ -61,7 +62,8 @@ const FreeBetsComponent = (props) => {
                 <div className={[st[bookmaker], st.fbTop].join(' ')} style={{backgroundImage: `url(https://www.racingpost.com/cheltenham-festival/wp-content/themes/Cheltenham/images/free-bet-logos/${offerData.bookmaker_name}.jpg)`}}></div>
                 <h3 className={st.fbCopy}>{offerData.offer_title}</h3>
                 <h3 className={st.fbSubcopy}>{offerData.offer_subtitle}</h3>
-                <a className={st.freeBetsButton} target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a>
+                <RedBtn background="#e21012" cta_url={offerData.cta_url}>{offerData.cta_copy}</RedBtn>
+                {/* <a className={st.freeBetsButton} target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a> */}
                 <div className={st.freeBetsTerms} dangerouslySetInnerHTML={{ __html: offerData.terms }}></div>
             </div>
         )
