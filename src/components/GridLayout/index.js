@@ -3,13 +3,18 @@ import React, { useState, useEffect } from "react"
 import PropTypes from 'prop-types';
 
 const GridLayout = props => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(0);
 
     useEffect(() => {
       function resizeFn() {
         setWindowWidth(window.innerWidth)
       }
 
+      function handleWindowSizeChange() {
+        setWindowWidth(window.innerWidth)
+      }
+
+      handleWindowSizeChange()
       window.addEventListener("resize", resizeFn)
       return () => window.removeEventListener("resize", resizeFn)
     })
