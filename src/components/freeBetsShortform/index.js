@@ -1,15 +1,17 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+
 import Slider from "react-slick";
+import '../../styles/slickSlider.css';
 
-import st from "../styles/freeBetsShortform.module.css"
-import '../styles/slickSlider.css';
+import st from "./style.module.scss"
 
-import SectionTitleComponent from "../components/sectionTitle"
 
-const FreeBetsComponent = (props) => {
-    const freeBetsData = useStaticQuery(graphql`
-    query freeBetsQuery {
+import SectionTitleComponent from "../../components/sectionTitle"
+
+const FreeBetsShortform = (props) => {
+    const freeBetsShortformData = useStaticQuery(graphql`
+    query freeBetsShortformQuery {
         allWordpressAcfFreebets {
           edges {
             node {
@@ -43,7 +45,7 @@ const FreeBetsComponent = (props) => {
       }   
     `)
 
-    const freeBets = freeBetsData.allWordpressAcfFreebets.edges
+    const freeBets = freeBetsShortformData.allWordpressAcfFreebets.edges
 
     const settings = {
         dots: true,
@@ -57,12 +59,14 @@ const FreeBetsComponent = (props) => {
         var offerData = data.node.acf
         var bookmaker = offerData.bookmaker_name
         return (
-            <div className={st.freeBetsOffer} key={offerData.offer_title}>
-                <div className={[st[bookmaker], st.fbTop].join(' ')} style={{backgroundImage: `url(https://www.racingpost.com/cheltenham-festival/wp-content/themes/Cheltenham/images/free-bet-logos/${offerData.bookmaker_name}.jpg)`}}></div>
-                <h3 className={st.fbCopy}>{offerData.offer_title}</h3>
-                <h3 className={st.fbSubcopy}>{offerData.offer_subtitle}</h3>
-                <a className={st.freeBetsButton} target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a>
-                <div className={st.freeBetsTerms} dangerouslySetInnerHTML={{ __html: offerData.terms }}></div>
+            <div className={st.freeBetOffer} key={offerData.offer_title}>
+                <div className={[st[bookmaker], st.offerTop].join(' ')} style={{backgroundImage: `url(https://www.racingpost.com/cheltenham-festival/wp-content/themes/Cheltenham/images/free-bet-logos/${offerData.bookmaker_name}.jpg)`}}></div>
+                <div className={st.freeBetBody}>
+                    <h2>{offerData.offer_title}</h2>
+                    <h3>{offerData.offer_subtitle}</h3>
+                    <a target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a>
+                    <div className={st.fbTerms} dangerouslySetInnerHTML={{ __html: offerData.terms }}></div>
+                </div>
             </div>
         )
     }
@@ -73,19 +77,15 @@ const FreeBetsComponent = (props) => {
                 <SectionTitleComponent title={'Free bets'}/>
                 <Slider className="free-bets-slider" {...settings}>
                 {freeBets.map(fb => {
-                    if (props.place == 'homepage') {
+                    if (props.filter == 'homepage') {
                         if (fb.node.acf.show_on_homepage) {
                             return (
-                                <div key={fb.node.id}>
-                                    <FreeBetOffer {...fb}/>
-                                </div>
+                                <FreeBetOffer key={fb.node.id} {...fb}/>
                             )
                         }
                     } else {
                         return (
-                            <div key={fb.node.id}>
-                                <FreeBetOffer {...fb}/>
-                            </div>
+                            <FreeBetOffer key={fb.node.id} {...fb}/>
                         )
                     }
                 })}
@@ -97,4 +97,4 @@ const FreeBetsComponent = (props) => {
     return <FreeBetsSlider {...props}/>
 }
 
-export default FreeBetsComponent
+export default FreeBetsShortform
