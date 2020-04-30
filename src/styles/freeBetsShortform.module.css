@@ -1,60 +1,60 @@
 .freeBetsOffer {
-    position: relative;
-    margin: 16px 10px 0;
-    height: 100%;
-    background-color: #f1eff2;
-    padding: 14px 10px;
-    border: 1px solid #adb9b7;
-    box-sizing: border-box;
-    border-radius: 4px;
-    text-align: center;
+  position: relative;
+  margin: 16px 10px 0;
+  height: 100%;
+  background-color: #f1eff2;
+  padding: 14px 10px;
+  border: 1px solid #adb9b7;
+  box-sizing: border-box;
+  border-radius: 4px;
+  text-align: center;
 }
 .freeBetsTerms {
-    color: #171717;
-    text-align: center;
-    font-size: 10px;
-    margin-top: 10px;
+  color: #171717;
+  text-align: center;
+  font-size: 10px;
+  margin-top: 10px;
 }
-/* moved to redBtn */
+/* moved to btn */
 .fbTop {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-size: 90px !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    min-height: 45px;
-    height: 45px;
-    box-sizing: border-box;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-    background-color: #000000 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-size: 90px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  min-height: 45px;
+  height: 45px;
+  box-sizing: border-box;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  background-color: #000000 !important;
 }
 
-.freeBetsOffer .BET365{
-    background-color: var(--bet365_brand) !important;
+.freeBetsOffer .BET365 {
+  background-color: var(--bet365_brand) !important;
 }
-.freeBetsOffer .CORAL{
-    background-color: var(--coral_brand) !important;
+.freeBetsOffer .CORAL {
+  background-color: var(--coral_brand) !important;
 }
 .freeBetsOffer .BETFAIR {
-    background-color: var(--betfair_brand) !important;
+  background-color: var(--betfair_brand) !important;
 }
 .freeBetsOffer .UNIBET {
-    background-color: var(--unibet_brand) !important;
+  background-color: var(--unibet_brand) !important;
 }
 .freeBetsOffer .WILLIAMHILL {
-    background-color: var(--williamhill_brand) !important;
+  background-color: var(--williamhill_brand) !important;
 }
 .freeBetsOffer .PADDYPOWER {
-    background-color: var(--paddypower_brand) !important;
+  background-color: var(--paddypower_brand) !important;
 }
 .freeBetsOffer .RACEBETS {
-    background-color: var(--racebets_brand) !important;
+  background-color: var(--racebets_brand) !important;
 }
 .freeBetsOffer .SKYBET {
-    background-color: var(--skybet_brand) !important;
+  background-color: var(--skybet_brand) !important;
 }
 .freeBetsOffer .LADBROKES {
-    background-color: var(--ladbrokes_brand) !important;
+  background-color: var(--ladbrokes_brand) !important;
 }

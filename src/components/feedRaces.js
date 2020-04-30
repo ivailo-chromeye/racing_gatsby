@@ -72,14 +72,14 @@ const FeedRaces = () => {
           <TabList>
             {tabsDays.map(day => {
                 return (
-                  <Tab>{day}</Tab>
+                  <Tab key={day}>{day}</Tab>
                 )
             })}
           </TabList>
 
           {feedItems.map(day => {
               return (
-                <div style={{position: 'relative'}}>
+                <div key={day.race_date} style={{position: 'relative'}}>
                   <TabPanel className={[st.racecardsWrapper, 'scrollit'].join(' ')}>
                     <button onClick={slideLeft} className={st.slidePrev} type="button"></button>
                     {

@@ -36,7 +36,7 @@ const GridLayout = props => {
           </div>
         );
     }
-    console.log('render');
+    // console.log('render');
 
     return (
       <div style={{ overflow: 'hidden' }}>
