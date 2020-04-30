@@ -4,11 +4,10 @@ import { useStaticQuery, graphql } from "gatsby"
 import Slider from "react-slick";
 import '../../styles/slickSlider.css';
 
-import st from "./style.module.scss"
+import st from "./styles.module.scss"
 
+import SectionTitle from "../SectionTitle"
 import Btn from "../../smallComponents/btn/btn"
-
-import SectionTitleComponent from "../../components/sectionTitle"
 
 const FreeBetsShortform = (props) => {
     const freeBetsShortformData = useStaticQuery(graphql`
@@ -78,8 +77,8 @@ const FreeBetsShortform = (props) => {
     function FreeBetsSlider() {
         return (
             <>
-                <SectionTitleComponent title={'Free bets'}/>
-                <Slider className="free-bets-slider" {...settings}>
+                <SectionTitle title={'Cheltenham Festival Free bets'}/>
+                <Slider className={st.freeBetsSlider} {...settings}>
                 {freeBets.map(fb => {
                     if (props.filter == 'homepage') {
                         if (fb.node.acf.show_on_homepage) {
