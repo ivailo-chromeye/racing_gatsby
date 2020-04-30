@@ -7,16 +7,17 @@ ul.react-tabs__tab-list {
 }
 ul.react-tabs__tab-list li {
     flex: 1;
-    background: #fff;
+    background: #f0f0f0;
     display: block;
-    padding: 10px;
-    border-right: 1px solid #e0e0e0;
+    padding: 16px 10px;
+    border-right: 1px solid #859298;
     text-align: center;
     cursor: pointer;
+    outline: none;
 }
 ul.react-tabs__tab-list li:last-child {
     border-right: none;
 }
 .react-tabs__tab--selected {
-    background: #e0e0e0 !important;
+    background: #fff !important;
 }

@@ -2,11 +2,13 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Slider from "react-slick";
 
-import SectionTitleComponent from "../../components/sectionTitle"
+import SectionTitle from "../SectionTitle"
+import ArticleComponent from "../ArticleComponent"
 
 import '../../styles/slickSlider.css';
+import './styles.css'
 
-const NewsItemsComponent = (props) => {
+const NewsSliderComponent = (props) => {
     const newsItemsData = useStaticQuery(graphql`
     query newsSlider {
         allWordpressAcfNews {
@@ -38,31 +40,13 @@ const NewsItemsComponent = (props) => {
 
     const newsItems = newsItemsData.allWordpressAcfNews.edges
 
-    function NewsItem(data) {
-        var newsData = data.node.acf
-        return (
-            <div>
-                <img src={newsData.image.source_url}/>
-                <h3>{newsData.title}</h3>
-                <h4>{newsData.subtitle}</h4>
-                <p>{newsData.text}</p>
-            </div>
-        )
-    }
-
-    console.log(newsItems)
-
     function NewsSlider() {
         return (
             <>
-                <SectionTitleComponent title={'News'}/>
-                <Slider className="news-slider" {...settings}>
+                <SectionTitle title={'Cheltenham Festival News'}/>
+                <Slider className="newsSlider" {...settings}>
                 {newsItems.map(nws => {
-                    return (
-                        <div key={nws.node.id}>
-                            <NewsItem {...nws}/>
-                        </div>
-                    )
+                    return <ArticleComponent applyStyles={{margin: '0 1px'}} key={nws.node.id} {...nws.node.acf}/>
                 })}
                 </Slider>
             </>
@@ -72,4 +56,4 @@ const NewsItemsComponent = (props) => {
     return <NewsSlider {...props}/>
 }
 
-export default NewsItemsComponent
+export default NewsSliderComponent

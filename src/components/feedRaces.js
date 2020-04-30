@@ -4,7 +4,7 @@ import '../styles/homeTabs.css';
 import st from '../styles/racecards.module.css';
 
 import MiniRaceCard from "../components/miniRaceCard"
-import SectionTitleComponent from "../components/sectionTitle"
+import SectionTitle from "../components/SectionTitle"
 
 const FeedRaces = () => {
     const [error, setError] = useState(null);
@@ -67,7 +67,7 @@ const FeedRaces = () => {
     } else {
       return (
         <>
-        <SectionTitleComponent title={'Races'}/>
+        <SectionTitle title={'Cheltenham Festival Races'}/>
         <Tabs onSelect={handleSelected} selectedIndex={tabIndex}>
           <TabList>
             {tabsDays.map(day => {

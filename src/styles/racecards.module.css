@@ -1,9 +1,16 @@
 .racecardsWrapper {
     display: flex;
     overflow-x: scroll;
+    background: #fff;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .racecardsWrapper::-webkit-scrollbar { 
     display: none;
+}
+.racecardsWrapper {
+    -ms-overflow-style: none;
 }
 .racecardTop {
     height: 65px;
@@ -17,7 +24,7 @@
     max-width: 196px;
     width: 196px;
     border-radius: 4px;
-    margin: 4px;
+    margin: 16px 4px;
     position: relative;
     box-sizing: border-box;
 	z-index: 1;

@@ -1,0 +1,6 @@
+.newsSlider .slick-list{
+    margin: 0px -1px !important;
+}
+.newsSlider .slick-dots {
+    display: none !important;
+}

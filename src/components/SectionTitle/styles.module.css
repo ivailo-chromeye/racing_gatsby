@@ -1,5 +1,5 @@
 .sectionTitle {
-    background-color: #009444;
+    background-color: var(--brand-light-green);
     color: #fff;
     text-align: center;
     font-size: 16px;
@@ -9,4 +9,5 @@
     padding: 9px 0;
     text-decoration: none;
     display: block;
+    margin-top: 12px;
 }

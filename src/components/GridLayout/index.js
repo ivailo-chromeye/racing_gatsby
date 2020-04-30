@@ -21,11 +21,15 @@ const GridLayout = props => {
             flex: 1,
             maxWidth: windowWidth > props.responsiveFull ? props.children[i].props.width : '100%',
             flexBasis: windowWidth > props.responsiveFull ? props.children[i].props.width : '100%',
+            display: 'flex',
+            flexDirection: 'column'
           }}>
             <div style={{ 
-              margin: `0 ${props.sideGap/2}px`,
               margin: windowWidth > props.responsiveFull ? `0 ${props.sideGap/2}px` : `0 ${props.responsiveSideGap/2}px`,
-              marginBottom: windowWidth > props.responsiveFull ? `${props.bottomGap}px` : `${props.responsiveBottomGap}px`
+              marginBottom: windowWidth > props.responsiveFull ? `${props.bottomGap}px` : `${props.responsiveBottomGap}px`,
+              height: props.equalHeight ? '100%' : '',
+              display: 'flex',
+              flexDirection: 'column'
             }}>
               {props.children[i]}
             </div>
@@ -52,6 +56,7 @@ GridLayout.defaultProps = {
     bottomGap: 20,
     responsiveBottomGap: 10,
     responsiveFull: 768,
+    equalHeight: false
 };
 
 export default GridLayout
