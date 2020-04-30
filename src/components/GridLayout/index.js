@@ -25,8 +25,7 @@ const GridLayout = props => {
             flexDirection: 'column'
           }}>
             <div style={{ 
-              margin: windowWidth > props.responsiveFull ? `0 ${props.sideGap/2}px` : `0 ${props.responsiveSideGap/2}px`,
-              marginBottom: windowWidth > props.responsiveFull ? `${props.bottomGap}px` : `${props.responsiveBottomGap}px`,
+              margin: windowWidth > props.responsiveFull ? `0 ${props.sideGap/2}px ${props.bottomGap}px` : `0 ${props.responsiveSideGap/2}px ${props.responsiveBottomGap}px`,
               height: props.equalHeight ? '100%' : '',
               display: 'flex',
               flexDirection: 'column'

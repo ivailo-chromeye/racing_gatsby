@@ -16,7 +16,7 @@ const Homepage = () => {
                 <SEO title="Home" />
                 <FeedRaces/>
                 <FreeBetsShortform filter="homepage"/>
-                <GridLayout responsiveFull={1024} sideGap={12} equalHeight={true}>
+                <GridLayout responsiveFull={1024} sideGap={12} equalHeight={true} bottomGap={0} responsiveBottomGap={0}>
                     <NewsSliderComponent width="60%"/>
                     <BettingGuideHomepage width="40%"/>
                 </GridLayout>

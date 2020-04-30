@@ -35,7 +35,15 @@ const NewsSliderComponent = (props) => {
         infinite: true,
         speed: 500,
         slidesToShow: 2,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+            }
+          },
+        ]
     };
 
     const newsItems = newsItemsData.allWordpressAcfNews.edges
