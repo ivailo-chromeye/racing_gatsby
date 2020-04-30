@@ -1,0 +1,44 @@
+.races_custom_text {
+  color: var(--black);
+  margin: 10px 65px;
+  font-size: 1.0em;
+  line-height: 1.2em;
+}
+.races_custom_text:before {
+  background: var(--dark_green);
+  background: -moz-linear-gradient(top, #006838 0%, #006838 20%, #009444 20%, #009444 20%, #009444 41%, #39B54A 41%, #39B54A 41%, #009444 41%, #00A651 41%, #00A651 59%, #009444 59%, #00A651 59%, #00A651 59%, #39B54A 59%, #39B54A 80%, #8DC63F 80%, #7CBC0A 100%);
+  background: -webkit-linear-gradient(top, #006838 0%,#006838 20%,#009444 20%,#009444 20%,#009444 41%,#39B54A 41%,#39B54A 41%,#009444 41%,#00A651 41%,#00A651 59%,#009444 59%,#00A651 59%,#00A651 59%,#39B54A 59%,#39B54A 80%,#8DC63F 80%,#7CBC0A 100%);
+  background: linear-gradient(to bottom, #006838 0%,#006838 20%,#009444 20%,#009444 20%,#009444 41%,#39B54A 41%,#39B54A 41%,#009444 41%,#00A651 41%,#00A651 59%,#009444 59%,#00A651 59%,#00A651 59%,#39B54A 59%,#39B54A 80%,#8DC63F 80%,#7CBC0A 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006838', endColorstr='#7CBC0A',GradientType=0 );
+  content: '';
+  position: relative;
+  height: 25px;
+  display: block;
+}
+.races_custom_text h3 {
+  background: var(--dark_green);
+  margin: 0;
+  padding: 15px;
+  text-transform: uppercase;
+  font-size: 1.9em;
+  line-height: 1.1em;
+  color: #ffffff;
+  border-bottom: 1px solid var(--green_border);
+}
+.races_custom_text p {
+  padding: 0 1em;
+}
+.track-separator {
+  margin: 1em;
+  height: 20px;
+  background: var(--dark_green);
+  background: -moz-linear-gradient(top, #006838 0%, #006838 20%, #009444 20%, #009444 20%, #009444 41%, #39b54a 41%, #39b54a 41%, #009444 41%, #00a651 41%, #00a651 59%, #009444 59%, #00a651 59%, #00a651 59%, #39b54a 59%, #39b54a 80%, #8dc63f 80%, #7cbc0a 100%);
+  background: -webkit-linear-gradient(top, #006838 0%,#006838 20%,#009444 20%,#009444 20%,#009444 41%,#39b54a 41%,#39b54a 41%,#009444 41%,#00a651 41%,#00a651 59%,#009444 59%,#00a651 59%,#00a651 59%,#39b54a 59%,#39b54a 80%,#8dc63f 80%,#7cbc0a 100%);
+  background: linear-gradient(to bottom, #006838 0%,#006838 20%,#009444 20%,#009444 20%,#009444 41%,#39b54a 41%,#39b54a 41%,#009444 41%,#00a651 41%,#00a651 59%,#009444 59%,#00a651 59%,#00a651 59%,#39b54a 59%,#39b54a 80%,#8dc63f 80%,#7cbc0a 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006838', endColorstr='#7cbc0a',GradientType=0 );
+}
+.races_custom_text a {
+  text-decoration: underline;
+  font-family: proximanovaa-bold;
+  color: var(--black);
+}

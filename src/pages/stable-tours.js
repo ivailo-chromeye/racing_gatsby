@@ -7,7 +7,7 @@ const StableTours = () => {
   return (
     <Layout>
       <BlackBtn>odds..</BlackBtn>
-      <RedBtn cta_url={'http://google.com'}>I'm using red button</RedBtn>
+      <RedBtn type="a" background="#e21012" cta_url={'http://google.com'}>I'm using red button</RedBtn>
     </Layout>
   )
 }

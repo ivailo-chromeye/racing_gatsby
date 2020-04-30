@@ -26,32 +26,9 @@ const Races = props => {
     },
   }
 
-  const query = (useStaticQuery(graphql`
-    {
-      allWordpressAcfRace {
-        nodes {
-          acf {
-            title
-            raceid
-            race_datetime
-          }
-        }
-      }
-      wordpressPage(wordpress_id: {eq: 117}) {
-        id
-        slug
-        title
-        wordpress_id
-            acf {
-                heading
-                subheading
-            }
-        }
-    }
-  `));
   
-  const races = query.allWordpressAcfRace.nodes;
-  const page = query.wordpressPage;
+  const races = props.data.allWordpressAcfRace.nodes;
+  const page = props.data.wordpressPage;
 
   const daysWithRaces = races.map(i => i.acf).reduce((object, race, index, array) => {
     let day = +race.race_datetime.split(' ')[1].split('-')[0];
@@ -125,10 +102,37 @@ const Races = props => {
         <div className={s.smallAdContainer}></div>
       </div>
 
+      <div className="races_custom_text" dangerouslySetInnerHTML={{__html: page.acf.races_custom_text}}>
 
-      
+      </div>
+
     </Layout>
   )
 }
 
 export default Races;
+
+export const query = graphql`
+  {
+    allWordpressAcfRace {
+      nodes {
+        acf {
+          title
+          raceid
+          race_datetime
+        }
+      }
+    }
+    wordpressPage(wordpress_id: {eq: 117}) {
+      id
+      slug
+      title
+      wordpress_id
+          acf {
+              heading
+              subheading
+              races_custom_text
+          }
+      }
+  }
+`
