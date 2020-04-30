@@ -1,6 +1,6 @@
-import React from "./node_modules/react"
-import { useStaticQuery, graphql } from "./node_modules/gatsby"
-import Slider from "./node_modules/react-slick";
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import Slider from "react-slick";
 
 import SectionTitle from "../SectionTitle"
 import ArticleComponent from "../ArticleComponent"
