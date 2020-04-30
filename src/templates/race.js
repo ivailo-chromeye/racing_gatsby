@@ -7,6 +7,7 @@ import s from './race.module.css';
 import styleRacecards from '../styles/racecards.module.css'
 import QuestionSVG from '../components/svg/questionSvg'
 import Btn from '../smallComponents/btn/btn'
+import TextBox from '../smallComponents/textBox';
 
 import Modal from '../components/modal/modal'
 
@@ -15,7 +16,6 @@ import RaceInfo from '../components/raceInfo/raceInfo';
 import RaceRunners from '../components/raceRunners/raceRunners'
 
 const Race = ({ pageContext, location }) => {
-  
   const raceID = location.pathname.split("/")[2]
   const race = pageContext.race
   const feed = JSON.parse(pageContext.feed)
@@ -139,13 +139,16 @@ const Race = ({ pageContext, location }) => {
         <Btn 
           type="black"
           cta_url="https://www.racingpost.com/results/11/cheltenham/2020-03-13/743616/">
-            View Result
+            View Full Result
         </Btn>
       </div>
 
+      <TextBox
+        borderColor="textbox_border_green"
+        background="dark_green"
+      >{race.custom_text}</TextBox>
+
       <RaceRunners setModal={setModal} activeFilter={sortObj.filter} runners={sortedRunners()} applyFilter={applyFilter} />
-
-
 
       <h3>title: {race.title}</h3>
       <h3>raceid: {race.raceid}</h3>

@@ -1,0 +1,64 @@
+.container {
+  max-width: 1440px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 12px;
+  background: var(--bg_gray);
+  padding: 40px 0;
+  text-align: center;
+}
+.img {
+  max-width: 240px;
+  margin: 0 auto;
+  display: block;
+}
+.social_area {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0 20px;
+  font-size: 6px;
+}
+.social_area a {
+  background: url(https://www.racingpost.com/cheltenham-festival/wp-content/themes/Cheltenham/images/social_icons_v2.jpg);
+  width: 6em;
+  height: 6em;
+  background-size: 100%;
+  margin: 0 1em;
+  display: block;
+  text-indent: -119988px;
+}
+.responsible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.responsible p {
+  background: url(https://www.racingpost.com/cheltenham-festival/wp-content/themes/Cheltenham/images/social_icons_v2.jpg);
+  width: 3.2em;
+  height: 3.2em;
+  background-size: 5em;
+  margin: 0 10px 0 0;
+  display: block;
+  background-position: -1em 3.4em;
+  font-size: 8px;
+  min-width: 3.2em;
+}
+.responsible h4 {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1;
+}
+.footer_menu {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+.footer_menu a {
+  display: block;
+  color: #171717;
+  line-height: 1;
+  font-size: 14px;
+  padding: 0 1em;
+  font-weight: 900;
+}
