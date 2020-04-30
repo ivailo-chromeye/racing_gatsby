@@ -30,7 +30,7 @@ const RaceRunners = ({ runners, applyFilter, activeFilter, setModal }) => {
           <tr>
             {
               tableTop.map(({label, filter, tooltip}, i) => {
-                console.log(activeFilter);
+                // console.log(activeFilter);
                 return (
                     <th key={i}>
                     <div

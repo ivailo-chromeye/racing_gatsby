@@ -39,6 +39,7 @@ module.exports = {
           "**/tags",
           "**/categories",
           "**/users",
+          "**/blocks",
         ],
       },
     },

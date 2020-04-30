@@ -14,6 +14,8 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
     { label: "Friday's Races" },
   ]
 
+  console.log(feed);
+
 
   return (
     <>
@@ -40,35 +42,38 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
         </div>
       </div>
 
-      <div className={s.list_content}>
-        {!feed ? null : feed.races.map((raceArg, raceIndex) => {
-          // console.log(raceArg)
-          return (
-            <div key={raceIndex}>
-              <Link
-                className={s.race}
-                to={`/races/${raceArg.race_instance_uid}/`}
-              >
-                <div
-                  className={
-                    raceArg.race_instance_uid !==
-                    dayObject.activeRace.race_instance_uid
-                      ? s.race_top
-                      : s.race_top_active
-                  }
+      {!feed ? null : 
+        <div className={s.list_content}>
+          {feed.races.map((raceArg, raceIndex) => {
+            // console.log(raceArg)
+            return (
+              <div key={raceIndex}>
+                <Link
+                  className={s.race}
+                  to={`/races/${raceArg.race_instance_uid}/`}
                 >
-                  <span className={s.race_top_time}>
-                    {raceArg.race_time_diffusion}
-                  </span>
-                  <span className={s.race_top_title}>
-                    {raceArg.race_instance_title}
-                  </span>
-                </div>
-              </Link>
-            </div>
-          )
-        })}
-      </div>
+                  <div
+                    className={
+                      raceArg.race_instance_uid !==
+                      dayObject.activeRace.race_instance_uid
+                        ? s.race_top
+                        : s.race_top_active
+                    }
+                  >
+                    <span className={s.race_top_time}>
+                      {raceArg.race_time_diffusion}
+                    </span>
+                    <span className={s.race_top_title}>
+                      {raceArg.race_instance_title}
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            )
+          })}
+          
+        </div>
+      }
     </>
   )
 }
