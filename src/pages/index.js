@@ -2,8 +2,8 @@ import React from 'react'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FeedRaces from "../components/feedRaces"
-import NewsSliderComponent from "../components/NewsSlider"
-import FreeBetsShortform from "../components/FreeBetsShortform"
+import NewsSliderComponent from "../components/NewsSlider/index.js"
+import FreeBetsShortform from "../components/FreeBetsShortform/index.js"
 import GridLayout from "../components/GridLayout"
 import BettingGuideHomepage from "../components/BettingGuideHomepage"
 
