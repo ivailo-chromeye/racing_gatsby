@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import s from './search.module.css';
 import { openInNewWindowRace, rpModal } from '../../helper/index'
-import SearchSVG from '../svg/searchSvg';
+import SearchSVG from '../../smallComponents/svg/searchSvg';
 
 const Search = ({ horsesWithRaces }) => {
   const [input, setInput] = useState({

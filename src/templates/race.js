@@ -1,19 +1,19 @@
 import { Link } from "gatsby"
 import React, { useState, useEffect } from "react"
 import Layout from "../components/layout"
-import RacesListTop from "../components/racesListTop/racesListTop"
-import Search from '../components/search/search';
+import RacesListTop from "../components/RacesListTop"
+import SearchComponent from '../components/SearchComponent';
 import s from './race.module.css';
 import styleRacecards from '../styles/racecards.module.css'
-import QuestionSVG from '../components/svg/questionSvg'
+import QuestionSVG from '../smallComponents/svg/questionSvg'
 import Btn from '../smallComponents/btn/btn'
 import TextBox from '../smallComponents/textBox';
 
-import Modal from '../components/modal/modal'
+import Modal from '../components/ModalComponent'
 
-import RaceInfo from '../components/raceInfo/raceInfo';
+import RaceInfo from '../components/RaceInfo';
 
-import RaceRunners from '../components/raceRunners/raceRunners'
+import RaceRunners from '../components/RaceRunners'
 
 const Race = ({ pageContext, location }) => {
   const raceID = location.pathname.split("/")[2]
@@ -130,7 +130,7 @@ const Race = ({ pageContext, location }) => {
         setActiveTab={setActiveTab}
       />
 
-      <Search horsesWithRaces={horsesWithRaces} />
+      <SearchComponent horsesWithRaces={horsesWithRaces} />
 
       <RaceInfo card={state.racecard} />
 
