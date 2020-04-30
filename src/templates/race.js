@@ -5,6 +5,8 @@ import RacesListTop from "../components/racesListTop/racesListTop"
 import Search from '../components/search/search';
 import s from './race.module.css';
 import styleRacecards from '../styles/racecards.module.css'
+import QuestionSVG from '../components/svg/questionSvg'
+import Btn from '../smallComponents/btn/btn'
 
 import Modal from '../components/modal/modal'
 
@@ -131,6 +133,15 @@ const Race = ({ pageContext, location }) => {
       <Search horsesWithRaces={horsesWithRaces} />
 
       <RaceInfo card={state.racecard} />
+
+      <div className={s.detailed_flex}>
+        <QuestionSVG />
+        <Btn 
+          type="black"
+          cta_url="https://www.racingpost.com/results/11/cheltenham/2020-03-13/743616/">
+            View Result
+        </Btn>
+      </div>
 
       <RaceRunners setModal={setModal} activeFilter={sortObj.filter} runners={sortedRunners()} applyFilter={applyFilter} />
 

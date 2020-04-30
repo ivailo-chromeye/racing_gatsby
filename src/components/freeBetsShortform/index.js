@@ -6,6 +6,7 @@ import '../../styles/slickSlider.css';
 
 import st from "./style.module.scss"
 
+import Btn from "../../smallComponents/btn/btn"
 
 import SectionTitleComponent from "../../components/sectionTitle"
 
@@ -64,7 +65,10 @@ const FreeBetsShortform = (props) => {
                 <div className={st.freeBetBody}>
                     <h2>{offerData.offer_title}</h2>
                     <h3>{offerData.offer_subtitle}</h3>
-                    <a target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a>
+                    <Btn type="a" background="btn_red" cta_url={offerData.cta_url}>
+                        {offerData.cta_copy}
+                    </Btn>
+                    {/* <a target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a> */}
                     <div className={st.fbTerms} dangerouslySetInnerHTML={{ __html: offerData.terms }}></div>
                 </div>
             </div>

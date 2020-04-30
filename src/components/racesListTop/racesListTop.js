@@ -14,7 +14,7 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
     { label: "Friday's Races" },
   ]
 
-  console.log(feed);
+  // console.log(feed);
 
 
   return (

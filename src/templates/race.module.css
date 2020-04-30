@@ -1,3 +1,9 @@
+.detailed_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+}
 .runners_and_ad {
   display: flex;
   justify-content: space-between;

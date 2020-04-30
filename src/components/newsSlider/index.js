@@ -50,7 +50,7 @@ const NewsItemsComponent = (props) => {
         )
     }
 
-    console.log(newsItems)
+    // console.log(newsItems)
 
     function NewsSlider() {
         return (
