@@ -6,6 +6,7 @@ import NewsSliderComponent from "../components/newsSlider"
 import FreeBetsShortform from "../components/freeBetsShortform"
 import GridLayout from "../components/GridLayout"
 import BettingGuideHomepage from "../components/BettingGuideHomepage"
+import TipsShortform from "../components/TipsShortform"
 
 
 const Homepage = () => {
@@ -20,6 +21,7 @@ const Homepage = () => {
                     <NewsSliderComponent width="60%"/>
                     <BettingGuideHomepage width="40%"/>
                 </GridLayout>
+                <TipsShortform/>
             </Layout>
         </>
     )
