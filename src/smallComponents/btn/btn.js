@@ -1,6 +1,7 @@
 import React from "react"
 import s from "./style.module.css"
 import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Anchor = props => {
   return (
@@ -10,12 +11,15 @@ const Anchor = props => {
 
 const GatsbyLink = props => {
   return (
-    <Link 
+    <AniLink
+      fade
+      duration={1}
       className={s.freeBetsButton}
       style={{
         background: `var(--${props.background})`,
       }}
-      to={props.cta_url}>{props.children}</Link>
+      to={props.cta_url}>{props.children}
+    </AniLink>
   )
 }
 
