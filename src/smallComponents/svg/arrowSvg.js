@@ -1,15 +1,23 @@
 import React from 'react';
 
-const arrow = ({ className, active }) => {
-  
-  
+const arrow = ({ active, onClick }) => {
   
   return (
     <svg 
+      onClick={onClick}
       style={{
+        width: 16,
+        height: 16,
+        position: 'static',
+        top: 18,
+        bottom: 0,
+        right: 8,
+        margin: 0,
+        display: 'inline-block',
+        fill: 'var(--arrow_red)',
         transform: active ? "rotate(0deg)" : "rotate(-90deg)",
+        transition: "all 0.25s",
       }}
-      className={className} 
       viewBox="0 0 100 100">
       <title>down</title>
       <rect opacity="0" width="100" height="100"></rect>

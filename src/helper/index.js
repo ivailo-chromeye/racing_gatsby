@@ -3,6 +3,8 @@ export const f = name => {
   return name
     .split(" ")
     .join("-")
+    .split(".")
+    .join("")
     .split("'")
     .join("")
     .toLowerCase();
@@ -44,5 +46,47 @@ export const rpModal = ({ type, id, name, date }) => {
   }
 }
 
+export const sortRunners = (runners, sortObj) => {
+  return runners.sort((a,b)=> {
 
+    switch(sortObj.filter) {
+      case "start_number": {
+        if(sortObj.dir) {
+          return a.start_number > b.start_number ? 1 : -1;
+        } else {
+          return a.start_number > b.start_number ? -1 : 1;
+        }
+      }
+      case "horse_name": {
+        if(sortObj.dir) {
+          return b["horse_name"].localeCompare(a["horse_name"])
+        } else {
+          return a["horse_name"].localeCompare(b["horse_name"]);
+        }
+      }
+      case "jockey": {
+        if(sortObj.dir) {
+          return b["jockey_name"].localeCompare(a["jockey_name"])
+        } else {
+          return a["jockey_name"].localeCompare(b["jockey_name"]);
+        }
+      }
+      case "trainer": {
+        if(sortObj.dir) {
+          return b["trainer_stylename"].localeCompare(a["trainer_stylename"])
+        } else {
+          return a["trainer_stylename"].localeCompare(b["trainer_stylename"]);
+        }
+      }
+      case "age": {
+        if(sortObj.dir) {
+          return a.horse_age > b.horse_age ? 1 : -1;
+        } else {
+          return a.horse_age < b.horse_age ? 1 : -1;
+        }
+      }
+      default: return 1;
+    }
+  });
+}
 

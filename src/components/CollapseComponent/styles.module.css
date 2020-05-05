@@ -1,0 +1,8 @@
+.item_header {
+  cursor: pointer;
+  padding: 15px;
+  background-color: #f0eff1;
+  font-family: ProximaNovaA-SemiBold, sans-serif;
+  margin: 4px 0px;
+  text-transform: uppercase;
+}

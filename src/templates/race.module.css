@@ -46,6 +46,7 @@
   height: 14px;
   width: 14px;
 }
+
 .trainerSpan {
   color: var(--dark_gray);
   cursor: pointer;
@@ -57,4 +58,17 @@
 }
 .active_sort {
   border-bottom: 2px solid var(--yellow_active_filter);
+}
+.runner_spotlight {
+  background-color: #f0eff1;
+  color: #7b7a91;
+  border-left: 1px solid #21B50F;
+}
+.runner_spotlight td {
+  padding: 5px;
+}
+.spotlight_flex {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
 }

@@ -31,15 +31,6 @@ exports.createPages = async ({ actions, graphql }) => {
 
   await graphql(`
     {
-      allWordpressWpHorse {
-        totalCount
-        nodes {
-          acf {
-            horse_name
-            horse_uid
-          }
-        }
-      }
       allWordpressWpRace {
         nodes{
           slug
@@ -48,6 +39,10 @@ exports.createPages = async ({ actions, graphql }) => {
             raceid
             race_datetime
             custom_text
+            racing_post_tip_dropdown
+            key_race_stats
+            what_happened_last_year
+            past_10_winners
           }
         }
       }

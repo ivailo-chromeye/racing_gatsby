@@ -33,7 +33,7 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
                     {day.label}
                   </div>
                   <div className={s.list_top_arrow}>
-                    <ArrowSVG className={s.arrow_svg} active={activeTab === i} />
+                    <ArrowSVG active={activeTab === i} />
                   </div>
                 </div>
               </div>

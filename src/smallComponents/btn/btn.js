@@ -3,7 +3,6 @@ import s from "./style.module.css"
 import { Link } from "gatsby"
 
 const Anchor = props => {
-  console.log(props, 'anchor');
   return (
     <a target="_blank" href={props.cta_url} {...props}>{props.children}</a>
   )
