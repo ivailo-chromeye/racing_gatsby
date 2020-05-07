@@ -1,0 +1,63 @@
+.article_wrap {
+  display: flex;
+  padding: 40px 30px;
+  background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200205145941/article_lines_v1.jpg);
+  background-color: #fff;
+  background-size: 440px;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  flex-wrap: wrap;
+}
+.image_container {
+  max-width: 480px;
+  width: 40%;
+}
+.image_container img {
+  width: 100%;
+  display: block;
+}
+h3.subtitle {
+  color: #fff;
+  background: #47A25A;
+  font-weight: normal;
+  padding: 1.5em 2em;
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 0;
+  font-family: proximanovaa-bold;
+  font-style: italic;
+}
+.text_container {
+  width: calc(60% - 30px);
+  padding-left: 30px;
+  box-sizing: border-box;
+  border-left: 2px solid #47a25a;
+  margin-left: 30px;
+}
+.text_container:not(.tours-text) p:first-child {
+  font-family: ProximaNovaA-Bold;
+  font-size: 20px;
+}
+.text_container p {
+  margin: 0 0 10px;
+  line-height: 1.2em;
+}
+.text_container_tours_text {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  margin-top: 24px;
+  padding-bottom: 90px;
+}
+.text_container_tours_text p {
+  font-size: 14px;
+}
+.text_container_tours_text strong a {
+  text-decoration: underline;
+  color: #47a25a;
+  font-family: ProximaNovaA-Bold;
+  font-size: 22px;
+  display: inline-block;
+  margin: 10px 0;
+}

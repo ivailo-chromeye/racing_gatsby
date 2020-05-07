@@ -31,6 +31,18 @@ exports.createPages = async ({ actions, graphql }) => {
 
   await graphql(`
     {
+        allWordpressWpStableTours {
+            nodes {
+              acf {
+                title
+                subtitle
+                image_credit
+                description
+                tours_text
+              }
+              slug
+            }
+          }
       allWordpressWpRace {
         nodes{
           slug
@@ -49,7 +61,17 @@ exports.createPages = async ({ actions, graphql }) => {
     }
     `).then(async result => {
       const races = result.data.allWordpressWpRace;
+      const stableTours = result.data.allWordpressWpStableTours.nodes;
 
+      stableTours.forEach(tour => {
+        createPage({
+            path: `/stable-tours/${tour.slug}/`,
+            component: require.resolve(`./src/templates/stableTour.js`),
+            context: {
+              tour,
+            },
+          });
+      })
 
       const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 

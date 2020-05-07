@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Layout from '../components/layout';
 import { useStaticQuery, graphql } from "gatsby";
 import s from '../styles/freeBetsPage.module.css';
+import SectionTitle from '../components/SectionTitle';
+import PageHeadline from '../components/pageHeadline'
 
 
 const FreeBetsPage = (props) => {
@@ -46,6 +48,9 @@ const FreeBetsPage = (props) => {
 
   return (
     <Layout>
+      <PageHeadline title="Free bets page" subtitle="A subtitle about this page, maybe it needs to be slightly longer" />
+      <SectionTitle title="Featured offers" />
+      <SectionTitle title="Free Bets" />
       <div className={s.offers_container}>
         <div>
           <select defaultValue={filter} onChange={(e) => setFilter(e.target.value)}>

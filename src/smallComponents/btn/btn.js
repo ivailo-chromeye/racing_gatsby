@@ -1,6 +1,6 @@
-import React from "react"
-import s from "./style.module.css"
-import { Link } from "gatsby"
+import React from "react";
+import s from "./style.module.css";
+import { Link } from "gatsby";
 
 const Anchor = props => {
   return (
