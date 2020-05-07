@@ -21,8 +21,6 @@ const Race = ({ pageContext, location }) => {
   const feed = JSON.parse(pageContext.feed)
   const runners = JSON.parse(pageContext.runners);
 
-  console.log(runners);
-
   const horsesWithRaces = [];
   feed.map(day => {
     day.races.map(race => {

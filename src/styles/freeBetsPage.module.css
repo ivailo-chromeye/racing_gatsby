@@ -1,0 +1,105 @@
+.offers_container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 5em;
+  font-size: 10px;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.offer {
+  padding-bottom: 3em;
+  border-bottom: 1px solid #828282;
+  padding-top: 3em;
+  position: relative;
+}
+.offer h2 {
+  font-size: 3em;
+  text-transform: uppercase;
+  margin: 6px 0;
+  font-family: ProximaNovaA-Bold;
+  line-height: 1;
+}
+.offer h4 {
+  font-size: 1.7em;
+  margin: 0;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  color: #46a25d;
+}
+.offer_wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.offer_inner {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5em;
+  width: 100%;
+  flex-direction: column;
+}
+.offer_det {
+  
+}
+.ofr_side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  padding: 1.6em 0;
+  box-sizing: border-box;
+}
+.offer_terms {
+  margin: 1.5em 0;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.title_and_rating {
+  display: flex;
+}
+.title_rating_wrap {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.title_rating_wrap h3 {
+  font-size: 1.8em;
+  margin: 0;
+  margin-right: 1.5em;
+  line-height: 1;
+  font-family: ProximaNovaA-SemiBold;
+}
+.star_ratings_sprite {
+  background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/3/20190816111051/stars_v2.svg) repeat-x;
+  font-size: 0;
+  height: 21px;
+  line-height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+  width: 110px;
+  background-size: 22px 40px;
+}
+.star_ratings_sprite_rating {
+  background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/3/20190816111051/stars_v2.svg) repeat-x;
+  background-position: 0 100%;
+  float: left;
+  height: 21px;
+  display: block;
+  background-size: 22px 44px;
+}
+.offer_button {
+  display: block;
+  width: 10em;
+  background: #e21012;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 2em;
+  padding: 0.4em 0.8em;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: ProximaNovaA-Bold;
+  line-height: 1;
+}

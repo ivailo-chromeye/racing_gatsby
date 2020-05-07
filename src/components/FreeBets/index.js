@@ -2,48 +2,46 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Slider from "react-slick"
 
-import st from "../styles/freeBetsShortform.module.css"
-import "../styles/slickSlider.css"
+import st from "../../styles/freeBetsShortform.module.css";
+import "../../styles/slickSlider.css";
 
-import SectionTitleComponent from "../components/sectionTitle"
+import SectionTitleComponent from "../SectionTitle"
 
 const FreeBetsComponent = props => {
   const freeBetsData = useStaticQuery(graphql`
     query freeBetsQuery {
-      allWordpressAcfFreebets {
-        edges {
-          node {
-            id
-            acf {
-              bonus_code
-              bookmaker_name
-              cta_copy
-              cta_url
-              cta_url_android
-              cta_url_ios
-              cta_url_mobile
-              expires
-              faq
-              featured
-              min_odds
-              new_customer_offer
-              new_customer_offer_label
-              offer_subtitle
-              offer_title
-              recommended_offer
-              review_rating
-              show_on_homepage
-              show_subtitle
-              starts
-              terms
-            }
+      allWordpressWpFreebets {
+        nodes {
+          id
+          acf {
+            bonus_code
+            bookmaker_name
+            cta_copy
+            cta_url
+            cta_url_android
+            cta_url_ios
+            cta_url_mobile
+            expires
+            faq
+            featured
+            min_odds
+            new_customer_offer
+            new_customer_offer_label
+            offer_subtitle
+            offer_title
+            recommended_offer
+            review_rating
+            show_on_homepage
+            show_subtitle
+            starts
+            terms
           }
         }
       }
     }
   `)
 
-  const freeBets = freeBetsData.allWordpressAcfFreebets.edges
+  const freeBets = freeBetsData.allWordpressWpFreebets.nodes
 
   const settings = {
     dots: true,
@@ -54,8 +52,8 @@ const FreeBetsComponent = props => {
   }
 
   function FreeBetOffer(data) {
-    var offerData = data.node.acf
-    var bookmaker = offerData.bookmaker_name
+    let offerData = data
+    let bookmaker = offerData.bookmaker_name
     return (
       <div className={st.freeBetsOffer} key={offerData.offer_title}>
         <div
@@ -79,6 +77,7 @@ const FreeBetsComponent = props => {
   function FreeBetsSlider() {
     return (
       <>
+        <SectionTitleComponent title={"Featured Cheltenham Offers"} />
         <SectionTitleComponent title={"Free bets"} />
         <Slider className="free-bets-slider" {...settings}>
           {freeBets.map(fb => {
@@ -86,15 +85,15 @@ const FreeBetsComponent = props => {
             if (props.place == "homepage") {
               if (fb.node.acf.show_on_homepage) {
                 return (
-                  <div key={fb.node.id}>
-                    <FreeBetOffer {...fb} />
+                  <div key={fb.id}>
+                    <FreeBetOffer {...fb.acf} />
                   </div>
                 )
               }
             } else {
               return (
-                <div key={fb.node.id}>
-                  <FreeBetOffer {...fb} />
+                <div key={fb.id}>
+                  <FreeBetOffer {...fb.acf} />
                 </div>
               )
             }

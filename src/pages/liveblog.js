@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
+import Layout from '../components/layout';
+import LiveBlog from '../components/LiveBlog'
 
-const LiveBlog = () => {
+const LiveBlogPage = () => {
   return (
-    <div>
-      liveblog
-    </div>
+    <Layout>
+      <LiveBlog />
+    </Layout>
   )
 }
 
-export default LiveBlog;
+export default LiveBlogPage;

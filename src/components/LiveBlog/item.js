@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../styles/liveblog.module.css';
+import s from './styles.module.css';
 
 const Item = ({ node }) => {
   

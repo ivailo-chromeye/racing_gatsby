@@ -23,6 +23,7 @@ const RaceRunners = ({ runners, applyFilter, activeFilter, setModal }) => {
   const [state, setState] = useState({activeList: []});
 
   const openModal = (runner) => {
+    console.log('modal');
     setModal(prevState => {
       return {
         ...prevState,
@@ -48,8 +49,6 @@ const RaceRunners = ({ runners, applyFilter, activeFilter, setModal }) => {
     });
 
   }
-
-  console.log('render');
 
   return (
     <div className={s.runners_and_ad}>
