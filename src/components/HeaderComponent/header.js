@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import "../styles/header.css";
+import "./header.css";
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Header = () => {
@@ -16,6 +16,13 @@ const Header = () => {
           title
           wordpress_id
           object_slug
+          wordpress_children {
+            url
+            order
+            title
+            wordpress_id
+            object_slug
+          }
         }
       }
     }
@@ -64,7 +71,7 @@ const Header = () => {
           <div className="logo-wrap">
             <AniLink 
               fade
-              duration={1}
+              duration={0.7}
               to="/">
               <img
                 alt=""
@@ -81,8 +88,9 @@ const Header = () => {
                   return (
                     <li key={item.wordpress_id}>
                       <AniLink
+                        partiallyActive={slug === 'home' ? false : true}
                         fade
-                        duration={1} 
+                        duration={0.7} 
                         activeStyle={{
                           color: "var(--btn_red)",
                         }}
