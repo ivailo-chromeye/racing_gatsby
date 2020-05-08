@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import s from "./racesListTop.module.css"
-
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import ArrowSVG from '../../smallComponents/svg/arrowSvg';
 
 const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
@@ -48,7 +48,9 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
             // console.log(raceArg)
             return (
               <div key={raceIndex}>
-                <Link
+                <AniLink
+                  fade
+                  duration={1.5}
                   className={s.race}
                   to={`/races/${raceArg.race_instance_uid}/`}
                 >
@@ -67,7 +69,7 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
                       {raceArg.race_instance_title}
                     </span>
                   </div>
-                </Link>
+                </AniLink>
               </div>
             )
           })}

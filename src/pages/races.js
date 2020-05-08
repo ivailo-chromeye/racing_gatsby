@@ -5,6 +5,7 @@ import { useStaticQuery, graphql, Link, navigate } from "gatsby";
 import s from '../styles/races.module.css';
 import PageHeadline from '../components/pageHeadline';
 
+
 const Races = props => {
   const [expanded, setExpanded] = useState('10');
   const days = {
