@@ -1,9 +1,11 @@
 import React from "react"
 import st from "./styles.module.css"
 
-const SectionTitle = ({title}) => {
+const SectionTitle = ({title, backgroundColor}) => {
   return (
-      <h2 className={st.sectionTitle}>{title}</h2>
+      <h2 
+        style={{backgroundColor: backgroundColor ? backgroundColor : null}}
+        className={st.sectionTitle}>{title}</h2>
   )
 }
 

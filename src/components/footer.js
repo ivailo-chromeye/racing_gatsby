@@ -1,46 +1,72 @@
 import React from 'react';
 import s from '../styles/footer.module.css'
+import { useStaticQuery, graphql } from 'gatsby'
 
-const elements = [
-  {
-    href: "https://www.facebook.com/racingpost",
-    className: "fb",
-    text: "facebook",
-    backgroundPosition: ""
-  },
-  {
-    href: "https://www.twitter.com/racingpost",
-    className: "tw",
-    text: "twitter",
-    backgroundPosition: "0 78.5em"
-  },
-  {
-    href: "https://www.youtube.com/user/racingpostdotcom",
-    className: "yt",
-    text: "soc",
-    backgroundPosition: "0 72em"
-  },
-  {
-    href: "https://www.instagram.com/racingpost",
-    className: "in",
-    text: "instagram",
-    backgroundPosition: "0 65.5em"
-  },
-  {
-    href: "https://www.racingpost.com/whatsapp",
-    className: "wu",
-    text: "whatsapp",
-    backgroundPosition: "0 16.6em"
-  },
-  {
-    href: "http://m.me/racingpost",
-    className: "ms",
-    text: "messenger",
-    backgroundPosition: "0px 10.1em"
-  },
-];
+//
+// Using options page in order to gather data for the footer
+// Please don't modify, it's for testing purposes
+// I know that the "correct" way is create in `functions.php`
+// and then go to WPCMS->Appearance->Menus and go from there.
+//
+
+// const elements = [
+//   {
+//     href: "https://www.facebook.com/racingpost",
+//     className: "fb",
+//     text: "facebook",
+//     backgroundPosition: ""
+//   },
+//   {
+//     href: "https://www.twitter.com/racingpost",
+//     className: "tw",
+//     text: "twitter",
+//     backgroundPosition: "0 78.5em"
+//   },
+//   {
+//     href: "https://www.youtube.com/user/racingpostdotcom",
+//     className: "yt",
+//     text: "soc",
+//     backgroundPosition: "0 72em"
+//   },
+//   {
+//     href: "https://www.instagram.com/racingpost",
+//     className: "in",
+//     text: "instagram",
+//     backgroundPosition: "0 65.5em"
+//   },
+//   {
+//     href: "https://www.racingpost.com/whatsapp",
+//     className: "wu",
+//     text: "whatsapp",
+//     backgroundPosition: "0 16.6em"
+//   },
+//   {
+//     href: "http://m.me/racingpost",
+//     className: "ms",
+//     text: "messenger",
+//     backgroundPosition: "0px 10.1em"
+//   },
+// ];
 
 const Footer = () => {
+
+  const data = useStaticQuery(graphql`
+    {
+      wordpressAcfOptions {
+        options {
+          items {
+            backgroundPosition
+            classname
+            href
+            text
+          }
+        }
+      }
+    }
+  `);
+
+  const { items } = data.wordpressAcfOptions.options;
+
   return (
     <footer>
       <div className={s.container}>
@@ -51,7 +77,7 @@ const Footer = () => {
         </a>
 
         <div className={s.social_area}>
-          {elements.map((el, i) => (
+          {items.map((el, i) => (
             <a 
               key={i}
               style={{

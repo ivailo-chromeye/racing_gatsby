@@ -49,6 +49,8 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
             return (
               <div key={raceIndex}>
                 <AniLink
+                  activeStyle={{color: "var(--btn_red)"}}
+                  partiallyActive={true}
                   fade
                   duration={0.5}
                   className={s.race}

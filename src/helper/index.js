@@ -90,3 +90,6 @@ export const sortRunners = (runners, sortObj) => {
   });
 }
 
+export const randomFromArray = array => {
+  return array[Math.floor(Math.random() * array.length)];
+}

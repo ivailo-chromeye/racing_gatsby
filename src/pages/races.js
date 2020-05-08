@@ -4,7 +4,7 @@ import Layout from '../components/layout';
 import { useStaticQuery, graphql, Link, navigate } from "gatsby";
 import s from '../styles/races.module.css';
 import PageHeadline from '../components/pageHeadline';
-
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Races = props => {
   const [expanded, setExpanded] = useState('10');
