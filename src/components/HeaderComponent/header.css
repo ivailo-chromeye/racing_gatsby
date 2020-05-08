@@ -4,14 +4,16 @@ header {
   font-size: 10px;
 }
 header .container {
+  position: relative;
   background: #fff;
   display: flex;
   max-width: 1440px;
   margin: 0 auto;
   padding: 15px 12px;
   box-sizing: border-box;
-  align-items: center;
+  /* align-items: center; */
 }
+
 header .logo-wrap {
   width: 275px;
 }
@@ -23,15 +25,21 @@ header ul {
   display: flex;
   padding-left: 2.5em;
   font-size: 9px;
+  margin: 0;
+  height: 100%;
 }
-header li {
+header ul li {
   list-style-type: none;
+  display: flex;
+  align-items: center;
+  /* border: 1px solid black; */
+  padding-right: 2.1em;
 }
 header li a {
   font-size: 1.7em;
   text-decoration: none;
   color: #000;
-  margin-right: 2.1em;
+  /* padding-right: 2.1em; */
   list-style-type: none;
   transition: all 0.5s;
 }

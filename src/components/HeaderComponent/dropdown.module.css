@@ -1,0 +1,22 @@
+.dropdown {
+  position: absolute;
+  z-index: 20;
+  background-color: white;
+  top: 45px;
+  width: 700px;
+  padding: 20px;
+  left: 20%;
+  font-size: 16px;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex a {
+  color: black;
+  text-decoration: none;
+}
+.flex a:hover {
+  text-decoration: underline;
+}

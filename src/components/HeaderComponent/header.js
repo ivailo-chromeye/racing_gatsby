@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import "./header.css";
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import Dropdown from "./dropdown";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [w, setW] = useState(null);
+  const [dropdown, setDropdown] = useState({
+    toggled: false,
+    item: null,
+  });
 
   const wpdata = useStaticQuery(graphql`
     query WPMenus {
@@ -61,6 +66,39 @@ const Header = () => {
     
     return false;
   }
+
+  function hover(item, toggled) { // enter is 
+    if(!item) return
+    if(!item.wordpress_children) return;
+
+    setDropdown(prevState => ({
+      ...prevState,
+      toggled,
+      item,
+    }));
+  }
+
+  function renderDropdown(item) {
+    return item.wordpress_children.map(link => {
+      // console.log(link);
+      return (
+        <AniLink
+          partiallyActive={true}
+          activeStyle={{color: 'red'}}
+          key={link.wordpress_id}
+          to={`/stable-tours/${link.object_slug}/`}
+        > 
+          {link.title}
+        </AniLink>
+      )
+    })
+    // dropdown.item.map(item => {
+    //   console.log('a');
+    //   return <div>
+    //     a
+    //   </div>
+    // })
+  }
   
   const doWeShowMenu = whenToShowMenuFn();
 
@@ -81,29 +119,44 @@ const Header = () => {
           </div>
 
           { doWeShowMenu && (
-            <div className="head-menu">
-              <ul>
-                {menus.map(item => {
-                  let slug = item.object_slug;
-                  return (
-                    <li key={item.wordpress_id}>
-                      <AniLink
-                        partiallyActive={slug === 'home' ? false : true}
-                        fade
-                        duration={0.7} 
-                        activeStyle={{
-                          color: "var(--btn_red)",
-                        }}
-                        to={slug !== 'home' ? slug : ''}>{item.title}
-                      </AniLink>
-                    </li>
-                  )
-                  }
-              )
-            }
-              </ul>
-            </div>
+            <>
+              <div className="head-menu">
+                <ul>
+                  {menus.map(item => {
+                    let slug = item.object_slug;
+                    return (
+                      <li 
+                        onMouseEnter={() => hover(item, true)}
+                        onMouseLeave={() => hover(item, false)}
+                        key={item.wordpress_id}>
+                        <AniLink
+                          partiallyActive={slug === 'home' ? false : true}
+                          fade
+                          duration={0.7} 
+                          activeStyle={{
+                            color: "var(--btn_red)",
+                          }}
+                          to={slug !== 'home' ? slug : ''}>{item.title}
+                        </AniLink>
+                      </li>
+                    )
+                    }
+                )
+              }
+                </ul>
+              </div>
+            </>
            ) } 
+
+          
+          {dropdown.toggled && <Dropdown 
+            hover={hover}
+            item={dropdown.item}>
+              {renderDropdown(dropdown.item)}
+            {/* <AniLink to="/">Home</AniLink>
+            <AniLink to="/">Home</AniLink>
+            <AniLink to="/">Home</AniLink> */}
+          </Dropdown>}
 
           <div className="menu-trigger" onClick={showMenuFn}>
             <span />
@@ -119,4 +172,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;

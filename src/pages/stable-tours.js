@@ -66,7 +66,7 @@ const StableTours = () => {
   `);
 
   const tours = data.allWordpressWpStableTours.nodes;
-  console.log(tours);
+  // console.log(tours);
 
   return (
     <Layout>
