@@ -50,7 +50,7 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
               <div key={raceIndex}>
                 <AniLink
                   fade
-                  duration={1.5}
+                  duration={0.5}
                   className={s.race}
                   to={`/races/${raceArg.race_instance_uid}/`}
                 >

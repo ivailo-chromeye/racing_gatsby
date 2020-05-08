@@ -33,6 +33,10 @@ header li a {
   color: #000;
   margin-right: 2.1em;
   list-style-type: none;
+  transition: all 0.5s;
+}
+header li:hover a {
+  border-bottom: 2px solid var(--btn_red);
 }
 header .menu-trigger span {
   width: 30px;
@@ -116,7 +120,7 @@ header .menu-trigger {
     position: absolute;
     width: 100%;
     background: #fff;
-    z-index: 2;
+    z-index: 17; /* otherwise the green arrows are above it in home */
     left: 0;
     top: 100%;
     border-top: 2px solid #e31013;

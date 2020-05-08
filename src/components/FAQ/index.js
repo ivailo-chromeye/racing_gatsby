@@ -5,7 +5,9 @@ import React from 'react';
  * title text
  * copy md
  * 
- * pages: home, betting, tips, stable tours
+ * can't seem to find the field in graphql.
+ * 
+ * pages: home, betting, tips, stable tours, gold cup
  */
 
 const FAQ = () => {

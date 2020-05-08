@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import "../styles/header.css";
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
@@ -35,44 +36,58 @@ const Header = () => {
 
   const menus = wpdata.wordpressWpApiMenusMenusItems.items
 
-
   function showMenuFn() {
     console.log("click")
     setShowMenu(!showMenu)
   }
 
-  // function whenToShowMenu() {
-  //   if(!w) return null;
-  //   if (w > 1024) {
-  //     return true
-  //   }
-  //   if (w <= 1024 && showMenu) {
-  //     return true
-  //   }
-  //   return false
-  // }
+  function whenToShowMenuFn() {
+    if(!w) return null; // if for some reason w is not a number
+
+    if(w > 1024) { // always show if above 1024
+      return true;
+    }
+
+    if(w < 1024 && showMenu) { // show if toggled and if below 1024
+      return true;
+    }
+    
+    return false;
+  }
+  
+  const doWeShowMenu = whenToShowMenuFn();
 
   return (
     <>
       <header>
         <div className="container">
           <div className="logo-wrap">
-            <Link to="/">
+            <AniLink 
+              fade
+              duration={1}
+              to="/">
               <img
                 alt=""
                 src="https://www.racingpost.com/cheltenham-festival/wp-content/themes/Cheltenham/images/logo.svg"
               />
-            </Link>
+            </AniLink>
           </div>
 
-          {/* { whenToShowMenu() ? ( */}
+          { doWeShowMenu && (
             <div className="head-menu">
               <ul>
                 {menus.map(item => {
                   let slug = item.object_slug;
                   return (
                     <li key={item.wordpress_id}>
-                      <Link to={slug !== 'home' ? slug : ''}>{item.title}</Link>
+                      <AniLink
+                        fade
+                        duration={1} 
+                        activeStyle={{
+                          color: "var(--btn_red)",
+                        }}
+                        to={slug !== 'home' ? slug : ''}>{item.title}
+                      </AniLink>
                     </li>
                   )
                   }
@@ -80,7 +95,7 @@ const Header = () => {
             }
               </ul>
             </div>
-           {/* ) : null}  */}
+           ) } 
 
           <div className="menu-trigger" onClick={showMenuFn}>
             <span />
