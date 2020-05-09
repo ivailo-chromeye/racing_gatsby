@@ -35,6 +35,22 @@ const Modal = ({ modal, setModal }) => {
               }
             })
           }}>Close</button>
+
+
+          <div className=".odds_container">
+            <div className="odds_compare">
+              <div className="bookie_name">bookie_name</div>
+              <div className="price">
+                <div
+                  className="">
+                    <a target="_blank">33/1</a>
+                  </div>          
+              </div>
+              <div className="ew">33/1</div>
+              <div className="red_sign"></div>
+            </div>
+          </div>
+
       </ReactModal>
     </div>
   )
