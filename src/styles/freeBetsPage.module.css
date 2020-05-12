@@ -1,8 +1,7 @@
 .offers_container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 5em;
+  padding: 2em 5em;
   font-size: 10px;
+  background: #fff;
 }
 .flex {
   display: flex;

@@ -3,15 +3,13 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FeedRaces from "../components/feedRaces"
 import NewsSliderComponent from "../components/newsSlider"
-import FreeBetsShortform from "../components/freeBetsShortform"
+import FreeBetsShortform from "../components/FreeBets/FreeBetsShortform"
 import GridLayout from "../components/GridLayout"
 import BettingGuideHomepage from "../components/BettingGuideHomepage"
-import TipsShortform from "../components/TipsShortform";
+import TipsShortform from "../components/Tips/TipsShortform";
 import FAQ from '../components/FAQ'
 
-
 const Homepage = () => {
-
     return (
         <>
             <Layout>

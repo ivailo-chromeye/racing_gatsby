@@ -31,7 +31,7 @@ const NewsSliderComponent = (props) => {
     `)
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 2,
@@ -52,10 +52,10 @@ const NewsSliderComponent = (props) => {
         return (
             <>
                 <SectionTitle title={'Cheltenham Festival News'}/>
-                <Slider className="newsSlider" {...settings}>
-                {newsItems.map(nws => {
-                    return <ArticleComponent applyStyles={{margin: '0 1px'}} key={nws.node.id} {...nws.node.acf}/>
-                })}
+                <Slider className="newsSlider equalHeightSlider" {...settings}>
+                  {newsItems.map(nws => {
+                      return <ArticleComponent applyStyles={{margin: '0 1px'}} key={nws.node.id} {...nws.node.acf}/>
+                  })}
                 </Slider>
             </>
         )

@@ -1,16 +1,3 @@
-.newsSlider {
-    height: 100%;
-}
 .newsSlider .slick-list{
-    height: 100%;
     margin: 0px -1px !important;
-}
-.newsSlider .slick-track{
-    height: 100%;
-}
-.newsSlider .slick-slide > div, .newsSlider .slick-slide > div > div {
-    height: 100%;
-}
-.newsSlider .slick-dots {
-    display: none !important;
 }

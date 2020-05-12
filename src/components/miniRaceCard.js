@@ -20,6 +20,7 @@ const MiniRaceCard = race => {
             <p className={st.raceDetail}>{race.race_instance_title}</p>
           </div>
         </div>
+        <div style={{height: '175px'}}>
         {race.API_runners.filter((i, index) => index < 3).map(runner => {
           return (
             <div key={runner.horse_uid} className={st.runnersContainer}>
@@ -63,6 +64,7 @@ const MiniRaceCard = race => {
             </div>
           )
         })}
+        </div>
         <div className={st.button}>
           <Btn
             type="link"

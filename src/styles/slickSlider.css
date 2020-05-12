@@ -327,6 +327,35 @@
 	height: auto
 }
 
+
+.equalHeightSlider {
+	height: 100%;
+}
+.equalHeightSlider .slick-list {
+    height: 100%;
+}
+.equalHeightSlider .slick-track {
+	display: flex;
+    height: 100%;
+}
+.equalHeightSlider.slick-slider.slick-initialized .slick-slide {
+	height: auto;
+	display: flex !important;
+}
+.equalHeightSlider .slick-slide > div {
+	height: 100%;
+	display: flex;
+}
+
+.yellowDots .slick-dots li.slick-active button:before {
+    color: #fdd835;
+}
+
+.yellowDots .slick-dots li button:before {
+	color: #fff;
+}
+
+
 @media screen and (max-width:768px) {
 	.slick-next,
 	.slick-prev {

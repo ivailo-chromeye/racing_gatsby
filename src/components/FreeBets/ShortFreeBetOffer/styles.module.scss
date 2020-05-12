@@ -1,15 +1,9 @@
-.parent {
-    border: 1px solid black;
-    padding: 20px;
-    .child {
-        color: pink;
-    }
-}
-
 .freeBetOffer {
     position: relative;
     margin: 16px 10px 0;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
     background-color: #f1eff2;
     padding: 14px 10px;
     border: 1px solid #adb9b7;
@@ -59,8 +53,8 @@
     border: 1px solid #e8e8e8;
     border-top: none;
     padding-bottom: 0;
+    height: 100%;
 }
-
 .offerTop {
     display: flex;
     flex-direction: column;
@@ -75,14 +69,12 @@
     border-top-left-radius: 4px;
     background-color: #000000 !important;
 }
-
 .fbTerms p {
     color: #171717;
     text-align: center;
     font-size: 10px;
     margin-top: 10px;
 }
-
 .BET365 {
     background-color: var(--bet365_brand) !important;
 }
@@ -106,14 +98,4 @@
 }
 .LADBROKES {
     background-color: var(--ladbrokes_brand) !important;
-}
-
-.freeBetsSlider {
-    padding-bottom: 20px;
-    margin-bottom: 0!important;
-    background: rgb(255,255,255);
-    // background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 75%, rgba(141,198,63,1) 75%, rgba(141,198,63,1) 80%, rgba(57,181,74,1) 80%, rgba(57,181,74,1) 85%, rgba(0,166,81,1) 85%, rgba(0,166,81,1) 90%, rgba(0,148,68,1) 90%, rgba(0,148,68,1) 90%, rgba(0,148,68,1) 95%, rgba(0,104,56,1) 95%, rgba(0,104,56,1) 100%);
-    // background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 75%,rgba(141,198,63,1) 75%,rgba(141,198,63,1) 80%,rgba(57,181,74,1) 80%,rgba(57,181,74,1) 85%,rgba(0,166,81,1) 85%,rgba(0,166,81,1) 90%,rgba(0,148,68,1) 90%,rgba(0,148,68,1) 90%,rgba(0,148,68,1) 95%,rgba(0,104,56,1) 95%,rgba(0,104,56,1) 100%);
-    // background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 75%,rgba(141,198,63,1) 75%,rgba(141,198,63,1) 80%,rgba(57,181,74,1) 80%,rgba(57,181,74,1) 85%,rgba(0,166,81,1) 85%,rgba(0,166,81,1) 90%,rgba(0,148,68,1) 90%,rgba(0,148,68,1) 90%,rgba(0,148,68,1) 95%,rgba(0,104,56,1) 95%,rgba(0,104,56,1) 100%);
-    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#006838',GradientType=0 );
 }

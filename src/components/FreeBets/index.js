@@ -9,7 +9,7 @@ import SectionTitleComponent from "../SectionTitle"
 
 const FreeBetsComponent = props => {
   const freeBetsData = useStaticQuery(graphql`
-    query freeBetsQuery {
+    query freeBetsQueryasd {
       allWordpressWpFreebets {
         nodes {
           id
