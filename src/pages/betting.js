@@ -1,37 +1,42 @@
 import React from 'react';
 import Layout from '../components/layout';
 import { useStaticQuery, graphql } from 'gatsby';
-import PageHeadline from '../components/pageHeadline'
+import PageHeadline from '../components/pageHeadline';
+import RacesBox from '../components/RacesBox';
 
 const Betting = () => {
 
   const data = useStaticQuery(graphql`
     {
-      allWordpressWpFreebets {
+      allWordpressWpRace {
         nodes {
-          id
+          slug
           acf {
-            bonus_code
-            bookmaker_name
-            cta_copy
-            cta_url
-            cta_url_android
-            cta_url_ios
-            cta_url_mobile
-            expires
-            faq
-            featured
-            min_odds
-            new_customer_offer
-            new_customer_offer_label
-            offer_subtitle
-            offer_title
-            recommended_offer
-            review_rating
-            show_on_homepage
-            show_subtitle
-            starts
-            terms
+            title
+            raceid
+            race_datetime
+          }
+        }
+      }
+      site {
+        siteMetadata {
+          raceDays {
+            THURSDAY {
+              active
+              date
+            }
+            TUESDAY {
+              active
+              date
+            }
+            WEDNESDAY {
+              active
+              date
+            }
+            FRIDAY {
+              date
+              active
+            }
           }
         }
       }
@@ -41,8 +46,13 @@ const Betting = () => {
   return (
     <Layout>
       <PageHeadline 
-        title="CHELTENHAM TIPS" 
+        title="CHELTENHAM BETTING" 
         subtitle="Racing Post’s stable tours provide a unique opportunity for behind-the-scenes access to some of the most famous yards in Britain and Ireland, providing in-depth insight into how the very best in the industry manage their illustrious runners. With esteemed trainers such as Willie Mullins, Gordon Elliott, Nicky Henderson and Paul Nicholls opening their doors to us, our Stable Tours provide you will all the inside knowledge you need to have a prosperous Cheltenham Festival." />
+
+      <RacesBox 
+        raceDays={data.site.siteMetadata.raceDays}
+        races={data.allWordpressWpRace.nodes} />
+
     </Layout>
   )
 }

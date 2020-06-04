@@ -3,6 +3,28 @@ module.exports = {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    raceDays: {
+      "TUESDAY": {
+        date: "2020-06-16",
+        active: false,
+      }, 
+      "WEDNESDAY": {
+        date: "2020-06-17",
+        active: false,
+      }, 
+      "THURSDAY": {
+        date: "2020-06-18",
+        active: false,
+      }, 
+      "FRIDAY": {
+        date: "2020-06-19",
+        active: false,
+      },
+      "SATURDAY": {
+        date: "2020-06-20",
+        active: false,
+      },
+    },
   },
   plugins: [
     `gatsby-plugin-transition-link`,
