@@ -42,6 +42,15 @@
   --racebets_brand: #ffc60b;
   --skybet_brand: #000847;
   --ladbrokes_brand: #ed1b24;
+
+  --black: #171717;
+  --lightgray: #e0e0e0;
+  --darkgray: #636469;
+  --lightblue: #6091c8;
+  --darkblue: #032c59;
+  --yellow: #fdd835;
+  --red: #e20613;
+  --bet365-green: #14805E;
 }
 
 /* COLORS end */
@@ -50,11 +59,11 @@ body {
   font-family: Arial;
   font-family: ProximaNovaA-Regular;
   line-height: 1;
-  background: var(--bg_gray);
+  /* background: var(--bg_gray); */
   color: var(--black);
 }
 .container {
-  background: var(--bg_gray);
+  background: #fff;
   max-width: 1440px;
   width: 100%;
   box-sizing: border-box;

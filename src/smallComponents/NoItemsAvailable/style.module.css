@@ -1,0 +1,21 @@
+.no_data {
+  width: calc(100% - 20px);
+  min-height: 200px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid #7e7e7e;
+  margin-top: 4px;
+  flex-direction: column;
+  background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200604114439/no_results_horses_v1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f0f0f2;
+  margin: 8px auto;
+}
+.no_data p {
+  margin: 6px 0 0 0;
+  font-size: 16px;
+}

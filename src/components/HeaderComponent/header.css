@@ -105,6 +105,7 @@ header .menu-trigger {
   header ul {
     flex-direction: column;
     padding: 0 15px;
+    align-items: center;
   }
   header .container {
     padding: 5px 14px;
@@ -117,6 +118,7 @@ header .menu-trigger {
   }
   header .container {
     justify-content: space-between;
+    align-items: center;
   }
   header {
     position: relative;

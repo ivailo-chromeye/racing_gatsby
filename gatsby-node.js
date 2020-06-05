@@ -10,18 +10,14 @@ const {
 	distanceObj,
 } = require("./utility")
 
-
-
-
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
   const feed = await axios.get(
     "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/feed.json"
-  )
+  );
 
-
-  const runnersArray = []
+  const runnersArray = [];
 
   for (let key in runners.runners) {
     runnersArray.push(pick(runners.runners[key], runnerFields))
@@ -71,6 +67,8 @@ exports.createPages = async ({ actions, graphql }) => {
       })
     })
 
+    console.log(races);
+
     // Create Page for Every Race
     races.nodes.forEach(race => {
       createPage({
@@ -96,6 +94,8 @@ exports.createPages = async ({ actions, graphql }) => {
           }),
         },
       })
+
+      console.log(race);
 
       createPage({
         path: `/races/${race.acf.raceid}/odds/`,

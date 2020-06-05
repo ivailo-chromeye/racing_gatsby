@@ -1,30 +1,39 @@
 .races_list {
-  margin-top: 10px;
+  margin-top: 3px;
   font-family: ProximaNovaA-SemiBold, sans-serif;
 }
 .list_top {
-  padding: 0px 0px 10px 0px;
   display: flex;
   justify-content: space-between;
   font-size: 20px;
-  border-bottom: 1px solid #ed1c24;
+  background-color: #fff;
 }
 .list_content {
-  background-color: #f0eff1;
+  background-color: var(--lightgray);
   padding: 15px 5px;
   font-family: ProximaNovaA-SemiBold, sans-serif;
 }
 .card {
   display: flex;
   cursor: pointer;
+  width: 20%;
+}
+.card:not(:last-child) {
+  border-right: 1px solid var(--darkgray);
 }
 .card_name {
   display: flex;
+  justify-content: center;
   color: var(--inactive_gray);
+  width: 100%;
 }
 .card_name_active {
+  font-family: proximanovaa-bold;
   display: flex;
+  justify-content: center;
+  width: 100%;
   color: var(--black);
+  background: var(--lightgray);
 }
 .race {
   color: var(--black);
@@ -34,8 +43,9 @@
   padding: 5px;
 }
 .race_top_active {
-  color: var(--red);
   padding: 5px;
+  font-family: proximanovaa-bold;
+  text-decoration: underline;
 }
 .race_top:hover {
   text-decoration: underline;
@@ -46,9 +56,11 @@
 }
 .race_top_title {
   padding-left: 5px;
+  font-family: ProximaNovaA-Regular;
 }
 .list_top_card_name {
-  
+  font-size: 14px;
+  padding: 10px 0px;
 }
 .list_top_arrow {
   padding: 0px 0px 0px 10px;

@@ -16,9 +16,9 @@ import CollapseComponent from "../components/CollapseComponent";
 
 const Race = ({ pageContext, location }) => {
   
-  const raceID = location.pathname.split("/")[2]
-  const race = pageContext.race
-  const feed = JSON.parse(pageContext.feed)
+  const raceID = location.pathname.split("/")[2];
+  const race = pageContext.race;
+  const feed = JSON.parse(pageContext.feed);
   const runners = JSON.parse(pageContext.runners);
 
   const horsesWithRaces = [];
@@ -55,7 +55,8 @@ const Race = ({ pageContext, location }) => {
     return dayObject
   } // definitely need to rewrite it better
 
-  const dayObject = getDayObject()
+  const dayObject = getDayObject();
+  console.log(dayObject);
 
   const [activeTab, setActiveTab] = useState(dayObject.activeDay)
   const [activeRace, setActiveRace] = useState(dayObject.activeRace)

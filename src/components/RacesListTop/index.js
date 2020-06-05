@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import s from "./racesListTop.module.css"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import ArrowSVG from '../../smallComponents/svg/arrowSvg';
+import NoItemsAvailable from "../../smallComponents/NoItemsAvailable"
 
 const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
 
@@ -12,9 +13,10 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
     { label: "Wednesday's Races" },
     { label: "Thursday's Races" },
     { label: "Friday's Races" },
+    { label: "Saturday's Races" },
   ]
 
-  // console.log(feed);
+  console.log(feed);
 
 
   return (
@@ -32,9 +34,6 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
                   <div className={s.list_top_card_name}>
                     {day.label}
                   </div>
-                  <div className={s.list_top_arrow}>
-                    <ArrowSVG active={activeTab === i} />
-                  </div>
                 </div>
               </div>
             )
@@ -42,14 +41,13 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
         </div>
       </div>
 
-      {!feed ? null : 
+      {!feed ? <NoItemsAvailable message="No races" /> : 
         <div className={s.list_content}>
           {feed.races.map((raceArg, raceIndex) => {
             // console.log(raceArg)
             return (
               <div key={raceIndex}>
                 <AniLink
-                  activeStyle={{color: "var(--btn_red)"}}
                   partiallyActive={true}
                   fade
                   duration={0.5}

@@ -94,12 +94,6 @@ const Header = () => {
         </AniLink>
       )
     })
-    // dropdown.item.map(item => {
-    //   console.log('a');
-    //   return <div>
-    //     a
-    //   </div>
-    // })
   }
   
   const doWeShowMenu = whenToShowMenuFn();
@@ -128,8 +122,8 @@ const Header = () => {
                     let slug = item.object_slug;
                     return (
                       <li 
-                        onMouseEnter={() => hover(item, true)}
-                        onMouseLeave={() => hover(item, false)}
+                        // onMouseEnter={() => hover(item, true)}
+                        // onMouseLeave={() => hover(item, false)}
                         key={item.wordpress_id}>
                         <AniLink
                           partiallyActive={slug === 'home' ? false : true}
@@ -155,9 +149,6 @@ const Header = () => {
             hover={hover}
             item={dropdown.item}>
               {renderDropdown(dropdown.item)}
-            {/* <AniLink to="/">Home</AniLink>
-            <AniLink to="/">Home</AniLink>
-            <AniLink to="/">Home</AniLink> */}
           </Dropdown>}
 
           <div className="menu-trigger" onClick={showMenuFn}>
