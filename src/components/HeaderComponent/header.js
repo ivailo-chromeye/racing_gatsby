@@ -14,26 +14,19 @@ const Header = () => {
     item: null,
   });
 
-  // const wpdata = useStaticQuery(graphql`
-  //   query WPMenus {
-  //     wordpressWpApiMenusMenusItems {
-  //       items {
-  //         url
-  //         order
-  //         title
-  //         wordpress_id
-  //         object_slug
-  //         wordpress_children {
-  //           url
-  //           order
-  //           title
-  //           wordpress_id
-  //           object_slug
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const wpdata = useStaticQuery(graphql`
+    {
+      wordpressWpApiMenusMenusItems {
+        items {
+          url
+          order
+          title
+          wordpress_id
+          object_slug
+        }
+      }
+    }
+  `)
 
   useEffect(() => {
     setW(window.innerWidth);
@@ -48,7 +41,7 @@ const Header = () => {
     return () => window.removeEventListener("resize", resizeFn)
   })
 
-  // const menus = wpdata.wordpressWpApiMenusMenusItems.items
+  const menus = wpdata.wordpressWpApiMenusMenusItems.items
 
   function showMenuFn() {
     console.log("click")
@@ -118,7 +111,7 @@ const Header = () => {
             <>
               <div className="head-menu">
                 <ul>
-                  {/* {menus.map(item => {
+                  {menus.map(item => {
                     let slug = item.object_slug;
                     return (
                       <li 
@@ -138,7 +131,7 @@ const Header = () => {
                     )
                     }
                 )
-              } */}
+              }
                 </ul>
               </div>
             </>
