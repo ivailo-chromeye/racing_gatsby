@@ -1,5 +1,5 @@
 .sectionTitle {
-    background-color: var(--brand-light-green);
+    background-color: var(--darkblue);
     color: #fff;
     text-align: center;
     font-size: 16px;
@@ -10,4 +10,19 @@
     text-decoration: none;
     display: block;
     margin-top: 12px;
+}
+.horseAbove {
+    margin-top: 52px;
+    position: relative;
+}
+.horseAbove:before {
+    content: '';
+    background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200604101557/horse-jockey_v1.svg);
+    width: 80px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
 }
