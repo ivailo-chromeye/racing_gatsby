@@ -57,7 +57,7 @@ const MiniRaceCard = race => {
                   </p>
                 </div>
                 <PlaceBetBtn togglePad={togglePad}>
-                  {runner.odds["#BESTODDS"]}
+                  -
                 </PlaceBetBtn>
                 {/* <p onClick={togglePad} className={st.odd}>{runner.odds['#BESTODDS']}</p> */}
               </div>

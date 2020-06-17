@@ -110,7 +110,7 @@
 	top: 50%;
 	left: 0;
 	z-index: 5;
-	background: #39b54a;
+	background: var(--darkblue);;
 	border: none;
 	height: 50px;
 	width: 20px;
@@ -348,11 +348,11 @@
 }
 
 .yellowDots .slick-dots li.slick-active button:before {
-    color: #fdd835;
+    color: var(--darkblue);
 }
 
 .yellowDots .slick-dots li button:before {
-	color: #fff;
+	color: #6091c8;
 }
 
 

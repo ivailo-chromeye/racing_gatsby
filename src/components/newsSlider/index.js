@@ -51,7 +51,7 @@ const NewsSliderComponent = (props) => {
     function NewsSlider() {
         return (
             <>
-                <SectionTitle title={'Cheltenham Festival News'}/>
+                <SectionTitle horse={true} title={'Cheltenham Festival News'}/>
                 <Slider className="newsSlider equalHeightSlider" {...settings}>
                   {newsItems.map(nws => {
                       return <ArticleComponent applyStyles={{margin: '0 1px'}} key={nws.node.id} {...nws.node.acf}/>

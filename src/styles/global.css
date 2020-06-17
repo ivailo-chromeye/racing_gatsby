@@ -59,11 +59,10 @@ body {
   font-family: Arial;
   font-family: ProximaNovaA-Regular;
   line-height: 1;
-  /* background: var(--bg_gray); */
+  background: var(--lightgray);
   color: var(--black);
 }
 .container {
-  background: #fff;
   max-width: 1440px;
   width: 100%;
   box-sizing: border-box;

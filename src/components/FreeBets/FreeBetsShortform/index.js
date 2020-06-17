@@ -5,6 +5,7 @@ import SectionTitle from "../../SectionTitle"
 import ShortFreeBetOffer from "../ShortFreeBetOffer"
 import st from "./styles.module.scss"
 import '../../../styles/slickSlider.css';
+import '../../../styles/freeBetsShortform.css';
 
 const FreeBetsShortform = (props) => {
     const freeBetsShortformData = useStaticQuery(graphql`
@@ -68,7 +69,7 @@ const FreeBetsShortform = (props) => {
     return (
         <>
           <SectionTitle title={'Cheltenham Festival Free bets'}/>
-          <Slider className={[st.freeBetsSlider, "yellowDots", "equalHeightSlider"].join(' ')} {...settings}>
+          <Slider className={[st.freeBetsSlider, "yellowDots", "equalHeightSlider","homeShortformFreeBets"].join(' ')} {...settings}>
             {freeBets.map(fb => {
                 if (props.filter == 'homepage') {
                     if (fb.node.acf.show_on_homepage) {

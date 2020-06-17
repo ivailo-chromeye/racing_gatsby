@@ -15,7 +15,7 @@ const FeedRaces = () => {
 
 
     useEffect(() => {
-        fetch("https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/test.json")
+        fetch("https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/rafeed.json")
           .then(res => res.json())
           .then(
             (result) => {
@@ -36,7 +36,7 @@ const FeedRaces = () => {
       setTabIndex(index)
     }
 
-    const tabsDays = ['Friday', 'Saturday', 'Sunday', 'Monday']
+    const tabsDays = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
     function sideScroll(element,direction,speed,distance,step){
       var scrollAmount = 0;
@@ -67,7 +67,7 @@ const FeedRaces = () => {
     } else {
       return (
         <>
-        <SectionTitle title={'Cheltenham Festival Races'}/>
+        <SectionTitle margin={0} title={'Cheltenham Festival Races'}/>
         <Tabs onSelect={handleSelected} selectedIndex={tabIndex}>
           <TabList>
             {tabsDays.map(day => {
