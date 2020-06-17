@@ -10,7 +10,7 @@ const ShortFreeBetOffer = (data) => {
             <div className={[st[bookmaker], st.offerTop].join(' ')} style={{backgroundImage: `url(https://www.racingpost.com/cheltenham-festival/wp-content/themes/Cheltenham/images/free-bet-logos/${offerData.bookmaker_name}.jpg)`}}></div>
             <div className={st.freeBetBody}>
                 <h2>{offerData.offer_title}</h2>
-                <h3>{offerData.offer_subtitle}</h3>
+                {/* <h3>{offerData.offer_subtitle}</h3> */}
                 <Btn type="a" background="btn_red" cta_url={offerData.cta_url}>
                     {offerData.cta_copy}
                 </Btn>

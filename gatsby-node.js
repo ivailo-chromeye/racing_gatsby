@@ -25,18 +25,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   await graphql(`
     {
-      allWordpressWpStableTours {
-        nodes {
-          acf {
-            title
-            subtitle
-            image_credit
-            description
-            tours_text
-          }
-          slug
-        }
-      }
+
       allWordpressWpRace {
         nodes {
           slug
@@ -55,19 +44,10 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `).then(async result => {
     const races = result.data.allWordpressWpRace
-    const stableTours = result.data.allWordpressWpStableTours.nodes
 
-    stableTours.forEach(tour => {
-      createPage({
-        path: `/stable-tours/${tour.slug}/`,
-        component: require.resolve(`./src/templates/stableTour.js`),
-        context: {
-          tour,
-        },
-      })
-    })
 
-    console.log(races);
+
+    // console.log(races);
 
     // Create Page for Every Race
     races.nodes.forEach(race => {
@@ -95,7 +75,7 @@ exports.createPages = async ({ actions, graphql }) => {
         },
       })
 
-      console.log(race);
+      // console.log(race);
 
       createPage({
         path: `/races/${race.acf.raceid}/odds/`,

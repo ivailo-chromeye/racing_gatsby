@@ -22,7 +22,6 @@ const FreeBetOffer = (data) => {
                                 </div>
                             </div>
                             <h2>{offer.offer_title}</h2>
-                            <h4>{offer.offer_subtitle}</h4>
                         </div>
                     </div>
                     <div>

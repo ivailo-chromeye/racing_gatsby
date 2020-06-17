@@ -25,7 +25,6 @@ const FreeBets = () => {
               min_odds
               new_customer_offer
               new_customer_offer_label
-              offer_subtitle
               offer_title
               recommended_offer
               review_rating

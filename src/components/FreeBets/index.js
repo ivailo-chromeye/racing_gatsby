@@ -27,7 +27,6 @@ const FreeBetsComponent = props => {
             min_odds
             new_customer_offer
             new_customer_offer_label
-            offer_subtitle
             offer_title
             recommended_offer
             review_rating
@@ -63,7 +62,7 @@ const FreeBetsComponent = props => {
           }}
         ></div>
         <h3 className={st.fbCopy}>{offerData.offer_title}</h3>
-        <h3 className={st.fbSubcopy}>{offerData.offer_subtitle}</h3>
+        {/* <h3 className={st.fbSubcopy}>{offerData.offer_subtitle}</h3> */}
         
         <a className={st.freeBetsButton} target="_blank" href={offerData.cta_url}>{offerData.cta_copy}</a>
         <div

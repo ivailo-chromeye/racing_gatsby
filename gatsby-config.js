@@ -40,7 +40,8 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `http://chromeye.com/iv/racing-post/cheltenham/`,
+        baseUrl: `http://rp.chromeye.com/royal-ascot/`,
+        // baseUrl: `http://chromeye.com/iv/racing-post/cheltenham/`,
         // baseUrl: `https://development.chromeye.com/rp/hubs/cheltenham`,
         protocol: `http`,
         hostingWPCOM: false,

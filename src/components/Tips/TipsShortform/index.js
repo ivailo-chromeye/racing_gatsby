@@ -21,21 +21,7 @@ const TipsShortform = (props) => {
                     }
                 }
             }
-            allWordpressWpHorse {
-                edges {
-                    node {
-                        id
-                        wordpress_id
-                        acf {
-                            horse_name
-                            horse_uid
-                            silk_image_png
-                            trainer_name
-                            jockey_name
-                        }
-                    }
-                }
-            }
+
             allWordpressWpTip {
                 edges {
                     node {
@@ -44,7 +30,6 @@ const TipsShortform = (props) => {
                             bet_type_sel
                             each_way_tip
                             tip {
-                                odds
                                 race
                                 horse
                             }
@@ -62,7 +47,6 @@ const TipsShortform = (props) => {
 
     // Grouping the required tips data from Wordpress
     const races = tipsShortformData.allWordpressWpRace.edges
-    const horses = tipsShortformData.allWordpressWpHorse.edges
     const tips = tipsShortformData.allWordpressWpTip.edges
 
     const tipsFormated = []
@@ -92,17 +76,17 @@ const TipsShortform = (props) => {
     tipsFormated.forEach(stip => {
         let pushReady = false
         stip.selections.forEach(tip => {
-            horses.forEach(horse => {
-                if (tip.horse === horse.node.wordpress_id) {
-                    tip.horse = horse.node.acf
-                    races.forEach(race => {
-                        if (tip.race === race.node.wordpress_id) {
-                            tip.race = race.node.acf
-                            pushReady = true
-                        }
-                    })
-                }
-            })
+            // horses.forEach(horse => {
+            //     if (tip.horse === horse.node.wordpress_id) {
+            //         tip.horse = horse.node.acf
+            //         races.forEach(race => {
+            //             if (tip.race === race.node.wordpress_id) {
+            //                 tip.race = race.node.acf
+            //                 pushReady = true
+            //             }
+            //         })
+            //     }
+            // })
         })
         if (pushReady) {
             tipsOutput.push(stip)

@@ -24,16 +24,16 @@ const BettingGuideHomepage = () => {
         }   
     `)
     
-    const bettinArticle = {
-        'image': pageData.wordpressPage.acf.betting_image,
-        'title': pageData.wordpressPage.acf.betting_title,
-        'text': pageData.wordpressPage.acf.betting_text
-    }
+    // const bettinArticle = {
+    //     'image': pageData.wordpressPage.acf.betting_image,
+    //     'title': pageData.wordpressPage.acf.betting_title,
+    //     'text': pageData.wordpressPage.acf.betting_text
+    // }
 
     return (
         <>
             <SectionTitle title={'Cheltenham Festival Betting'}/>
-            <ArticleComponent {...bettinArticle} />
+            {/* <ArticleComponent {...bettinArticle} /> */}
         </>
     )
 }
