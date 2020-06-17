@@ -50,22 +50,22 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 const Footer = () => {
 
-  const data = useStaticQuery(graphql`
-    {
-      wordpressAcfOptions {
-        options {
-          items {
-            backgroundPosition
-            classname
-            href
-            text
-          }
-        }
-      }
-    }
-  `);
+  // const data = useStaticQuery(graphql`
+  //   {
+  //     wordpressAcfOptions {
+  //       options {
+  //         items {
+  //           backgroundPosition
+  //           classname
+  //           href
+  //           text
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
-  const { items } = data.wordpressAcfOptions.options;
+  // const { items } = data.wordpressAcfOptions.options;
 
   return (
     <footer>
@@ -77,7 +77,7 @@ const Footer = () => {
         </a>
 
         <div className={s.social_area}>
-          {items.map((el, i) => (
+          {/* {items.map((el, i) => (
             <a 
               key={i}
               style={{
@@ -88,7 +88,7 @@ const Footer = () => {
               target="_blank">
                 {el.text}
             </a>
-          ))}
+          ))} */}
         </div>
 
         <div className={s.responsible}>
