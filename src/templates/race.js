@@ -77,16 +77,17 @@ const Race = ({ pageContext, location }) => {
     })
   };
 
-  console.log({
-    activeDay,
-    dayObject,
-    ascotFeed,
-    component: "templates/race.js",
-    raceID,
-    horsesWithRaces,
-  });
+  // console.log({
+  //   activeDay,
+  //   dayObject,
+  //   ascotFeed,
+  //   component: "templates/race.js",
+  //   raceID,
+  //   horsesWithRaces,
+  //   racecard: state.racecard,
+  // });
 
-  const sortedRunners = sortRunners(runners, sortObj)
+  const sortedRunners = sortRunners(dayObject.activeRace.API_runners, sortObj)
 
   return (
     <Layout>
@@ -110,13 +111,13 @@ const Race = ({ pageContext, location }) => {
         <SearchComponent horsesWithRaces={horsesWithRaces} />
       </FlexComponent>
 
-      <RaceInfo card={state.racecard} />
+      <RaceInfo dayObject={dayObject} card={state.racecard} />
 
       <div className={s.detailed_flex}>
         <QuestionSVG />
         <Btn 
           type="black"
-          cta_url="https://www.racingpost.com/results/11/cheltenham/2020-03-13/743616/">
+          cta_url={`https://www.racingpost.com/results/2/ascot/2020-03-13/743616/`}>
             View Full Result
         </Btn>
       </div>
@@ -126,7 +127,13 @@ const Race = ({ pageContext, location }) => {
         background="lightblue"
       >{race.custom_text}</TextBox>
 
-      <RaceRunners setModal={setModal} activeFilter={sortObj.filter} runners={sortedRunners} applyFilter={applyFilter} />
+      <RaceRunners 
+        race_time_diffusion={activeDay.races.find(race => race.race_instance_uid == raceID).race_time_diffusion}
+        race_date_diffusion={activeDay.race_date_diffusion}
+        setModal={setModal} 
+        activeFilter={sortObj.filter} 
+        runners={sortedRunners} 
+        applyFilter={applyFilter} />
 
       <CollapseComponent label="VERDICT">
         <div dangerouslySetInnerHTML={{__html: race.racing_post_tip_dropdown}}></div>

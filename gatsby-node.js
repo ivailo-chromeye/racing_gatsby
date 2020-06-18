@@ -29,7 +29,6 @@ exports.createPages = async ({ actions, graphql }) => {
 
   await graphql(`
     {
-
       allWordpressWpRace {
         nodes {
           slug
@@ -55,6 +54,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
     // Create Page for Every Race
     races.nodes.forEach(race => {
+      // console.log(race);
 
 
       

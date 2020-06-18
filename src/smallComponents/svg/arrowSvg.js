@@ -14,7 +14,7 @@ const arrow = ({ active, onClick }) => {
         right: 8,
         margin: 0,
         display: 'inline-block',
-        fill: 'var(--arrow_red)',
+        fill: 'var(--black)',
         transform: active ? "rotate(0deg)" : "rotate(-90deg)",
         transition: "all 0.25s",
       }}

@@ -1,0 +1,128 @@
+.modal_container {
+  font-family: proximanovaa-regular;
+  background-color: #e4e4e4;
+  padding: 30px;
+  max-width: 500px;
+  max-height: 100vh;
+  border-radius: 4px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+.modal_content {
+  line-height: 1.5;
+  color: #171717;
+}
+.modal_horse {
+  margin: 0;
+  text-align: center;
+  height: 48px;
+  line-height: 48px;
+  vertical-align: middle;
+  border-bottom: 1px solid #cbcbcb;
+}
+.odds_header {
+  line-height: 24px;
+  display: flex;
+  color: #7f7f7f;
+  font-size: 12px;
+}
+.odds_header > div {
+  padding: 0px 13px;
+}
+.odds_container {
+  width: 264px;
+  border: 1px solid #cbcbcb;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.odds_compare {
+  width: 248px;
+  display: flex;
+  margin: 0px 8px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.bookie_name {
+  width: 88px;
+  font-family: ProximaNovaA-Bold, sans-serif;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+.price {
+  width: 58px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.bookie_name {
+  width: 88px;
+  font-family: ProximaNovaA-Bold, sans-serif;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+.odds_compare .b365 {
+  color: #fff;
+  background: #01684c;
+  }
+  .odds_compare .bf {
+    color: #171717;
+    background: #ffb818;
+  
+  }
+  .odds_compare .bway {
+  color: #fff;
+    background: #439539;
+  }
+  .odds_compare .pp {
+  color: #fff;
+  background: #006d00;
+  }
+  .odds_compare .wh {
+  color: #fff;
+    background: #1e3e57;
+  }
+  .odds_compare .unibet {
+  color: #feb817;
+    background: #0e5f31;
+  }
+  .odds_compare .coral {
+  color: #fff;
+  background: #0041ad;
+  }
+  .odds_compare .ladb {
+  color: #fff;
+  background: #de1600;
+  }
+  .odds_compare .sky {
+  color: #fff;
+    background: #1b4493;
+  }
+  .odds_compare .boyle {
+  color: #fff;
+  background: #242858;
+  }
+  .odds_compare .rb {
+  color: #fff;
+  background: #f89c00;
+  }
+  
+  
+  .odds_compare .b365,
+  .odds_compare .bf,
+  .odds_compare .bway,
+  .odds_compare .pp,
+  .odds_compare .wh,
+  .odds_compare .unibet,
+  .odds_compare .coral,
+  .odds_compare .ladb,
+  .odds_compare .sky,
+  .odds_compare .boyle,
+  .odds_compare .rb {
+    text-align: center;
+    font-family: ProximaNovaA-Bold, sans-serif;
+    border-radius: 4px;
+    width: 48px;
+    cursor: pointer;
+  }

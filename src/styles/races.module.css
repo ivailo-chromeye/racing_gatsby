@@ -1,10 +1,13 @@
+.main {
+  background: white;
+  padding: 0 0 20px 0px;
+}
 .racesAndAds {
   background-color: #fff;
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  min-width: 1440px;
-  margin: 0 65px;
+  padding: 20px 0;
 }
 .smallAdContainer {
 }
@@ -13,6 +16,7 @@
   margin-bottom: 10px;
   width: 1000px;
   padding-right: 10px;
+  padding-left: 60px;
 }
 .daysContainer {
   width: 100%;

@@ -2,7 +2,8 @@ import React from 'react';
 import s from './raceInfo.module.css';
 import { numberWithCommas } from '../../helper/index'
 
-const RaceInfo = ({ card }) => {
+const RaceInfo = ({ card, dayObject }) => {
+  // console.log({ component: "RaceInfo",dayObject });
   
 
 
@@ -10,13 +11,12 @@ const RaceInfo = ({ card }) => {
     <div className={s.race_card}>
       <div className={s.left}>
         <div className={s.race_box}>
-          <div className={s.race_title}>{card.race_datetime.hours}:{card.race_datetime.minutes} {card.course_style_name}</div>
+          <div className={s.race_title}>{dayObject.activeRace.race_time_diffusion} Ascot</div>
           <div className={s.race_time}>{card.race_datetime.monthDate} {card.race_datetime.month} {card.race_datetime.year}</div>
         </div>
         <div className={s.race_distance}>
+          &nbsp;{dayObject.activeRace.race_instance_title}
           {card.distance.miles}m{card.distance.furlongs}f{card.distance.left}y
-          &nbsp;{card.race_instance_title}
-          (Class null)
           ({card.rp_ages_allowed_desc})
         </div>
       </div>
@@ -27,7 +27,7 @@ const RaceInfo = ({ card }) => {
         </div>
         <div className={s.no_of_runners}>
           <span>Runners:</span>
-          <span>{card["no_of_runners"]}</span>
+          <span>{dayObject.activeRace.API_runners.length}</span>
         </div>
         <div className={s.going_type_desc}>
           <span>Going:</span>

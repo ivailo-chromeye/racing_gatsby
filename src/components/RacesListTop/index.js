@@ -7,7 +7,6 @@ import NoItemsAvailable from "../../smallComponents/NoItemsAvailable"
 
 const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
 
-
   const days = [
     { label: "Tuesday's Races" },
     { label: "Wednesday's Races" },
@@ -15,9 +14,6 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
     { label: "Friday's Races" },
     { label: "Saturday's Races" },
   ]
-
-  console.log({feed, component: "RacesListTop"});
-
 
   return (
     <>

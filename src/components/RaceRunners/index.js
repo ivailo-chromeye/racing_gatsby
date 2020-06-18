@@ -1,26 +1,52 @@
-import React, { Fragment, useState } from 'react'
-import TooltipSVG from '../../images/tooltip.svg';
+import React, { Fragment, useState, useEffect } from 'react'
+
 import SpotlightSVG from '../../smallComponents/svg/spotlightSvg';
 import s from '../../templates/race.module.css';
 import styleRacecards from '../../styles/racecards.module.css'
 import {rpModal} from '../../helper/index';
-import ReactTooltip from "react-tooltip";
-import PlaceBetBtn from '../../smallComponents/PlaceBetBtn'
 
-const tableTop = [
-  {filter: "start_number", label: "NO.DRAW FORM", tooltip: "Sort by Saddle Number"},
-  {filter: "horse_name", label: "HORSE", tooltip: "Sort by Haddle Name"},
-  {filter: "odds", label: "ODDS", tooltip: "Sort by Best Odds"},
-  {filter: "jockey|trainer", label: "JOCKEY|TRAINER", tooltip: "Sort by Trainer"},
-  {filter: "age", label: "AGE", tooltip: "Sort by Horse age"},
-  {filter: "wgt", label: "WGT", tooltip: "Sort by Weight"},
-  {filter: "or", label: "OR", tooltip: "Sort by Official Rating"},
-  {filter: "rpr", label: "RPR", tooltip: "Sort by Racing Post Rating"},
-];
+import PlaceBetBtn from '../../smallComponents/PlaceBetBtn';
+import TableTop from "./TableTop";
+
+import diffusion from "rp-diffusion";
+const diffusionConfig = {
+  host: 'push-cards.racingpost.com',
+  port: 443
+}
+
+const utility = {
+  fractional: array => {
+    if (array === "-") return "-";
+    return "" + parseFloat(((+array.split('/')[0] / +array.split('/')[1]) + 1).toFixed(2));
+  },
+}
+
+
 const active = {borderBottom: "2px solid var(--yellow_active_filter)"};
 
-const RaceRunners = ({ runners, applyFilter, activeFilter, setModal }) => {
+const RaceRunners = ({ 
+  runners, 
+  applyFilter, 
+  activeFilter, 
+  setModal, 
+  race_date_diffusion, 
+  race_time_diffusion,
+}) => {
   const [state, setState] = useState({activeList: []});
+  const [odds, setOdds] = useState({
+    bestodds: {},
+    hOdds: {},
+    hOddsEw: {},
+  });
+  const [topic, setTopic] = useState({
+    "HORSES": "HORSES",
+    "date": race_date_diffusion,
+    "venue": "ASCOT",
+    "time": race_time_diffusion,
+    "WIN": "WIN",
+    "horse_name": "",
+    "bookie_name": "#BESTODDS",
+  });
 
   const openModal = (runner) => {
     console.log('modal');
@@ -50,53 +76,82 @@ const RaceRunners = ({ runners, applyFilter, activeFilter, setModal }) => {
 
   }
 
+  // console.log(runners);
+
+  useEffect(() => {
+    const allOddsObject = {
+      bestodds: {},
+      hOdds: {},
+      hOddsEw: {},
+    };
+    const len = runners.length;
+    // console.log({len, race_date_diffusion, race_time_diffusion});
+
+    diffusion.connect(diffusionConfig).then(session => {
+      console.log(session);
+      let runnersCounter = 0;
+
+      runners.forEach(runner => {
+        const topicArray = [];
+
+        for (let key in topic) {
+          key === "horse_name" ? topicArray.push(runner.horse_name_diffusion) : topicArray.push(topic[key]);
+        }
+
+        session
+          .subscribe(topicArray.join("/"))
+          .transform(String)
+          .on('update', value => {
+
+            runnersCounter += 1;
+
+            let arr = value.split("\u0002");
+            let bestOdds = arr[7];
+            
+
+            let decimalOdds;
+            if (bestOdds === "Evs") {
+              decimalOdds = "Evs";
+            } else if (bestOdds && bestOdds !== "-") {
+              decimalOdds = utility.fractional(bestOdds)
+            }
+
+            // console.log({runner:runner.horse_uid,bestOdds, decimalOdds});
+            allOddsObject["bestodds"][runner.horse_uid] = `${bestOdds}|${decimalOdds}`;
+
+            if (runnersCounter === runners.length) {
+              setOdds(allOddsObject)
+            }
+          });
+
+      });
+
+      
+
+
+    });
+  }, []);
+
+  // console.log({odds});
+
   return (
     <div className={s.runners_and_ad}>
     <div className={s.runners}>
       <table>
         <thead>
-          <tr>
-            {
-              tableTop.map(({label, filter, tooltip}, i) => {
-                // console.log(activeFilter);
-                return (
-                    <th key={i}>
-                    <div
-                      className={s.th_div}>
-
-                      {filter !== "jockey|trainer" ? 
-
-                        <span 
-                          style={activeFilter === filter ? active : null}
-                          onClick={() => applyFilter(filter)}>{label}</span> :
-
-                        <>
-                          <span 
-                            style={activeFilter === filter.split("|")[0] ? active : null}
-                            onClick={() => applyFilter(filter.split("|")[0])}>{label.split("|")[0]}</span>&
-                          <span 
-                            style={activeFilter === filter.split("|")[1] ? active : null}
-                            onClick={() => applyFilter(filter.split("|")[1])}>{label.split("|")[1]}</span>
-                        </>
-                      }
-                      <div className="tooltip">
-                        <ReactTooltip />
-                        <TooltipSVG 
-                          data-effect="solid"
-                          data-place="bottom"
-                          data-tip={tooltip} />
-                      </div>
-                    </div>
-                    </th>
-                  )
-              })
-            }
-            
-          </tr>
+          <TableTop 
+            applyFilter={applyFilter}
+            active={active}
+            activeFilter={activeFilter} />
         </thead>
         <tbody>
           {runners.map(runner => {
             const spotlightActive = state.activeList.indexOf(runner.horse_uid) > -1;
+            
+            // console.log({
+            //   "runner.horse_uid": runner.horse_uid,
+            //   oddsForHorse: odds['bestodds'][runner.horse_uid]
+            // });
 
             return (
               <Fragment key={runner.horse_uid}>
@@ -109,7 +164,7 @@ const RaceRunners = ({ runners, applyFilter, activeFilter, setModal }) => {
                   <td className={s.horse_box}>
                     <div className={s.horse_box_flex}>
                       <div className={s.horse_box_left}>
-                        <img src="https://images.racingpost.com/png_silks/8/4/5/170548.png" />
+                        <img src={`https://${runner.silk_image_png}`} />
                       </div>
                       <div className={s.horse_box_right}>
                         <div 
@@ -132,30 +187,36 @@ const RaceRunners = ({ runners, applyFilter, activeFilter, setModal }) => {
                   </td>
 
                   <td className="padding-2">
-                    <PlaceBetBtn togglePad={() => openModal(runner)}>
-                      33/1
-                    </PlaceBetBtn>
+                    <div 
+                      className={s.best_odds_box}
+                      onClick={() => openModal(runner)}
+                    >
+                      <div className={s.best_odds_top}>
+                      {odds['bestodds'][runner.horse_uid] ? odds['bestodds'][runner.horse_uid].split("|")[0] : null}                          
+                      </div>                      
+                      <div className={s.best_odds_bottom}>PLACE BET</div>
+                    </div>
                   </td>  
 
                   <td>
                     <div
-                      onClick={() => rpModal({
-                        type: 'jockey',
-                        id: runner.jockey_uid,
-                        name: runner.jockey_name,
-                        date: null,
-                      })}
+                      // onClick={() => rpModal({
+                      //   type: 'jockey',
+                      //   id: runner.jockey_uid,
+                      //   name: runner.jockey_name,
+                      //   date: null,
+                      // })}
                       className={s.trainer}>
                         <span className={s.trainerSpan}>J:</span>
                         {runner.jockey_name}
                     </div>   
                     <div
-                      onClick={() => rpModal({
-                        type: 'trainer',
-                        id: runner.trainer_id,
-                        name: runner.trainer_stylename,
-                        date: null,
-                      })}
+                      // onClick={() => rpModal({
+                      //   type: 'trainer',
+                      //   id: runner.trainer_id,
+                      //   name: runner.trainer_stylename,
+                      //   date: null,
+                      // })}
                       className={s.trainer}>
                         <span className={s.trainerSpan}>T:</span>
                         {runner.trainer_stylename}

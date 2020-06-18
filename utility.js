@@ -13,7 +13,7 @@ const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
 
 const dateObj = () => {
-  let date = new Date(Date.parse("2020-04-16T18:00:00+01:00"));
+  let date = new Date(Date.parse("2020-06-16T18:00:00+01:00"));
 
   return ({
     hours: date.getHours(),

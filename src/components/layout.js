@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
     }
   `)
 
-  console.log({component: 'layout', isRace});
+  // console.log({component: 'layout', isRace});
 
   return (
     <>

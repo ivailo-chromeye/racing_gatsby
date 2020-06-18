@@ -72,3 +72,20 @@
   justify-content: space-between;
   padding: 5px;
 }
+.best_odds_box {
+  cursor: pointer;
+  background-color: #12805e;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 3px 5px;
+  width: 70px;
+}
+.best_odds_top {
+  font-family: ProximaNovaA-Bold, sans-serif;
+  font-size: 26px;
+  line-height: 23px;
+}
+.best_odds_bottom {
+  font-size: 10px;
+}
