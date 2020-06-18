@@ -16,7 +16,7 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
     { label: "Saturday's Races" },
   ]
 
-  console.log(feed);
+  console.log({feed, component: "RacesListTop"});
 
 
   return (

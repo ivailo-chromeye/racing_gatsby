@@ -72,10 +72,8 @@ const Races = props => {
     return val.races.map(race => {
       if(Object.keys(daysRunners).length > 0) {
         race.runnersCount = daysRunners[race.raceid]
-      } else {
-        console.log('fuck off');
       }
-      console.log({race: race, daysRunners});
+      
       return (
         <div 
           onClick={() => navigateToPage(race.raceid)}

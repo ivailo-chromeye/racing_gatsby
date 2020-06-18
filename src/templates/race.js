@@ -18,11 +18,12 @@ const Race = ({ pageContext, location }) => {
   
   const raceID = location.pathname.split("/")[2];
   const race = pageContext.race;
-  const feed = JSON.parse(pageContext.feed);
+  const ascotFeed = JSON.parse(pageContext.ascotFeed);
   const runners = JSON.parse(pageContext.runners);
 
+
   const horsesWithRaces = [];
-  feed.map(day => {
+  ascotFeed.map(day => {
     day.races.map(race => {
       race.API_runners.map(runner => {
         horsesWithRaces.push({
@@ -42,7 +43,7 @@ const Race = ({ pageContext, location }) => {
       activeDay: null,
     }
 
-    feed.map((day, dayindex) => {
+    ascotFeed.map((day, dayindex) => {
       let activeRace = day.races.find(race => {
         return race.race_instance_uid == raceID
       })
@@ -56,7 +57,6 @@ const Race = ({ pageContext, location }) => {
   } // definitely need to rewrite it better
 
   const dayObject = getDayObject();
-  console.log(dayObject);
 
   const [activeTab, setActiveTab] = useState(dayObject.activeDay)
   const [activeRace, setActiveRace] = useState(dayObject.activeRace)
@@ -67,7 +67,7 @@ const Race = ({ pageContext, location }) => {
   });
   const [modal, setModal] = useState({open: false, runner: null});
 
-  let activeDay = !isNaN(activeTab) ? feed[activeTab] : null;
+  let activeDay = !isNaN(activeTab) ? ascotFeed[activeTab] : null;
 
   const applyFilter = (filter) => {
     setSortObj({
@@ -75,7 +75,16 @@ const Race = ({ pageContext, location }) => {
       filter,
       dir: !sortObj.dir,
     })
-  }
+  };
+
+  console.log({
+    activeDay,
+    dayObject,
+    ascotFeed,
+    component: "templates/race.js",
+    raceID,
+    horsesWithRaces,
+  });
 
   const sortedRunners = sortRunners(runners, sortObj)
 
@@ -92,10 +101,10 @@ const Race = ({ pageContext, location }) => {
       <FlexComponent>
         <FlexComponent>
           <div style={{marginRight: 10}}>
-            <Btn cta_url={`/races/${raceID}/odds/`} background="hover_red" type="link">Odds Comparison</Btn>
+            <Btn cta_url={`#`} background="hover_red" type="link">Odds Comparison</Btn>
           </div>
           <div>
-            <Btn cta_url={`/races/${raceID}/tips/`} background="hover_red" type="link">Tips</Btn>
+            <Btn cta_url={`#`} background="hover_red" type="link">Tips</Btn>
           </div>
         </FlexComponent>
         <SearchComponent horsesWithRaces={horsesWithRaces} />
@@ -113,8 +122,8 @@ const Race = ({ pageContext, location }) => {
       </div>
 
       <TextBox
-        borderColor="textbox_border_green"
-        background="dark_green"
+        borderColor="darkblue"
+        background="lightblue"
       >{race.custom_text}</TextBox>
 
       <RaceRunners setModal={setModal} activeFilter={sortObj.filter} runners={sortedRunners} applyFilter={applyFilter} />

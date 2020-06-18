@@ -69,6 +69,9 @@ body {
   margin: 0 auto;
   padding: 0 12px;
 }
+.white {
+  background-color: white;
+}
 a {
   outline: none;
 }
