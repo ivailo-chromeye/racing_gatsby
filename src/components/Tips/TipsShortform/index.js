@@ -146,14 +146,18 @@ const TipsShortform = (props) => {
     // Render
     return (
         <>
-            <SectionTitle title={'Cheltenham Festival Latest Tips'}/>
-            <Slider className="equalHeightSlider" {...settings}>
-                {printTips.map(tip => {
-                    return (
-                        <TipComponent key={tip.id} {...tip}/>
-                    )
-                })}
-            </Slider>
+            <SectionTitle title={'Royal Ascot Latest Tips'}/>
+            <div style={{background: '#fff', padding: '12px 0 20px'}}>
+                <div style={{maxWidth: '1280px', margin: '0 auto'}}>
+                  <Slider className="equalHeightSlider" {...settings}>
+                      {printTips.map(tip => {
+                          return (
+                              <TipComponent key={tip.id} {...tip}/>
+                          )
+                      })}
+                  </Slider>
+                </div>
+            </div>
         </>
     )
 }

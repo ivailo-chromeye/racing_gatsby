@@ -68,7 +68,7 @@ const FreeBetsShortform = (props) => {
 
     return (
         <>
-          <SectionTitle title={'Cheltenham Festival Free bets'}/>
+          <SectionTitle title={'Royal Ascot Free bets'}/>
           <Slider className={[st.freeBetsSlider, "yellowDots", "equalHeightSlider","homeShortformFreeBets"].join(' ')} {...settings}>
             {freeBets.map(fb => {
                 if (props.filter == 'homepage') {

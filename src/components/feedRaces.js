@@ -67,7 +67,7 @@ const FeedRaces = () => {
     } else {
       return (
         <>
-        <SectionTitle margin={0} title={'Cheltenham Festival Races'}/>
+        <SectionTitle margin={0} title={'Royal Ascot Races'}/>
         <Tabs onSelect={handleSelected} selectedIndex={tabIndex}>
           <TabList>
             {tabsDays.map(day => {

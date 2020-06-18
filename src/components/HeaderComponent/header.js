@@ -102,7 +102,7 @@ const Header = () => {
               to="/">
               <img
                 alt=""
-                src="https://www.racingpost.com/cheltenham-festival/wp-content/themes/Cheltenham/images/logo.svg"
+                src="https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200605144223/royal_logo_v3.svg"
               />
             </AniLink>
           </div>

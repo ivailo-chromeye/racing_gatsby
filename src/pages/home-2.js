@@ -8,6 +8,8 @@ import GridLayout from "../components/GridLayout"
 import BettingGuideHomepage from "../components/BettingGuideHomepage"
 import TipsShortform from "../components/Tips/TipsShortform";
 import FAQ from '../components/FAQ'
+import ResultsHomepage from '../components/ResultsHomepage'
+import WideBanner from '../components/WideBannerIframe'
 
 const Homepage = () => {
     return (
@@ -21,11 +23,21 @@ const Homepage = () => {
                 </GridLayout>
                 
                 <FreeBetsShortform filter="homepage"/>
+                
+                <TipsShortform/>
+                
                 <GridLayout responsiveFull={1024} sideGap={12} equalHeight={true} bottomGap={0} responsiveBottomGap={0}>
                     <NewsSliderComponent width="50%"/>
                     <BettingGuideHomepage width="50%"/>
                 </GridLayout>
-                <TipsShortform/>
+                
+                <WideBanner/>
+
+                <GridLayout responsiveFull={1024} sideGap={12} equalHeight={true} bottomGap={0} responsiveBottomGap={0}>
+                    <ResultsHomepage width="calc(100% - 300px)"/>
+                    <a style={{height: '100%', background: '#027b5c', textAlign: 'center'}} href="https://www.bet365.com/olp/racing-post/?affiliate=365_00929317" className="static-offer"><img src="https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/6/20200615143604/bet365_banner_v6.jpg"/></a>
+                </GridLayout>
+                
                 <FAQ />
                 </div>
             </Layout>

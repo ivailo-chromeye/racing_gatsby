@@ -32,7 +32,7 @@ const BettingGuideHomepage = () => {
 
     return (
         <>
-            <SectionTitle horse={true} title={'Cheltenham Festival Betting'}/>
+            <SectionTitle horse={true} title={'Royal Ascot Betting'}/>
             <ArticleComponent {...bettinArticle} />
         </>
     )
