@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./HeaderComponent/header"
@@ -10,6 +10,16 @@ Date.prototype.addHours = function(h) {
 }
 
 const Layout = ({ children }) => {
+  const [isRace, setIsRace] = useState(false);
+
+  useEffect(() => {
+    if(window) {
+      const location = window.location.href;
+      if(location.indexOf("/races/") > -1) {
+        setIsRace(true);
+      }
+    }
+  }, []);
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -21,12 +31,13 @@ const Layout = ({ children }) => {
     }
   `)
 
+  console.log({component: 'layout', isRace});
+
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div className="container">
+      <div className={`container ${isRace ? "white" : null}`}>
         <main>{children}</main>
-        
       </div>
       <Footer />
     </>

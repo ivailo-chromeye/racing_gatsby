@@ -10,7 +10,7 @@ const TextBox = props => {
         color: "var(--white)",
         fontFamily: "proximanovaa-bold",
         padding: "10px 10px",
-        borderTop: `5px solid var(--${props.borderColor})`,
+        borderTop: `2px solid var(--${props.borderColor})`,
       }}
     >
       <h3
