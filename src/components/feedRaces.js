@@ -4,8 +4,6 @@ import '../styles/homeTabs.css';
 import st from '../styles/racecards.module.css';
 
 import diffusion from 'rp-diffusion'
-// import diffusion from '/diffusion.js';
-
 
 import MiniRaceCard from "../components/miniRaceCard"
 import SectionTitle from "../components/SectionTitle"
