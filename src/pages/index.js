@@ -25,7 +25,7 @@ const Homepage = () => {
                     <NewsSliderComponent width="50%"/>
                     <BettingGuideHomepage width="50%"/>
                 </GridLayout>
-                {/* <TipsShortform/> */}
+                <TipsShortform/>
                 <FAQ />
                 </div>
             </Layout>

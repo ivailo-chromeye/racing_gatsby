@@ -29,10 +29,12 @@
 .tipAuthor {
     display: flex;
     align-items: center;
-    margin-bottom: -12px;
-    margin-left: -4px;
-    position: relative;
-    z-index: 2;
+    padding: 6px;
+    border: 1px solid var(--darkblue);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 0;
+    background: #fff;
 
     h3 {
         margin: 0;
@@ -51,16 +53,16 @@
     }
 }
 .tipType {
-    background: #44ADE2;
-    color: #fff;
-    font-weight: normal;
-    padding: 12px;
     margin: 0;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-    position: relative;
-    font-family: ProximaNovaA-SemiBold;
-    padding-left: 45px;
+    font-size: 11px;
+    margin-top: 4px;
+    text-transform: uppercase;
+    background: var(--lightblue);
+    font-family: proximanovaa-semibold;
+    padding: 2px 4px;
+    border-radius: 0px 4px 0px 4px;
+    color: #FFFFFF;
+    display: inline-block;
 
     h3 {
         margin: 0;
@@ -71,7 +73,7 @@
 .tipContent {
     background: #fff;
     padding: 8px 12px;
-    border: 1px solid #a7a7a7;
+    border: 1px solid var(--darkblue);
     border-top: 0;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;

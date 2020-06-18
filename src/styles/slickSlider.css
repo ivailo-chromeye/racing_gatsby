@@ -341,6 +341,7 @@
 .equalHeightSlider.slick-slider.slick-initialized .slick-slide {
 	height: auto;
 	display: flex !important;
+    justify-content: center;
 }
 .equalHeightSlider .slick-slide > div {
 	height: 100%;
