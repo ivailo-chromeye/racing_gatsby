@@ -4,7 +4,7 @@ import PlaceBetBtn from "../smallComponents/PlaceBetBtn"
 import Btn from "../smallComponents/btn/btn"
 import { rpModal } from "../helper/index"
 
-const MiniRaceCard = race => {
+const MiniRaceCard = ({race, raceDateDiffusion}) => {
   const [activePad, setActivePad] = useState(false)
 
   function togglePad() {
@@ -57,7 +57,7 @@ const MiniRaceCard = race => {
                   </p>
                 </div>
                 <PlaceBetBtn togglePad={togglePad}>
-                  -
+                  <span className="pull-odd" data-topic={'HORSES/'+raceDateDiffusion.race_date_diffusion+'/ASCOT/'+race.race_time_diffusion+'/WIN/'+ runner.horse_name.toUpperCase() +'/#BESTODDS'}>-</span>
                 </PlaceBetBtn>
                 {/* <p onClick={togglePad} className={st.odd}>{runner.odds['#BESTODDS']}</p> */}
               </div>

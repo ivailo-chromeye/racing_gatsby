@@ -68,6 +68,7 @@ const Footer = () => {
   // const { items } = data.wordpressAcfOptions.options;
 
   return (
+    <>
     <footer>
       <div className={s.container}>
         <a href="https://www.racingpost.com/sport/">
@@ -102,6 +103,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   )
 }
 
