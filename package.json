@@ -36,6 +36,7 @@
     "react-tooltip": "^4.2.5",
     "react-transition-group": "^4.3.0",
     "react-youtube": "^7.11.2",
+    "rp-diffusion": "^1.0.0",
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {

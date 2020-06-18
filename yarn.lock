@@ -11365,6 +11365,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rp-diffusion@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rp-diffusion/-/rp-diffusion-1.0.0.tgz#f2cad915e7e04e0eade7b30ccfedc8c1d317e5d0"
+  integrity sha512-YtUa/rK1EYj2jyQOEve2xrr5zFLxhGpzwbNLr+56u26jHFQOJA/cYP4AO951hklP1Uq/VVtQG3rJGobKFcJqkw==
+
 run-async@^2.2.0, run-async@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.0.tgz#e59054a5b86876cfae07f431d18cbaddc594f1e8"
