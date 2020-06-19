@@ -13,7 +13,7 @@ const FeedRaces = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [feedItems, setFeedItems] = useState([]);
 
-    const [tabIndex, setTabIndex] = useState(3);
+    const [tabIndex, setTabIndex] = useState(0);
 
 
     useEffect(() => {
@@ -24,10 +24,8 @@ const FeedRaces = () => {
               console.log(result)
               setIsLoaded(true);
               setFeedItems(result);
+              setTabIndex(3)
             },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
             (error) => {
               console.log(error)
               setIsLoaded(true);
