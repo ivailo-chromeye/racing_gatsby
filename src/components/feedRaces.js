@@ -6,7 +6,7 @@ import st from '../styles/racecards.module.css';
 import MiniRaceCard from "../components/miniRaceCard";
 import SectionTitle from "../components/SectionTitle";
 
-import diffusion from "rp-diffusion";
+// import diffusion from "rp-diffusion";
 
 const FeedRaces = () => {
     const [error, setError] = useState(null);
