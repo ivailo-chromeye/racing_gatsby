@@ -37,14 +37,6 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <Helmet>
-        <script src={withPrefix('diffusion.js')}></script>
-        <script src={withPrefix('custom.js')}></script>
-        <script src="https://www.racingpost.com/royal-ascot/wp-content/themes/RoyalAscot/js/diffusion.js"></script>
-        <script>
-          window.diffusion = diffusion;
-        </script>
-      </Helmet>
       <div className={`container ${isRace ? "white" : null}`}>
         <main>{children}</main>
       </div>
