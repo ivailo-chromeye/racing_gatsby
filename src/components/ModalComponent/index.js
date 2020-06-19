@@ -109,9 +109,8 @@ const Modal = ({ modal, setModal }) => {
               
 
                 {Object.entries(bookies).map(([key, value]) => {
-                  console.log(value);
                   return (
-                    <div className={s.odds_compare}>
+                    <div key={key} className={s.odds_compare}>
                       <div className={s.bookie_name}>{value.label}</div>
                         <div className={s.price}>
                           <div className={s[value.className]}>

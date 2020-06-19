@@ -8,7 +8,7 @@ import {rpModal} from '../../helper/index';
 import PlaceBetBtn from '../../smallComponents/PlaceBetBtn';
 import TableTop from "./TableTop";
 
-import diffusion from "rp-diffusion";
+// import d from "rp-diffusion";
 const diffusionConfig = {
   host: 'push-cards.racingpost.com',
   port: 443
@@ -32,6 +32,8 @@ const RaceRunners = ({
   race_date_diffusion, 
   race_time_diffusion,
 }) => {
+
+
   const [state, setState] = useState({activeList: []});
   const [odds, setOdds] = useState({
     bestodds: {},
@@ -79,6 +81,8 @@ const RaceRunners = ({
   // console.log(runners);
 
   useEffect(() => {
+    
+
     const allOddsObject = {
       bestodds: {},
       hOdds: {},
@@ -87,8 +91,9 @@ const RaceRunners = ({
     const len = runners.length;
     // console.log({len, race_date_diffusion, race_time_diffusion});
 
-    diffusion.connect(diffusionConfig).then(session => {
-      console.log(session);
+    window.diffusion.connect(diffusionConfig).then(session => {
+      console.log({diffusion: window.diffusion});
+
       let runnersCounter = 0;
 
       runners.forEach(runner => {
