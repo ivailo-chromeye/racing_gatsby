@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/layout';
 import { useStaticQuery, graphql, Link, navigate } from "gatsby";
-import s from '../styles/races.module.css';
+import s from '../components/RacesPage/races.module.css'; 
 import PageHeadline from '../components/pageHeadline';
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import WideBanner from '../components/WideBannerIframe'
@@ -72,6 +72,7 @@ const Races = props => {
 
   const renderRaces = val => {
     return val.races.map(race => {
+      console.log(race);
       if(Object.keys(daysRunners).length > 0) {
         race.runnersCount = daysRunners[race.raceid]
       }

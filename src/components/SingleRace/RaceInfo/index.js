@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './raceInfo.module.css';
-import { numberWithCommas } from '../../helper/index'
+import { numberWithCommas } from '../../../helper/index'
 
 const RaceInfo = ({ card, dayObject }) => {
   // console.log({ component: "RaceInfo",dayObject });

@@ -8,17 +8,30 @@ const {
 	months,
 	dateObj,
 	distanceObj,
-} = require("./utility")
+} = require("./utility");
+
+// race functions
+const {
+  getFlatRaces,
+  getRacesMenu,
+  getSingleRaceRunners,
+} = require("./raceFunctions");
+
+
+
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const feed = await axios.get(
-    "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/feed.json"
-  );
-  const ascotFeed = await axios.get(
+  // const feed = await axios.get(
+  //   "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/feed.json"
+  // );
+  const ascotFeed = (await axios.get(
     "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/rafeed.json"
-  );
+  )).data;
+
+  const flatRaces = getFlatRaces(ascotFeed);
+  const racesMenu = getRacesMenu(ascotFeed);
   
 
   const runnersArray = [];
@@ -46,32 +59,44 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `).then(async result => {
-    const races = result.data.allWordpressWpRace
-
-
+    // const races = result.data.allWordpressWpRace
+    
+    //
+    // Create Races Page //
+    //
+    createPage({
+      path: `/races/`,
+      component: require.resolve(`./src/templates/races.js`),
+      context: {
+        racesMenu,
+      }
+    });
+  
 
     // console.log(races);
 
     // Create Page for Every Race
-    races.nodes.forEach(race => {
+    // races.nodes.forEach(race => {
       // console.log(race);
-
-
       
-      createPage({
-        path: `/races/${race.acf.raceid}/`,
-        component: require.resolve(`./src/templates/race.js`),
-        context: {
-          race: race.acf,
-          feed: JSON.stringify(feed.data),
-          ascotFeed: JSON.stringify(ascotFeed.data),
-          runners: JSON.stringify(runnersArray),
-          data: JSON.stringify(data),
-        },
+      flatRaces.forEach(race => {
+        createPage({
+          path: `/races/${race.race_instance_uid}/`,
+          component: require.resolve(`./src/templates/race.js`),
+          context: {
+            // race: race.acf,
+            // feed: JSON.stringify(feed.data),
+            // ascotFeed: JSON.stringify(ascotFeed.data),
+            // runners: JSON.stringify(runnersArray),
+            // data: JSON.stringify(data),
+          },
+        })
       })
+      
 
 
 
-    })
+
+    // })
   })
 }

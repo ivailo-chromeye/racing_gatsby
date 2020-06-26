@@ -1,7 +1,7 @@
 import React from "react";
-import s from '../../templates/race.module.css';
+import s from '../singleRace.module.css';
 import ReactTooltip from "react-tooltip";
-import TooltipSVG from '../../images/tooltip.svg';
+import TooltipSVG from '../../../images/tooltip.svg';
 
 const tableTop = [
   {

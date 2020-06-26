@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react'
 
-import SpotlightSVG from '../../smallComponents/svg/spotlightSvg';
-import s from '../../templates/race.module.css';
-import styleRacecards from '../../styles/racecards.module.css'
-import {rpModal} from '../../helper/index';
+import SpotlightSVG from '../../../smallComponents/svg/spotlightSvg';
+import s from '../singleRace.module.css';
+import styleRacecards from '../../../styles/racecards.module.css'
+import {rpModal} from '../../../helper/index';
 
-import PlaceBetBtn from '../../smallComponents/PlaceBetBtn';
+import PlaceBetBtn from '../../../smallComponents/PlaceBetBtn';
 import TableTop from "./TableTop";
 
 // import d from "rp-diffusion";
