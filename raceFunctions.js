@@ -66,8 +66,33 @@ const getSingleRaceRunners = (racesArray, raceID) => {
   return racesArray.find(race => race.race_instance_uid === raceID); // num
 }
 
+const getHorsesWithRaces = feed => {
+  const horsesWithRaces = [];
+  feed.map(day => {
+    day.races.map(race => {
+      race.API_runners.map(runner => {
+        horsesWithRaces.push({
+          date: day.race_date_diffusion,
+          race_instance_title: race.race_instance_title,
+          race_instance_uid: race.race_instance_uid,
+          horse_name: runner.horse_name,
+          horse_uid: runner.horse_uid,
+        })
+      })
+    })
+  });
+
+  return horsesWithRaces;
+}
+
+
+
+
+
+
 module.exports = {
   getFlatRaces,
   getRacesMenu,
   getSingleRaceRunners,
+  getHorsesWithRaces,
 }

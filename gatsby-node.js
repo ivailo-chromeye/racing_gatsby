@@ -15,6 +15,7 @@ const {
   getFlatRaces,
   getRacesMenu,
   getSingleRaceRunners,
+  getHorsesWithRaces,
 } = require("./raceFunctions");
 
 
@@ -32,6 +33,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const flatRaces = getFlatRaces(ascotFeed);
   const racesMenu = getRacesMenu(ascotFeed);
+  const horsesWithRaces = getHorsesWithRaces(ascotFeed);
   
 
   const runnersArray = [];
@@ -69,6 +71,7 @@ exports.createPages = async ({ actions, graphql }) => {
       component: require.resolve(`./src/templates/races.js`),
       context: {
         racesMenu,
+        horsesWithRaces,
       }
     });
   
@@ -84,6 +87,11 @@ exports.createPages = async ({ actions, graphql }) => {
           path: `/races/${race.race_instance_uid}/`,
           component: require.resolve(`./src/templates/race.js`),
           context: {
+            racesMenu,
+            raceid: race.race_instance_uid,
+            raceTime: race.race_time_diffusion,
+            raceDate: race.race_datetime.split("T")[0],
+            horsesWithRaces,
             // race: race.acf,
             // feed: JSON.stringify(feed.data),
             // ascotFeed: JSON.stringify(ascotFeed.data),

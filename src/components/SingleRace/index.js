@@ -15,6 +15,21 @@ import RaceRunners from './RaceRunners'
 import CollapseComponent from "../CollapseComponent";
 
 const Race = ({ pageContext, location }) => {
+  const { 
+    racesMenu,
+    raceid,
+    raceTime,
+    raceDate,
+    horsesWithRaces,
+  } = pageContext;
+
+
+
+  const [state, setState] = useState({
+    activeMenuDay: "2020-06-16",
+  });
+
+  console.log({state});
   
   // const raceID = location.pathname.split("/")[2];
   // const race = pageContext.race;
@@ -22,20 +37,7 @@ const Race = ({ pageContext, location }) => {
   // const runners = JSON.parse(pageContext.runners);
 
 
-  // const horsesWithRaces = [];
-  // ascotFeed.map(day => {
-  //   day.races.map(race => {
-  //     race.API_runners.map(runner => {
-  //       horsesWithRaces.push({
-  //         date: day.race_date_diffusion,
-  //         race_instance_title: race.race_instance_title,
-  //         race_instance_uid: race.race_instance_uid,
-  //         horse_name: runner.horse_name,
-  //         horse_uid: runner.horse_uid,
-  //       })
-  //     })
-  //   })
-  // })
+
 
   // function getDayObject() {
   //   let dayObject = {
@@ -92,15 +94,15 @@ const Race = ({ pageContext, location }) => {
   return (
     <Layout>
       {/* <Modal modal={modal} setModal={setModal} /> */}
-      single race page
-      {/* <RacesListTop
-        dayObject={dayObject}
-        activeTab={activeTab}
-        feed={activeDay}
-        setActiveTab={setActiveTab}
-      /> */}
 
-      {/* <FlexComponent>
+      <RacesListTop 
+        activeMenuDay={state.activeMenuDay}
+        racesMenu={racesMenu}
+        setState={setState}
+        raceid={raceid}
+      />
+
+      <FlexComponent>
         <FlexComponent>
           <div style={{marginRight: 10}}>
             <Btn cta_url={`#`} background="hover_red" type="link">Odds Comparison</Btn>
@@ -110,7 +112,7 @@ const Race = ({ pageContext, location }) => {
           </div>
         </FlexComponent>
         <SearchComponent horsesWithRaces={horsesWithRaces} />
-      </FlexComponent> */}
+      </FlexComponent>
 
       {/* <RaceInfo dayObject={dayObject} card={state.racecard} /> */}
 {/* 
