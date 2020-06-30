@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import React, { useState } from "react"
 import Layout from "../layout"
 import RacesListTop from "./RacesListTop"
-import SearchComponent from '../SearchComponent';
+import SearchComponent from "../SearchComponent";
 import s from './singleRace.module.css';
 import QuestionSVG from '../../smallComponents/svg/questionSvg'
 import Btn from '../../smallComponents/btn/btn'
@@ -29,7 +29,6 @@ const Race = ({ pageContext, location }) => {
     activeMenuDay: "2020-06-16",
   });
 
-  console.log({state});
   
   // const raceID = location.pathname.split("/")[2];
   // const race = pageContext.race;
@@ -102,17 +101,10 @@ const Race = ({ pageContext, location }) => {
         raceid={raceid}
       />
 
-      <FlexComponent>
-        <FlexComponent>
-          <div style={{marginRight: 10}}>
-            <Btn cta_url={`#`} background="hover_red" type="link">Odds Comparison</Btn>
-          </div>
-          <div>
-            <Btn cta_url={`#`} background="hover_red" type="link">Tips</Btn>
-          </div>
-        </FlexComponent>
-        <SearchComponent horsesWithRaces={horsesWithRaces} />
-      </FlexComponent>
+      <SearchComponent 
+        showButtons={true}
+        horsesWithRaces={horsesWithRaces}
+      />
 
       {/* <RaceInfo dayObject={dayObject} card={state.racecard} /> */}
 {/* 

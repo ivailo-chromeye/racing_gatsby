@@ -38,7 +38,7 @@ const RacesListTop = ({
       { 
         <div className={s.list_content}>
           {racesMenu[activeMenuDay]["list"].map((raceArg, raceIndex) => {
-            console.log(raceArg)
+            // console.log(raceArg)
             return (
               <div key={raceIndex}>
                 <AniLink
@@ -68,9 +68,3 @@ const RacesListTop = ({
 }
 
 export default RacesListTop
-// className={/*
-//   raceArg.race_instance_uid !==
-//   dayObject.activeRace.race_instance_uid
-//     ? s.race_top
-//     : s.race_top_active
-// */}

@@ -1,73 +1,41 @@
-import React, { useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import s from './search.module.css';
-import { openInNewWindowRace, rpModal } from '../../helper/index'
-import SearchSVG from '../../smallComponents/svg/searchSvg';
+import React, {useState} from "react";
+import FlexComponent from "../../smallComponents/FlexComponent";
+import s from "./search.module.css";
+import Btn from "../../smallComponents/btn/btn";
+import SearchContent from "./SearchContent";
 
-const Search = ({ horsesWithRaces }) => {
+
+const Search = ({ horsesWithRaces, showButtons }) => {
+
   const [input, setInput] = useState({
     value: '',
     show: false,
   });
-
-  let filtered = horsesWithRaces.filter(h => {
+  
+  const filteredHorses = horsesWithRaces.filter(h => {
     return h.horse_name.toLowerCase().indexOf(input.value.toLowerCase()) > -1
   });
 
+  const showSearchList = (input.value.length > 0 && filteredHorses.length > 0);
+
   return (
-    <div className={s.search_flex}>
-      <div className={s.search_box}>
-        <div className={s.search_fields}>
-          {input.show && <div className={s.field}>
-            <label className={s.search_label}>Horse search:</label>
-            <input 
-              className={s.input}
-              onChange={e => setInput({...input, value: e.target.value})}
-              value={input.value} 
-              type="text" 
-              placeholder="Enter horse name" /></div>}
-
-          <div 
-            onClick={() => setInput({...input, show: !input.show})}
-            className={s.search_btn}>
-            Search
-            <span><SearchSVG /></span>
+    <FlexComponent flexDirection={showSearchList ? "column" : "row"}>
+      {showButtons && <FlexComponent flexDirection="row">
+        <div className={s.odds_comparison_btn}>
+          <Btn cta_url={`#`} background="hover_red" type="link">Odds Comparison</Btn>
         </div>
+        <div>
+          <Btn cta_url={`#`} background="hover_red" type="link">Tips</Btn>
         </div>
-
-        {(input.value.length > 0 && filtered.length > 0) ? <div className={s.horses_container}>
-          <div className={s.search_horses}>
-
-            {filtered.map(h => {
-              
-              return (
-                <div key={h.horse_uid} className={s.horse_feed}>
-                  <span 
-                    onClick={() => rpModal({ 
-                      type: 'horse',
-                      id: h.horse_uid,
-                      name: h.horse_name,
-                      date: null,
-                    })}
-                    className={s.horse_feed_name}>{h.horse_name}</span>
-                  <br />
-                  <span 
-                    onClick={() => rpModal({
-                      type: 'race',
-                      id: h.race_instance_uid,
-                      name: null,
-                      date: h.date,
-                    })}
-                  className={s.horse_feed_races}>{h.race_instance_title}</span>
-                </div>
-              )
-            })}
-          </div>
-        </div> : null}
-
-      </div>
-    </div>
+      </FlexComponent>}
+      <SearchContent
+        showSearchList={showSearchList}
+        filteredHorses={filteredHorses}
+        setInput={setInput} 
+        input={input}
+        horsesWithRaces={horsesWithRaces} />
+    </FlexComponent>
   )
 }
 
-export default Search;
+export default Search

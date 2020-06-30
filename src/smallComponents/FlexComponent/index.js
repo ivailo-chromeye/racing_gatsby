@@ -1,15 +1,14 @@
 import React from 'react';
 
-const style = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-}
-
-const FlexComponent = props => {
+const FlexComponent = ({ flexDirection, children }) => {
   return (
-    <div style={style}>
-      {props.children}
+    <div style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      flexDirection: flexDirection
+    }}>
+      {children}
     </div>
    )
 }
