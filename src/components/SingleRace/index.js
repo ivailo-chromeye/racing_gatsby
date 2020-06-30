@@ -21,9 +21,8 @@ const Race = ({ pageContext, location }) => {
     raceTime,
     raceDate,
     horsesWithRaces,
+    wpRace,
   } = pageContext;
-
-
 
   const [state, setState] = useState({
     activeMenuDay: "2020-06-16",
@@ -106,7 +105,12 @@ const Race = ({ pageContext, location }) => {
         horsesWithRaces={horsesWithRaces}
       />
 
-      {/* <RaceInfo dayObject={dayObject} card={state.racecard} /> */}
+      <RaceInfo 
+        raceDate={raceDate}
+        raceTime={raceTime}
+        wpRace={wpRace} 
+        // card={state.racecard} 
+      />
 {/* 
       <div className={s.detailed_flex}>
         <QuestionSVG />

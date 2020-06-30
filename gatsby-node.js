@@ -55,13 +55,15 @@ exports.createPages = async ({ actions, graphql }) => {
             racing_post_tip_dropdown
             key_race_stats
             what_happened_last_year
-            past_10_winners
+            distance_yard
+            race_class
+            rp_ages_allowed_desc
           }
         }
       }
     }
   `).then(async result => {
-    // const races = result.data.allWordpressWpRace
+    
     
     //
     // Create Races Page //
@@ -81,12 +83,18 @@ exports.createPages = async ({ actions, graphql }) => {
     // Create Page for Every Race
     // races.nodes.forEach(race => {
       // console.log(race);
+
+      const wpRaces = result.data.allWordpressWpRace.nodes
       
       flatRaces.forEach(race => {
+        // comparing str and num.......==........................
+        const wpRace = wpRaces.find(wprace => wprace.acf.raceid == race.race_instance_uid)
+
         createPage({
           path: `/races/${race.race_instance_uid}/`,
           component: require.resolve(`./src/templates/race.js`),
           context: {
+            wpRace,
             racesMenu,
             raceid: race.race_instance_uid,
             raceTime: race.race_time_diffusion,
