@@ -23,41 +23,28 @@ const Race = ({ pageContext, location }) => {
     horsesWithRaces,
     wpRace,
     runners,
+    finished,
   } = pageContext;
-
 
   const [state, setState] = useState({
     activeMenuDay: raceDate,
   });
 
-  // const [sortObj, setSortObj] = useState({
-  //   filter: "start_number",
-  //   dir: false,
-  // });
+  const [sortObj, setSortObj] = useState({
+    filter: "start_number",
+    dir: false,
+  });
   // const [modal, setModal] = useState({open: false, runner: null});
 
-  // const applyFilter = (filter) => {
-  //   setSortObj({
-  //     ...sortObj,
-  //     filter,
-  //     dir: !sortObj.dir,
-  //   })
-  // };
+  const applyFilter = (filter) => {
+    setSortObj({
+      ...sortObj,
+      filter,
+      dir: !sortObj.dir,
+    })
+  };
 
-  console.log({
-    // wpRace
-    // activeDay,
-    // dayObject,
-    // ascotFeed,
-    // component: "templates/race.js",
-    // raceID,
-    // horsesWithRaces,
-    // racecard: state.racecard,
-  });
-
-  // const sortedRunners = sortRunners(dayObject.activeRace.API_runners, sortObj)
-
-
+  const sortedRunners = sortRunners(runners, sortObj)
 
   return (
     <Layout>
@@ -79,7 +66,6 @@ const Race = ({ pageContext, location }) => {
         raceDate={raceDate}
         raceTime={raceTime}
         wpRace={wpRace} 
-        // card={state.racecard} 
       />
 
       <div className={s.detailed_flex}>
@@ -97,10 +83,12 @@ const Race = ({ pageContext, location }) => {
       >{wpRace.acf.custom_text}</TextBox>
 
       <RaceRunners
-        runners={runners}
+        finished={finished}
+        runners={sortedRunners}
         raceDate={raceDate}
         raceTime={raceTime}
         activeFilter="start_number"
+        applyFilter={applyFilter}
       />
 
       {/* <RaceRunners 

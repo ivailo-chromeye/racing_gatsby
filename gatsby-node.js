@@ -103,6 +103,7 @@ exports.createPages = async ({ actions, graphql }) => {
             raceDate: race.race_datetime.split("T")[0],
             horsesWithRaces,
             runners: race.API_runners,
+            finished: race.finished,
             // race: race.acf,
             // feed: JSON.stringify(feed.data),
             // ascotFeed: JSON.stringify(ascotFeed.data),

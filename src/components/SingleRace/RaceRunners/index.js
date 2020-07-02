@@ -24,14 +24,15 @@ const utility = {
 
 const active = {borderBottom: "2px solid var(--yellow_active_filter)"};
 
-const RaceRunners = ({ 
+export default function RaceRunners ({ 
   runners, 
-  // applyFilter, 
+  applyFilter, 
   activeFilter, 
   // setModal, 
   raceDate, 
   raceTime,
-}) => {
+  finished,
+}) {
 
 
   const [state, setState] = useState({activeList: []});
@@ -81,7 +82,8 @@ const RaceRunners = ({
   // console.log(runners);
 
   useEffect(() => {
-    
+    // bail early
+    if(finished) return;
 
     const allOddsObject = {
       bestodds: {},
@@ -145,13 +147,15 @@ const RaceRunners = ({
       <table>
         <thead>
           <TableTop 
-            // applyFilter={applyFilter}
+            finished={finished}
+            applyFilter={applyFilter}
             active={active}
             activeFilter={activeFilter} 
             />
         </thead>
         <tbody>
           {runners.map(runner => {
+            console.log(runner);
             const spotlightActive = state.activeList.indexOf(runner.horse_uid) > -1;
             
             // console.log({
@@ -192,7 +196,7 @@ const RaceRunners = ({
                     </div>
                   </td>
 
-                  <td className="padding-2">
+                  {!finished && <td className="padding-2">
                     <div 
                       className={s.best_odds_box}
                       onClick={() => openModal(runner)}
@@ -202,7 +206,7 @@ const RaceRunners = ({
                       </div>                      
                       <div className={s.best_odds_bottom}>PLACE BET</div>
                     </div>
-                  </td>  
+                  </td>}  
 
                   <td>
                     <div
@@ -250,5 +254,3 @@ const RaceRunners = ({
   </div>
   )
 }
-
-export default RaceRunners;
