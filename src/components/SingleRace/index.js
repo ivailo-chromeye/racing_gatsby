@@ -22,52 +22,19 @@ const Race = ({ pageContext, location }) => {
     raceDate,
     horsesWithRaces,
     wpRace,
+    runners,
   } = pageContext;
 
+
   const [state, setState] = useState({
-    activeMenuDay: "2020-06-16",
+    activeMenuDay: raceDate,
   });
 
-  
-  // const raceID = location.pathname.split("/")[2];
-  // const race = pageContext.race;
-  // const ascotFeed = JSON.parse(pageContext.ascotFeed);
-  // const runners = JSON.parse(pageContext.runners);
-
-
-
-
-  // function getDayObject() {
-  //   let dayObject = {
-  //     activeRace: null,
-  //     activeDay: null,
-  //   }
-
-  //   ascotFeed.map((day, dayindex) => {
-  //     let activeRace = day.races.find(race => {
-  //       return race.race_instance_uid == raceID
-  //     })
-  //     if (activeRace) {
-  //       dayObject["activeRace"] = activeRace
-  //       dayObject["activeDay"] = dayindex
-  //     }
-  //   })
-
-  //   return dayObject
-  // } // definitely need to rewrite it better
-
-  // const dayObject = getDayObject();
-
-  // const [activeTab, setActiveTab] = useState(dayObject.activeDay)
-  // const [activeRace, setActiveRace] = useState(dayObject.activeRace)
-  // const [state, setState] = useState(JSON.parse(pageContext.data));
   // const [sortObj, setSortObj] = useState({
   //   filter: "start_number",
   //   dir: false,
   // });
   // const [modal, setModal] = useState({open: false, runner: null});
-
-  // let activeDay = !isNaN(activeTab) ? ascotFeed[activeTab] : null;
 
   // const applyFilter = (filter) => {
   //   setSortObj({
@@ -77,17 +44,20 @@ const Race = ({ pageContext, location }) => {
   //   })
   // };
 
-  // console.log({
-  //   activeDay,
-  //   dayObject,
-  //   ascotFeed,
-  //   component: "templates/race.js",
-  //   raceID,
-  //   horsesWithRaces,
-  //   racecard: state.racecard,
-  // });
+  console.log({
+    // wpRace
+    // activeDay,
+    // dayObject,
+    // ascotFeed,
+    // component: "templates/race.js",
+    // raceID,
+    // horsesWithRaces,
+    // racecard: state.racecard,
+  });
 
   // const sortedRunners = sortRunners(dayObject.activeRace.API_runners, sortObj)
+
+
 
   return (
     <Layout>
@@ -111,24 +81,29 @@ const Race = ({ pageContext, location }) => {
         wpRace={wpRace} 
         // card={state.racecard} 
       />
-{/* 
+
       <div className={s.detailed_flex}>
         <QuestionSVG />
         <Btn 
           type="black"
-          cta_url={`https://www.racingpost.com/results/2/ascot/2020-03-13/743616/`}>
+          cta_url={`https://www.racingpost.com/results/2/ascot/${raceDate}/${raceid}/`}>
             View Full Result
         </Btn>
-      </div> */}
+      </div>
 
-      {/* <TextBox
+      <TextBox
         borderColor="darkblue"
         background="lightblue"
-      >{race.custom_text}</TextBox> */}
+      >{wpRace.acf.custom_text}</TextBox>
+
+      <RaceRunners
+        runners={runners}
+        raceDate={raceDate}
+        raceTime={raceTime}
+        activeFilter="start_number"
+      />
 
       {/* <RaceRunners 
-        race_time_diffusion={activeDay.races.find(race => race.race_instance_uid == raceID).race_time_diffusion}
-        race_date_diffusion={activeDay.race_date_diffusion}
         setModal={setModal} 
         activeFilter={sortObj.filter} 
         runners={sortedRunners} 

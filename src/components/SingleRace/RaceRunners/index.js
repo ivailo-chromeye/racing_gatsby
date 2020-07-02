@@ -26,11 +26,11 @@ const active = {borderBottom: "2px solid var(--yellow_active_filter)"};
 
 const RaceRunners = ({ 
   runners, 
-  applyFilter, 
+  // applyFilter, 
   activeFilter, 
-  setModal, 
-  race_date_diffusion, 
-  race_time_diffusion,
+  // setModal, 
+  raceDate, 
+  raceTime,
 }) => {
 
 
@@ -42,9 +42,9 @@ const RaceRunners = ({
   });
   const [topic, setTopic] = useState({
     "HORSES": "HORSES",
-    "date": race_date_diffusion,
+    "date": raceDate,
     "venue": "ASCOT",
-    "time": race_time_diffusion,
+    "time": raceTime,
     "WIN": "WIN",
     "horse_name": "",
     "bookie_name": "#BESTODDS",
@@ -52,13 +52,13 @@ const RaceRunners = ({
 
   const openModal = (runner) => {
     console.log('modal');
-    setModal(prevState => {
-      return {
-        ...prevState,
-        open: true,
-        runner,
-      };
-    })
+    // setModal(prevState => {
+    //   return {
+    //     ...prevState,
+    //     open: true,
+    //     runner,
+    //   };
+    // })
   }
 
   const spotlightClick = (horse_uid) => {
@@ -145,9 +145,10 @@ const RaceRunners = ({
       <table>
         <thead>
           <TableTop 
-            applyFilter={applyFilter}
+            // applyFilter={applyFilter}
             active={active}
-            activeFilter={activeFilter} />
+            activeFilter={activeFilter} 
+            />
         </thead>
         <tbody>
           {runners.map(runner => {

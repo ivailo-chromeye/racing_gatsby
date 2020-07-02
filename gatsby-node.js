@@ -90,6 +90,8 @@ exports.createPages = async ({ actions, graphql }) => {
         // comparing str and num.......==........................
         const wpRace = wpRaces.find(wprace => wprace.acf.raceid == race.race_instance_uid)
 
+        console.log({race});
+
         createPage({
           path: `/races/${race.race_instance_uid}/`,
           component: require.resolve(`./src/templates/race.js`),
@@ -100,6 +102,7 @@ exports.createPages = async ({ actions, graphql }) => {
             raceTime: race.race_time_diffusion,
             raceDate: race.race_datetime.split("T")[0],
             horsesWithRaces,
+            runners: race.API_runners,
             // race: race.acf,
             // feed: JSON.stringify(feed.data),
             // ascotFeed: JSON.stringify(ascotFeed.data),

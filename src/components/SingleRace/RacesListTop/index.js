@@ -41,10 +41,8 @@ const RacesListTop = ({
             // console.log(raceArg)
             return (
               <div key={raceIndex}>
-                <AniLink
+                <Link
                   partiallyActive={true}
-                  fade
-                  duration={0.5}
                   className={s.race}
                   to={`/races/${raceArg.race_instance_uid}/`}
                 >
@@ -56,7 +54,7 @@ const RacesListTop = ({
                       {raceArg.race_instance_title}
                     </span>
                   </div>
-                </AniLink>
+                </Link>
               </div>
             )
           })}

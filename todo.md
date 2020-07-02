@@ -1,2 +1,3 @@
-[] fix search same key error
-[] when changing a race in races top menu -> open the correct day
+[x] fix search same key error
+[x] when changing a race in races top menu -> open the correct day
+[x] search for modal to link to .../2/ascot/...
