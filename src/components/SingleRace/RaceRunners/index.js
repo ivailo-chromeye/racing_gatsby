@@ -155,7 +155,7 @@ export default function RaceRunners ({
         </thead>
         <tbody>
           {runners.map(runner => {
-            console.log(runner);
+            // console.log(runner);
             const spotlightActive = state.activeList.indexOf(runner.horse_uid) > -1;
             
             // console.log({

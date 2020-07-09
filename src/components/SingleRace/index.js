@@ -24,7 +24,10 @@ const Race = ({ pageContext, location }) => {
     wpRace,
     runners,
     finished,
+    richFeed,
   } = pageContext;
+
+  console.log({richFeed});
 
   const [state, setState] = useState({
     activeMenuDay: raceDate,
@@ -63,9 +66,13 @@ const Race = ({ pageContext, location }) => {
       />
 
       <RaceInfo 
+        title={richFeed.race_instance_title}
+        distance_yard={richFeed.distance_yard}
+        race_class={richFeed.race_class}
+        rp_ages_allowed_desc={richFeed.rp_ages_allowed_desc}
         raceDate={raceDate}
         raceTime={raceTime}
-        wpRace={wpRace} 
+        // wpRace={wpRace} 
       />
 
       <div className={s.detailed_flex}>

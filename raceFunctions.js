@@ -1,6 +1,9 @@
 // Here we add global data.
 //
 const axios = require("axios");
+const client = axios.create({
+  baseURL: "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/",
+});
 
 const days = {
   '2020-06-16': {
@@ -85,7 +88,24 @@ const getHorsesWithRaces = feed => {
   return horsesWithRaces;
 }
 
+const getRaceMap = async(feed) => {
+  const allraces = getFlatRaces(feed);
 
+  // create promises from the array
+  const createPromises = allraces.map(race => {
+    return client.get(`RA/race/${race.race_instance_uid}.json`)
+  });
+
+  // execute promises
+  const results = await Promise.all(createPromises);
+
+  // map results
+  return results.reduce((acc, race) => {
+    acc[race.data.race_instance_uid] = race.data;
+
+    return acc;
+  }, {});
+}
 
 
 
@@ -95,4 +115,5 @@ module.exports = {
   getRacesMenu,
   getSingleRaceRunners,
   getHorsesWithRaces,
+  getRaceMap,
 }
