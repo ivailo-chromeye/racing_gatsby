@@ -22,7 +22,6 @@ const Race = ({ pageContext, location }) => {
     raceDate,
     horsesWithRaces,
     wpRace,
-    runners,
     finished,
     richFeed,
   } = pageContext;
@@ -47,7 +46,7 @@ const Race = ({ pageContext, location }) => {
     })
   };
 
-  const sortedRunners = sortRunners(runners, sortObj)
+  const sortedRunners = sortRunners(richFeed.API_runners, sortObj)
 
   return (
     <Layout>
@@ -72,6 +71,7 @@ const Race = ({ pageContext, location }) => {
         rp_ages_allowed_desc={richFeed.rp_ages_allowed_desc}
         raceDate={raceDate}
         raceTime={raceTime}
+        winner={richFeed.prizes[0]['prize_sterling']}
       />
 
       <div className={s.detailed_flex}>

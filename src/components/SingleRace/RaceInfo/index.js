@@ -20,6 +20,7 @@ const RaceInfo = ({
   rp_ages_allowed_desc,
   raceTime,
   raceDate,
+  winner,
 }) => {
 
   const transformedDate = transformRaceDateForRaceInfo(raceDate);
@@ -41,7 +42,7 @@ const RaceInfo = ({
       <div className={s.right}>
         <div className={s.prize}>
           <span>Winner:</span>
-          <span>lorem{/*`£${card.prize}`*/}</span>
+          <span>£{winner}</span>
         </div>
         <div className={s.no_of_runners}>
           <span>Runners:</span>

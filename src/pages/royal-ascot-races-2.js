@@ -5,8 +5,8 @@ import { useStaticQuery, graphql, Link, navigate } from "gatsby";
 import s from '../components/RacesPage/races.module.css'; 
 import PageHeadline from '../components/pageHeadline';
 import AniLink from "gatsby-plugin-transition-link/AniLink";
-import WideBanner from '../components/WideBannerIframe'
-import WideBanner2 from '../components/WideBannerIframe2'
+// import WideBanner from '../components/WideBannerIframe'
+// import WideBanner2 from '../components/WideBannerIframe2'
 
 import axios from 'axios';
 const feedURL = "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/rafeed.json";
@@ -144,7 +144,7 @@ const Races = props => {
           </div>
         </div>
         <div className={s.smallAdContainer}>
-          <WideBanner2 />
+          {/* <WideBanner2 /> */}
         </div>
       </div>
 
@@ -224,7 +224,7 @@ The fourth day of Royal Ascot takes place on Friday 19th June. If you don't know
 <span style="font-weight: 400;">The </span><a href="https://racingpost.com/royal-ascot/queen-alexandra-stakes/"><b>Queen Alexandra Stakes </b></a><span style="font-weight: 400;">is run over the marathon trip of 2m6f and is restricted to older horses. It is not only the longest race of the meeting but also the longest race of the meeting but also the longest contest in Flat racing. It will always be associated with Brown Jack, one of Royal Ascot's greatest performers, who won this race six times in a row between 1929 and 1934. </span>`}}>
 
       </div>
-      <WideBanner />
+      {/* <WideBanner /> */}
       </div>
       
     </Layout>

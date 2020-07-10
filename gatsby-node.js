@@ -104,14 +104,8 @@ exports.createPages = async ({ actions, graphql }) => {
             raceTime: race.race_time_diffusion,
             raceDate: race.race_datetime.split("T")[0],
             horsesWithRaces,
-            runners: race.API_runners,
             finished: race.finished,
             richFeed: raceMap[race.race_instance_uid],
-            // race: race.acf,
-            // feed: JSON.stringify(feed.data),
-            // ascotFeed: JSON.stringify(ascotFeed.data),
-            // runners: JSON.stringify(runnersArray),
-            // data: JSON.stringify(data),
           },
         })
       })

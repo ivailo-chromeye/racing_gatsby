@@ -83,60 +83,60 @@ export default function RaceRunners ({
 
   useEffect(() => {
     // bail early
-    if(finished) return;
+    // if(finished) return;
 
-    const allOddsObject = {
-      bestodds: {},
-      hOdds: {},
-      hOddsEw: {},
-    };
-    const len = runners.length;
-    // console.log({len, race_date_diffusion, race_time_diffusion});
+    // const allOddsObject = {
+    //   bestodds: {},
+    //   hOdds: {},
+    //   hOddsEw: {},
+    // };
+    // const len = runners.length;
+    // // console.log({len, race_date_diffusion, race_time_diffusion});
 
-    window.diffusion.connect(diffusionConfig).then(session => {
-      console.log({diffusion: window.diffusion});
+    // window.diffusion.connect(diffusionConfig).then(session => {
+    //   console.log({diffusion: window.diffusion});
 
-      let runnersCounter = 0;
+    //   let runnersCounter = 0;
 
-      runners.forEach(runner => {
-        const topicArray = [];
+    //   runners.forEach(runner => {
+    //     const topicArray = [];
 
-        for (let key in topic) {
-          key === "horse_name" ? topicArray.push(runner.horse_name_diffusion) : topicArray.push(topic[key]);
-        }
+    //     for (let key in topic) {
+    //       key === "horse_name" ? topicArray.push(runner.horse_name_diffusion) : topicArray.push(topic[key]);
+    //     }
 
-        session
-          .subscribe(topicArray.join("/"))
-          .transform(String)
-          .on('update', value => {
+    //     session
+    //       .subscribe(topicArray.join("/"))
+    //       .transform(String)
+    //       .on('update', value => {
 
-            runnersCounter += 1;
+    //         runnersCounter += 1;
 
-            let arr = value.split("\u0002");
-            let bestOdds = arr[7];
+    //         let arr = value.split("\u0002");
+    //         let bestOdds = arr[7];
             
 
-            let decimalOdds;
-            if (bestOdds === "Evs") {
-              decimalOdds = "Evs";
-            } else if (bestOdds && bestOdds !== "-") {
-              decimalOdds = utility.fractional(bestOdds)
-            }
+    //         let decimalOdds;
+    //         if (bestOdds === "Evs") {
+    //           decimalOdds = "Evs";
+    //         } else if (bestOdds && bestOdds !== "-") {
+    //           decimalOdds = utility.fractional(bestOdds)
+    //         }
 
-            // console.log({runner:runner.horse_uid,bestOdds, decimalOdds});
-            allOddsObject["bestodds"][runner.horse_uid] = `${bestOdds}|${decimalOdds}`;
+    //         // console.log({runner:runner.horse_uid,bestOdds, decimalOdds});
+    //         allOddsObject["bestodds"][runner.horse_uid] = `${bestOdds}|${decimalOdds}`;
 
-            if (runnersCounter === runners.length) {
-              setOdds(allOddsObject)
-            }
-          });
+    //         if (runnersCounter === runners.length) {
+    //           setOdds(allOddsObject)
+    //         }
+    //       });
 
-      });
+    //   });
 
       
 
 
-    });
+    // });
   }, []);
 
   // console.log({odds});

@@ -5,8 +5,8 @@ import { useStaticQuery, graphql, Link, navigate } from "gatsby";
 import s from "./races.module.css";
 import PageHeadline from '../pageHeadline';
 import AniLink from "gatsby-plugin-transition-link/AniLink";
-import WideBanner from '../WideBannerIframe'
-import WideBanner2 from '../WideBannerIframe2'
+// import WideBanner from '../WideBannerIframe'
+// import WideBanner2 from '../WideBannerIframe2'
 
 
 const Races = props => {
@@ -89,11 +89,11 @@ const Races = props => {
           </div>
         </div>
         <div className={s.smallAdContainer}>
-          <WideBanner2 />
+          {/* <WideBanner2 /> */}
         </div>
       </div>
 
-      <WideBanner />
+      {/* <WideBanner /> */}
       </div>
       
     </Layout>
