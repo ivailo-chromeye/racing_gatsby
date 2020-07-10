@@ -24,7 +24,7 @@ const FeedRaces = () => {
               console.log(result)
               setIsLoaded(true);
               setFeedItems(result);
-              setTabIndex(3)
+              setTabIndex(0)
             },
             (error) => {
               console.log(error)
