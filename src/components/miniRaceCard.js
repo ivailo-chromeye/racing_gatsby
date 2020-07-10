@@ -26,7 +26,7 @@ const MiniRaceCard = ({race, raceDateDiffusion}) => {
             <div key={runner.horse_uid} className={st.runnersContainer}>
               <div className={st.runner}>
                 <p className={st.position}>{runner.start_number}</p>
-                {/* <img className={st.silk} src={runner.silk_image_png} /> */}
+                <img className={st.silk} src={runner.silk_image_png} />
                 <div>
                   <h3
                     onClick={() =>
