@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './raceInfo.module.css';
-import { numberWithCommas } from '../../../helper/index';
 
 const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
@@ -14,34 +13,17 @@ const transformRaceDateForRaceInfo = raceDate => {
   ];
 }
 
-const transformDistance = yards => {
-
-  let miles = Math.trunc(yards / 1760)
-  let yardsLeft = yards % 1760
-  let furlongs = Math.trunc(yardsLeft / 220)
-  let left = yardsLeft % 220
-  return ({
-    miles,
-    furlongs,
-    left,
-  })
-}
-
 const RaceInfo = ({ 
-  wpRace,
+  title,
+  distance_yard,
+  race_class,
+  rp_ages_allowed_desc,
   raceTime,
   raceDate,
+  winner,
 }) => {
 
-  const {
-    title,
-    distance_yard,
-    race_class,
-    rp_ages_allowed_desc,
-  } = wpRace.acf;
-
   const transformedDate = transformRaceDateForRaceInfo(raceDate);
-  const transformedDistance = transformDistance(+distance_yard);
 
   return (
     <div className={s.race_card}>
@@ -51,7 +33,7 @@ const RaceInfo = ({
           <div className={s.race_time}>{transformedDate.join(" ")}</div>
         </div>
         <div className={s.race_distance}>
-          {transformedDistance.miles}m{transformedDistance.furlongs}f{transformedDistance.left}y
+          {distance_yard}
           &nbsp;{title}{" "}
           (Class {race_class})
           ({rp_ages_allowed_desc})
@@ -60,7 +42,7 @@ const RaceInfo = ({
       <div className={s.right}>
         <div className={s.prize}>
           <span>Winner:</span>
-          <span>lorem{/*`£${card.prize}`*/}</span>
+          <span>£{winner}</span>
         </div>
         <div className={s.no_of_runners}>
           <span>Runners:</span>

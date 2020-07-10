@@ -13,6 +13,7 @@ import Modal from '../ModalComponent'
 import RaceInfo from './RaceInfo';
 import RaceRunners from './RaceRunners'
 import CollapseComponent from "../CollapseComponent";
+import BettingForecast from "./BettingForecast"
 
 const Race = ({ pageContext, location }) => {
   const { 
@@ -22,9 +23,11 @@ const Race = ({ pageContext, location }) => {
     raceDate,
     horsesWithRaces,
     wpRace,
-    runners,
     finished,
+    richFeed,
   } = pageContext;
+
+  console.log({richFeed});
 
   const [state, setState] = useState({
     activeMenuDay: raceDate,
@@ -44,7 +47,7 @@ const Race = ({ pageContext, location }) => {
     })
   };
 
-  const sortedRunners = sortRunners(runners, sortObj)
+  const sortedRunners = sortRunners(richFeed.API_runners, sortObj)
 
   return (
     <Layout>
@@ -63,9 +66,13 @@ const Race = ({ pageContext, location }) => {
       />
 
       <RaceInfo 
+        title={richFeed.race_instance_title}
+        distance_yard={richFeed.distance_yard}
+        race_class={richFeed.race_class}
+        rp_ages_allowed_desc={richFeed.rp_ages_allowed_desc}
         raceDate={raceDate}
         raceTime={raceTime}
-        wpRace={wpRace} 
+        winner={richFeed.prizes[0]['prize_sterling']}
       />
 
       <div className={s.detailed_flex}>
@@ -91,13 +98,9 @@ const Race = ({ pageContext, location }) => {
         applyFilter={applyFilter}
       />
 
-      {/* <RaceRunners 
-        setModal={setModal} 
-        activeFilter={sortObj.filter} 
-        runners={sortedRunners} 
-        applyFilter={applyFilter} /> */}
-{/* 
-      <CollapseComponent label="VERDICT">
+      
+
+      {/* <CollapseComponent label="VERDICT">
         <div dangerouslySetInnerHTML={{__html: race.racing_post_tip_dropdown}}></div>
       </CollapseComponent>
       <CollapseComponent label="PREVIOUS GOLD CUP WINNERS (table)">
@@ -110,7 +113,11 @@ const Race = ({ pageContext, location }) => {
         <div dangerouslySetInnerHTML={{__html: race.what_happened_last_year}}></div>
       </CollapseComponent> */}
 
+      <BettingForecast 
+        betting_forecast={richFeed.betting_forecast}
+      />
 
+      
 
 
     </Layout>

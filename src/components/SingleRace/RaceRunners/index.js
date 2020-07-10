@@ -83,60 +83,60 @@ export default function RaceRunners ({
 
   useEffect(() => {
     // bail early
-    if(finished) return;
+    // if(finished) return;
 
-    const allOddsObject = {
-      bestodds: {},
-      hOdds: {},
-      hOddsEw: {},
-    };
-    const len = runners.length;
-    // console.log({len, race_date_diffusion, race_time_diffusion});
+    // const allOddsObject = {
+    //   bestodds: {},
+    //   hOdds: {},
+    //   hOddsEw: {},
+    // };
+    // const len = runners.length;
+    // // console.log({len, race_date_diffusion, race_time_diffusion});
 
-    window.diffusion.connect(diffusionConfig).then(session => {
-      console.log({diffusion: window.diffusion});
+    // window.diffusion.connect(diffusionConfig).then(session => {
+    //   console.log({diffusion: window.diffusion});
 
-      let runnersCounter = 0;
+    //   let runnersCounter = 0;
 
-      runners.forEach(runner => {
-        const topicArray = [];
+    //   runners.forEach(runner => {
+    //     const topicArray = [];
 
-        for (let key in topic) {
-          key === "horse_name" ? topicArray.push(runner.horse_name_diffusion) : topicArray.push(topic[key]);
-        }
+    //     for (let key in topic) {
+    //       key === "horse_name" ? topicArray.push(runner.horse_name_diffusion) : topicArray.push(topic[key]);
+    //     }
 
-        session
-          .subscribe(topicArray.join("/"))
-          .transform(String)
-          .on('update', value => {
+    //     session
+    //       .subscribe(topicArray.join("/"))
+    //       .transform(String)
+    //       .on('update', value => {
 
-            runnersCounter += 1;
+    //         runnersCounter += 1;
 
-            let arr = value.split("\u0002");
-            let bestOdds = arr[7];
+    //         let arr = value.split("\u0002");
+    //         let bestOdds = arr[7];
             
 
-            let decimalOdds;
-            if (bestOdds === "Evs") {
-              decimalOdds = "Evs";
-            } else if (bestOdds && bestOdds !== "-") {
-              decimalOdds = utility.fractional(bestOdds)
-            }
+    //         let decimalOdds;
+    //         if (bestOdds === "Evs") {
+    //           decimalOdds = "Evs";
+    //         } else if (bestOdds && bestOdds !== "-") {
+    //           decimalOdds = utility.fractional(bestOdds)
+    //         }
 
-            // console.log({runner:runner.horse_uid,bestOdds, decimalOdds});
-            allOddsObject["bestodds"][runner.horse_uid] = `${bestOdds}|${decimalOdds}`;
+    //         // console.log({runner:runner.horse_uid,bestOdds, decimalOdds});
+    //         allOddsObject["bestodds"][runner.horse_uid] = `${bestOdds}|${decimalOdds}`;
 
-            if (runnersCounter === runners.length) {
-              setOdds(allOddsObject)
-            }
-          });
+    //         if (runnersCounter === runners.length) {
+    //           setOdds(allOddsObject)
+    //         }
+    //       });
 
-      });
+    //   });
 
       
 
 
-    });
+    // });
   }, []);
 
   // console.log({odds});
@@ -155,7 +155,7 @@ export default function RaceRunners ({
         </thead>
         <tbody>
           {runners.map(runner => {
-            console.log(runner);
+            // console.log({runner});
             const spotlightActive = state.activeList.indexOf(runner.horse_uid) > -1;
             
             // console.log({
@@ -168,7 +168,7 @@ export default function RaceRunners ({
                 <tr className={'runner_tr'} >
                   <td>
                     <div className="start_number">{runner.start_number}</div>
-                    <div className="form">{runner.figures}</div>
+                    <div className="form">{/*runner.figures*/}</div>
                   </td>
 
                   <td className={s.horse_box}>
@@ -210,23 +210,23 @@ export default function RaceRunners ({
 
                   <td>
                     <div
-                      // onClick={() => rpModal({
-                      //   type: 'jockey',
-                      //   id: runner.jockey_uid,
-                      //   name: runner.jockey_name,
-                      //   date: null,
-                      // })}
+                      onClick={() => rpModal({
+                        type: 'jockey',
+                        id: runner.jockey_uid,
+                        name: runner.jockey_name,
+                        date: null,
+                      })}
                       className={s.trainer}>
                         <span className={s.trainerSpan}>J:</span>
                         {runner.jockey_name}
                     </div>   
                     <div
-                      // onClick={() => rpModal({
-                      //   type: 'trainer',
-                      //   id: runner.trainer_id,
-                      //   name: runner.trainer_stylename,
-                      //   date: null,
-                      // })}
+                      onClick={() => rpModal({
+                        type: 'trainer',
+                        id: runner.trainer_id,
+                        name: runner.trainer_stylename,
+                        date: null,
+                      })}
                       className={s.trainer}>
                         <span className={s.trainerSpan}>T:</span>
                         {runner.trainer_stylename}
@@ -234,13 +234,13 @@ export default function RaceRunners ({
                   </td>
 
                   <td>{runner.horse_age}</td>
-                  <td>11-7</td>
-                  <td>155</td>
-                  <td>158</td>
+                  <td>{runner.weight_carried_lbs}</td>
+                  <td>{runner.official_rating}</td>
+                  <td>{runner.rp_postmark}</td>
                 </tr>
                 {spotlightActive && <tr className={s.runner_spotlight}>
                   <td colSpan={8}>
-                    <div className="spotlight_flex">Lorem text for {runner.horse_name}</div>
+                    <div className="spotlight_flex">{runner.spotlight}</div>
                   </td>
                 </tr>}
               </Fragment>
