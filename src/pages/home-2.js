@@ -11,6 +11,7 @@ import FAQ from '../components/FAQ'
 import ResultsHomepage from '../components/ResultsHomepage'
 import WideBanner from '../components/WideBannerIframe'
 import WideBanner2 from '../components/WideBannerIframe2'
+import BottomCopyHomepage from '../components/BottomCopyHomepage'
 
 const Homepage = () => {
     return (
@@ -39,6 +40,7 @@ const Homepage = () => {
                     <WideBanner2 />
                 </GridLayout>
                 
+                <BottomCopyHomepage/>
                 <FAQ />
                 </div>
             </Layout>

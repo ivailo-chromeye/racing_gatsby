@@ -21,7 +21,7 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
         {props.postBodyComponents}
-        <script src="https://www.racingpost.com/royal-ascot/wp-content/themes/RoyalAscot/js/diffusion.js"></script>
+        {/* <script src="https://www.racingpost.com/royal-ascot/wp-content/themes/RoyalAscot/js/diffusion.js"></script> */}
       </body>
     </html>
   )
