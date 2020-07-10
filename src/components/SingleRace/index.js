@@ -72,7 +72,6 @@ const Race = ({ pageContext, location }) => {
         rp_ages_allowed_desc={richFeed.rp_ages_allowed_desc}
         raceDate={raceDate}
         raceTime={raceTime}
-        // wpRace={wpRace} 
       />
 
       <div className={s.detailed_flex}>

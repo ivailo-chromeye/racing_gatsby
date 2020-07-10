@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './raceInfo.module.css';
-import { numberWithCommas } from '../../../helper/index';
 
 const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
