@@ -155,7 +155,7 @@ export default function RaceRunners ({
         </thead>
         <tbody>
           {runners.map(runner => {
-            // console.log(runner);
+            // console.log({runner});
             const spotlightActive = state.activeList.indexOf(runner.horse_uid) > -1;
             
             // console.log({
@@ -168,7 +168,7 @@ export default function RaceRunners ({
                 <tr className={'runner_tr'} >
                   <td>
                     <div className="start_number">{runner.start_number}</div>
-                    <div className="form">{runner.figures}</div>
+                    <div className="form">{/*runner.figures*/}</div>
                   </td>
 
                   <td className={s.horse_box}>
@@ -210,23 +210,23 @@ export default function RaceRunners ({
 
                   <td>
                     <div
-                      // onClick={() => rpModal({
-                      //   type: 'jockey',
-                      //   id: runner.jockey_uid,
-                      //   name: runner.jockey_name,
-                      //   date: null,
-                      // })}
+                      onClick={() => rpModal({
+                        type: 'jockey',
+                        id: runner.jockey_uid,
+                        name: runner.jockey_name,
+                        date: null,
+                      })}
                       className={s.trainer}>
                         <span className={s.trainerSpan}>J:</span>
                         {runner.jockey_name}
                     </div>   
                     <div
-                      // onClick={() => rpModal({
-                      //   type: 'trainer',
-                      //   id: runner.trainer_id,
-                      //   name: runner.trainer_stylename,
-                      //   date: null,
-                      // })}
+                      onClick={() => rpModal({
+                        type: 'trainer',
+                        id: runner.trainer_id,
+                        name: runner.trainer_stylename,
+                        date: null,
+                      })}
                       className={s.trainer}>
                         <span className={s.trainerSpan}>T:</span>
                         {runner.trainer_stylename}
@@ -234,13 +234,13 @@ export default function RaceRunners ({
                   </td>
 
                   <td>{runner.horse_age}</td>
-                  <td>11-7</td>
-                  <td>155</td>
-                  <td>158</td>
+                  <td>{runner.weight_carried_lbs}</td>
+                  <td>{runner.official_rating}</td>
+                  <td>{runner.rp_postmark}</td>
                 </tr>
                 {spotlightActive && <tr className={s.runner_spotlight}>
                   <td colSpan={8}>
-                    <div className="spotlight_flex">Lorem text for {runner.horse_name}</div>
+                    <div className="spotlight_flex">{runner.spotlight}</div>
                   </td>
                 </tr>}
               </Fragment>

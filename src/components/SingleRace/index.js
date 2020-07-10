@@ -13,6 +13,7 @@ import Modal from '../ModalComponent'
 import RaceInfo from './RaceInfo';
 import RaceRunners from './RaceRunners'
 import CollapseComponent from "../CollapseComponent";
+import BettingForecast from "./BettingForecast"
 
 const Race = ({ pageContext, location }) => {
   const { 
@@ -97,13 +98,9 @@ const Race = ({ pageContext, location }) => {
         applyFilter={applyFilter}
       />
 
-      {/* <RaceRunners 
-        setModal={setModal} 
-        activeFilter={sortObj.filter} 
-        runners={sortedRunners} 
-        applyFilter={applyFilter} /> */}
-{/* 
-      <CollapseComponent label="VERDICT">
+      
+
+      {/* <CollapseComponent label="VERDICT">
         <div dangerouslySetInnerHTML={{__html: race.racing_post_tip_dropdown}}></div>
       </CollapseComponent>
       <CollapseComponent label="PREVIOUS GOLD CUP WINNERS (table)">
@@ -116,7 +113,11 @@ const Race = ({ pageContext, location }) => {
         <div dangerouslySetInnerHTML={{__html: race.what_happened_last_year}}></div>
       </CollapseComponent> */}
 
+      <BettingForecast 
+        betting_forecast={richFeed.betting_forecast}
+      />
 
+      
 
 
     </Layout>

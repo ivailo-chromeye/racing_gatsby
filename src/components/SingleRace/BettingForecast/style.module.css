@@ -1,0 +1,10 @@
+.betting_forecast {
+  border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    padding: 10px 10px;
+    margin: 20px 0px;
+}
+
+.betting_forecast span:first-child {
+  font-family: proximanovaa-semibold;
+}
