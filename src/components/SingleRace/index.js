@@ -98,24 +98,32 @@ const Race = ({ pageContext, location }) => {
         applyFilter={applyFilter}
       />
 
-      
-
-      {/* <CollapseComponent label="VERDICT">
-        <div dangerouslySetInnerHTML={{__html: race.racing_post_tip_dropdown}}></div>
-      </CollapseComponent>
-      <CollapseComponent label="PREVIOUS GOLD CUP WINNERS (table)">
-        <div dangerouslySetInnerHTML={{__html: race.past_10_winners}}></div>
-      </CollapseComponent>
-      <CollapseComponent label="KEY GOLD CUP STATS">
-        <div dangerouslySetInnerHTML={{__html: race.key_race_stats}}></div>
-      </CollapseComponent>
-      <CollapseComponent label="WHAT HAPPENED LAST YEAR">
-        <div dangerouslySetInnerHTML={{__html: race.what_happened_last_year}}></div>
-      </CollapseComponent> */}
-
       <BettingForecast 
         betting_forecast={richFeed.betting_forecast}
       />
+
+      <CollapseComponent label="VERDICT">
+        <div>
+          {richFeed.verdict.verdict.comments.split("\\b").join("").split("\\p").join("")}
+        </div>
+      </CollapseComponent>
+      <CollapseComponent label="PREVIOUS GOLD CUP WINNERS (table)">
+        <div 
+          // dangerouslySetInnerHTML={{__html: race.past_10_winners}}
+          ></div>
+      </CollapseComponent>
+      <CollapseComponent label="KEY GOLD CUP STATS">
+        <div 
+          // dangerouslySetInnerHTML={{__html: race.key_race_stats}}
+          ></div>
+      </CollapseComponent>
+      <CollapseComponent label="WHAT HAPPENED LAST YEAR">
+        <div 
+          // dangerouslySetInnerHTML={{__html: race.what_happened_last_year}}
+          ></div>
+      </CollapseComponent>
+
+
 
       
 
