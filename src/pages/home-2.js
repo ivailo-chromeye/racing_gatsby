@@ -33,11 +33,11 @@ const Homepage = () => {
                     <BettingGuideHomepage width="50%"/>
                 </GridLayout>
                 
-                <WideBanner/>
+                {/* <WideBanner/> */}
 
                 <GridLayout responsiveFull={1024} sideGap={12} equalHeight={true} bottomGap={0} responsiveBottomGap={0}>
                     <ResultsHomepage width="calc(100% - 312px)"/>
-                    <WideBanner2 />
+                    <BettingGuideHomepage width="312px"/>
                 </GridLayout>
                 
                 <BottomCopyHomepage/>
