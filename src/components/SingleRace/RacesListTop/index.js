@@ -2,33 +2,31 @@ import React from "react"
 import { Link } from "gatsby"
 import s from "./racesListTop.module.css"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import ArrowSVG from '../../smallComponents/svg/arrowSvg';
-import NoItemsAvailable from "../../smallComponents/NoItemsAvailable"
+import ArrowSVG from '../../../smallComponents/svg/arrowSvg';
+import NoItemsAvailable from "../../../smallComponents/NoItemsAvailable"
 
-const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
-
-  const days = [
-    { label: "Tuesday's Races" },
-    { label: "Wednesday's Races" },
-    { label: "Thursday's Races" },
-    { label: "Friday's Races" },
-    { label: "Saturday's Races" },
-  ]
+const RacesListTop = ({ 
+  racesMenu,
+  activeMenuDay, 
+  // feed, 
+  setState,
+  raceid,
+}) => {
 
   return (
     <>
       <div className={s.races_list}>
         <div className={s.list_top}>
-          {days.map((day, i) => {
+          {Object.entries(racesMenu).map(([date, val]) => {
             return (
               <div
-                onClick={() => setActiveTab(activeTab !== i ? i : null)}
-                key={day.label}
+                onClick={() => setState(prevState => ({...prevState, activeMenuDay: date}))}
+                key={val.menuLabel}
                 className={s.card}
               >
-                <div className={activeTab === i ? s.card_name_active : s.card_name}>
+                <div className={activeMenuDay === date ? s.card_name_active : s.card_name}>
                   <div className={s.list_top_card_name}>
-                    {day.label}
+                    {val.menuLabel}
                   </div>
                 </div>
               </div>
@@ -37,27 +35,18 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
         </div>
       </div>
 
-      {!feed ? <NoItemsAvailable message="No races" /> : 
+      { 
         <div className={s.list_content}>
-          {feed.races.map((raceArg, raceIndex) => {
+          {racesMenu[activeMenuDay]["list"].map((raceArg, raceIndex) => {
             // console.log(raceArg)
             return (
               <div key={raceIndex}>
-                <AniLink
+                <Link
                   partiallyActive={true}
-                  fade
-                  duration={0.5}
                   className={s.race}
                   to={`/races/${raceArg.race_instance_uid}/`}
                 >
-                  <div
-                    className={
-                      raceArg.race_instance_uid !==
-                      dayObject.activeRace.race_instance_uid
-                        ? s.race_top
-                        : s.race_top_active
-                    }
-                  >
+                  <div className={raceArg.race_instance_uid === raceid ? s.race_top_active : s.race_top}>
                     <span className={s.race_top_time}>
                       {raceArg.race_time_diffusion}
                     </span>
@@ -65,7 +54,7 @@ const RacesListTop = ({ dayObject, activeTab, feed, setActiveTab }) => {
                       {raceArg.race_instance_title}
                     </span>
                   </div>
-                </AniLink>
+                </Link>
               </div>
             )
           })}

@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react'
 
-import SpotlightSVG from '../../smallComponents/svg/spotlightSvg';
-import s from '../../templates/race.module.css';
-import styleRacecards from '../../styles/racecards.module.css'
-import {rpModal} from '../../helper/index';
+import SpotlightSVG from '../../../smallComponents/svg/spotlightSvg';
+import s from '../singleRace.module.css';
+import styleRacecards from '../../../styles/racecards.module.css'
+import {rpModal} from '../../../helper/index';
 
-import PlaceBetBtn from '../../smallComponents/PlaceBetBtn';
+import PlaceBetBtn from '../../../smallComponents/PlaceBetBtn';
 import TableTop from "./TableTop";
 
 // import d from "rp-diffusion";
@@ -24,14 +24,15 @@ const utility = {
 
 const active = {borderBottom: "2px solid var(--yellow_active_filter)"};
 
-const RaceRunners = ({ 
+export default function RaceRunners ({ 
   runners, 
   applyFilter, 
   activeFilter, 
-  setModal, 
-  race_date_diffusion, 
-  race_time_diffusion,
-}) => {
+  // setModal, 
+  raceDate, 
+  raceTime,
+  finished,
+}) {
 
 
   const [state, setState] = useState({activeList: []});
@@ -42,9 +43,9 @@ const RaceRunners = ({
   });
   const [topic, setTopic] = useState({
     "HORSES": "HORSES",
-    "date": race_date_diffusion,
+    "date": raceDate,
     "venue": "ASCOT",
-    "time": race_time_diffusion,
+    "time": raceTime,
     "WIN": "WIN",
     "horse_name": "",
     "bookie_name": "#BESTODDS",
@@ -52,13 +53,13 @@ const RaceRunners = ({
 
   const openModal = (runner) => {
     console.log('modal');
-    setModal(prevState => {
-      return {
-        ...prevState,
-        open: true,
-        runner,
-      };
-    })
+    // setModal(prevState => {
+    //   return {
+    //     ...prevState,
+    //     open: true,
+    //     runner,
+    //   };
+    // })
   }
 
   const spotlightClick = (horse_uid) => {
@@ -81,7 +82,8 @@ const RaceRunners = ({
   // console.log(runners);
 
   useEffect(() => {
-    
+    // bail early
+    if(finished) return;
 
     const allOddsObject = {
       bestodds: {},
@@ -145,12 +147,15 @@ const RaceRunners = ({
       <table>
         <thead>
           <TableTop 
+            finished={finished}
             applyFilter={applyFilter}
             active={active}
-            activeFilter={activeFilter} />
+            activeFilter={activeFilter} 
+            />
         </thead>
         <tbody>
           {runners.map(runner => {
+            console.log(runner);
             const spotlightActive = state.activeList.indexOf(runner.horse_uid) > -1;
             
             // console.log({
@@ -191,7 +196,7 @@ const RaceRunners = ({
                     </div>
                   </td>
 
-                  <td className="padding-2">
+                  {!finished && <td className="padding-2">
                     <div 
                       className={s.best_odds_box}
                       onClick={() => openModal(runner)}
@@ -201,7 +206,7 @@ const RaceRunners = ({
                       </div>                      
                       <div className={s.best_odds_bottom}>PLACE BET</div>
                     </div>
-                  </td>  
+                  </td>}  
 
                   <td>
                     <div
@@ -249,5 +254,3 @@ const RaceRunners = ({
   </div>
   )
 }
-
-export default RaceRunners;

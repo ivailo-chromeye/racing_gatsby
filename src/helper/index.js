@@ -35,7 +35,7 @@ export const timeSince = timeStamp => {
 export const rpModal = ({ type, id, name, date }) => {
   const baseURL = "https://www.racingpost.com/";
   const participantUrl = `${baseURL}/profile/${type}/${id}/${f(name)}`;
-  const raceURL = `${baseURL}/results/11/cheltenham/${date}/${id}/`;
+  const raceURL = `${baseURL}/results/2/ascot/${date}/${id}/`;
 
   if(window) {
     window.open(
