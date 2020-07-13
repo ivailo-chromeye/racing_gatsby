@@ -100,8 +100,8 @@ const Footer = () => {
         </div>
 
         <div className={s.footer_menu}>
-          <a href="https://www.raig.org/" target="_blank">RAIG</a>
-          <a href="http://www.gambleaware.co.uk/" target="_blank">Gambleaware</a>
+          <a rel="noopener" href="https://www.raig.org/" target="_blank">RAIG</a>
+          <a rel="noopener" href="http://www.gambleaware.co.uk/" target="_blank">Gambleaware</a>
         </div>
       </div>
     </footer>

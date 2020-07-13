@@ -181,7 +181,7 @@ const FeedRaces = () => {
               return (
                 <div key={day.race_date} style={{position: 'relative'}}>
                   <TabPanel className={[st.racecardsWrapper, 'scrollit'].join(' ')}>
-                    <button onClick={slideLeft} className={st.slidePrev} type="button" name="prev"></button>
+                    <button onClick={slideLeft} className={st.slidePrev} type="button" aria-label="prev"></button>
                     {
                       day.races.map(race => {
                         return (
@@ -189,7 +189,7 @@ const FeedRaces = () => {
                         )
                       })
                     }
-                    <button onClick={slideRight} className={st.slideNext} type="button" name="next"></button>
+                    <button onClick={slideRight} className={st.slideNext} type="button" aria-label="next"></button>
                     </TabPanel>
                   </div>
               )
