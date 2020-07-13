@@ -23,7 +23,7 @@ const SingleSelection = (data) => {
             </div>
           </div>
           <h3>{selection.race.title}</h3>
-          <LazyLoadImage src={selection.horse.silk_image_png}/>
+          <LazyLoadImage alt={'silk'} src={selection.horse.silk_image_png}/>
           {/* <img src={selection.horse.silk_image_png}/> */}
           <h4>{selection.horse.horse_name}</h4>
           <div style={{textAlign: 'center', marginTop: '12px'}}>

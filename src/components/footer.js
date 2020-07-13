@@ -75,7 +75,7 @@ const Footer = () => {
       <div className={s.container}>
         <a href="https://www.racingpost.com/sport/">
           
-          <LazyLoadImage className={s.img} src={"https://rp.chromeye.com/cheltenham-festival/wp-content/themes/Cheltenham/images/rp_logo.svg"}/>
+          <LazyLoadImage alt={'logo'} className={s.img} src={"https://rp.chromeye.com/cheltenham-festival/wp-content/themes/Cheltenham/images/rp_logo.svg"}/>
           {/* <img className={s.img} src="https://rp.chromeye.com/cheltenham-festival/wp-content/themes/Cheltenham/images/rp_logo.svg" /> */}
         </a>
 
