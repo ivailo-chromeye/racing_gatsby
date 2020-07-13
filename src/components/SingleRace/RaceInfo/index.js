@@ -21,6 +21,7 @@ const RaceInfo = ({
   raceTime,
   raceDate,
   winner,
+  no_of_runners,
 }) => {
 
   const transformedDate = transformRaceDateForRaceInfo(raceDate);
@@ -45,8 +46,8 @@ const RaceInfo = ({
           <span>£{winner}</span>
         </div>
         <div className={s.no_of_runners}>
-          <span>Runners:</span>
-          <span>{/*dayObject.activeRace.API_runners.length*/}</span>
+          <span>Runners: </span>
+          <span>{no_of_runners}</span>
         </div>
         <div className={s.going_type_desc}>
           <span>Going:</span>
