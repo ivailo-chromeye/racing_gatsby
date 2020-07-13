@@ -1,0 +1,84 @@
+.races {
+  display: flex;
+    background: #fff;
+    padding: 12px;
+}
+.races>div {
+  margin: 5px 10px;
+  flex: 1;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.races>div:before {
+  background: #fdd835;
+  height: 40px;
+  text-align: center;
+  color: #171717;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ProximaNovaA-Bold;
+  font-size: 15px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.day16:before {
+  content: 'TUESDAY';
+}
+.day17:before {
+  content: 'WEDNESDAY';
+}
+.day18:before {
+  content: 'THURSDAY';
+}
+.day19:before {
+  content: 'FRIDAY';
+}
+.day20:before {
+  content: 'SATURDAY';
+}
+.races a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #171717;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 5px 12px;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  padding-right: 100px;
+}
+.races a:before {
+  
+  content: 'View Odds';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #D11F25;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-family: proximanovaa-semibold;
+}
+.races a div {
+  height: 30px;
+}
+.races a:after {
+  position: absolute;
+  content: '';
+  height: 0px;
+  width: 100%;
+  background: inherit;
+  left: 0;
+  bottom: 0;
+}
+.races a span {
+  font-family: ProximaNovaA-Bold;
+}
