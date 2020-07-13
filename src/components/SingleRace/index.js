@@ -102,11 +102,11 @@ const Race = ({ pageContext, location }) => {
         betting_forecast={richFeed.betting_forecast}
       />
 
-      <CollapseComponent label="VERDICT">
+      {/* <CollapseComponent label="VERDICT">
         <div>
           {richFeed.verdict.verdict.comments.split("\\b").join("").split("\\p").join("")}
         </div>
-      </CollapseComponent>
+      </CollapseComponent> */}
       <CollapseComponent label="PREVIOUS GOLD CUP WINNERS (table)">
         <div 
           // dangerouslySetInnerHTML={{__html: race.past_10_winners}}
