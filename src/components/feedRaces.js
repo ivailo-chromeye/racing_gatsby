@@ -5,6 +5,7 @@ import st from '../styles/racecards.module.css';
 
 import MiniRaceCard from "../components/miniRaceCard";
 import SectionTitle from "../components/SectionTitle";
+import NoResults from "../components/NoResults";
 
 // import diffusion from "rp-diffusion";
 
@@ -157,7 +158,12 @@ const FeedRaces = () => {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return (
+        <>
+          <SectionTitle margin={0} title={'Royal Ascot Races'}/>
+          <NoResults/>
+        </>
+      );
     } else {
       return (
         <>
