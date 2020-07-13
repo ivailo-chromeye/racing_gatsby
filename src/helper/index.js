@@ -85,6 +85,28 @@ export const sortRunners = (runners, sortObj) => {
           return a.horse_age < b.horse_age ? 1 : -1;
         }
       }
+      case "wgt": {
+        if(sortObj.dir) {
+          console.log(a);
+          return a.weight_carried_lbs > b.weight_carried_lbs ? 1 : -1;
+        } else {
+          return a.weight_carried_lbs < b.weight_carried_lbs ? 1 : -1;
+        }
+      }
+      case "or": {
+        if(sortObj.dir) {
+          return a.official_rating > b.official_rating ? 1 : -1;
+        } else {
+          return a.official_rating < b.official_rating ? 1 : -1;
+        }
+      }
+      case "rpr": {
+        if(sortObj.dir) {
+          return a.rp_postmark > b.rp_postmark ? 1 : -1;
+        } else {
+          return a.rp_postmark < b.rp_postmark ? 1 : -1;
+        }
+      }
       default: return 1;
     }
   });
