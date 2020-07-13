@@ -1,3 +1,4 @@
+/* nav */
 .sec_nav {
   display: flex;
   justify-content: center;
@@ -20,3 +21,58 @@
   padding-right: 8px;
   border-right: 2px solid #fff;
 }
+
+/* tips list */
+.container {
+  background: #e0e0e0;
+  max-width: 1440px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+.single_race {
+  background: var(--darkblue);
+  margin-bottom: 12px;
+  position: relative;
+}
+.single_race h3 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  padding: 16px 80px 16px 40px;
+  background-position: right;
+  font-size: 16px;
+  color: #fff;
+  font-weight: normal;
+  font-family: ProximaNovaA-Regular;
+  margin: 0;
+  position: relative;
+}
+.single_race > h3:before {
+  content: '';
+  background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200604104051/header_element_v1.svg);
+  width: 5px;
+  left: -5px;
+  position: absolute;
+  top: 0;
+  display: block;
+  height: calc(100% + 4px);
+  background-repeat: no-repeat;
+  background-size: 180% 100%;
+  background-position: top;
+  transform: rotateY(180deg);
+}
+.single_race > h3 span {
+  color: var(--yellow);
+  font-family: ProximaNovaA-Bold;
+  margin-right: 12px;
+}
+
+
+
+
+
+
+
+

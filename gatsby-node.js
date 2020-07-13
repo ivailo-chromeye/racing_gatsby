@@ -85,13 +85,13 @@ exports.createPages = async ({ actions, graphql }) => {
     // https://www.racingpost.com/royal-ascot/tips/day-2/
     // etc
     //
-    Object.entries(racesMenu).forEach(([day, race], index, array) => {
+    Object.entries(racesMenu).forEach(([day, dayObject], index, array) => {
       const dayNumber = index + 1;
       createPage({
         path: `/royal-ascot/tips/day-${index + 1}/`,
         component: require.resolve(`./src/templates/TipsDay.js`),
         context: {
-          race,
+          dayObject,
           dayNumber,
           daysNav: Array.from({length: array.length}),
         },

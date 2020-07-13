@@ -6,12 +6,12 @@ import DaysNav from "./DaysNav"
 
 const TipsDay = ({ pageContext, location }) => {
   const {
-    race,
+    dayObject,
     dayNumber,
     daysNav,
   } = pageContext;
 
-  console.log({daysNav,race, dayNumber});
+  console.log({list: dayObject.list});
 
   return (
     <Layout>
@@ -21,6 +21,18 @@ const TipsDay = ({ pageContext, location }) => {
       />
 
       <DaysNav daysNav={daysNav} dayNumber={dayNumber} />
+
+      {dayObject.list.map(race => {
+        console.log(race);
+        return (
+          <div className={s.single_race}>
+            <h3>
+              <span>{race.race_time_diffusion}</span>
+              {race.race_instance_title}
+            </h3>
+          </div>
+        )
+      })}
 
     </Layout>
   )

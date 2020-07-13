@@ -1,15 +1,19 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import s from './style.module.css';
+import React from "react"
+import { Link } from "gatsby"
+import s from "./style.module.css"
 
 const DaysNav = ({ daysNav, dayNumber }) => {
-  console.log(dayNumber);
+  console.log(dayNumber)
   return (
     <div className={s.sec_nav}>
-      {daysNav.map((u,index) => {
-        const day = index + 1;
+      {daysNav.map((u, index) => {
+        const day = index + 1
         return (
-          <Link className={dayNumber === day ? s.active : ""} key={index} to={`/royal-ascot/tips/day-${day}`}>
+          <Link
+            className={dayNumber === day ? s.active : ""}
+            key={index}
+            to={`/royal-ascot/tips/day-${day}`}
+          >
             Day {day} Tips
           </Link>
         )
@@ -18,4 +22,4 @@ const DaysNav = ({ daysNav, dayNumber }) => {
   )
 }
 
-export default DaysNav;
+export default DaysNav
