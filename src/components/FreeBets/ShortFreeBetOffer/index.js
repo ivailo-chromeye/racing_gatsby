@@ -11,7 +11,7 @@ const ShortFreeBetOffer = (data) => {
             <div className={st.freeBetBody}>
                 <h2>{offerData.offer_title}</h2>
                 {/* <h3>{offerData.offer_subtitle}</h3> */}
-                <Btn type="a" background="btn_red" cta_url={offerData.cta_url}>
+                <Btn type="a" background="btn_red" cta_url={offerData.cta_url} rel="noopener">
                     {offerData.cta_copy}
                 </Btn>
                 <div className={st.fbTerms} dangerouslySetInnerHTML={{ __html: offerData.terms }}></div>

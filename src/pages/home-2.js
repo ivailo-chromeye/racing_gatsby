@@ -23,7 +23,7 @@ const Homepage = () => {
                 <div style={{background: '#f2f2f2'}}>
                 <GridLayout responsiveFull={1279} sideGap={0} equalHeight={true} bottomGap={0} responsiveBottomGap={0}>
                     <FeedRaces width="80%"/>
-                    <a style={{height: '100%', background: '#027b5c', textAlign: 'center'}} href="https://www.bet365.com/olp/racing-post/?affiliate=365_00929317" className="static-offer"><img src="https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/6/20200713111821/bet365_banner_v7.jpg"/></a>
+                    <a style={{height: '100%', background: '#027b5c', textAlign: 'center'}} href="https://www.bet365.com/olp/racing-post/?affiliate=365_00929317" className="static-offer"><img alt={'promo'} src="https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/6/20200713111821/bet365_banner_v7.jpg"/></a>
                 </GridLayout>
 
                 <LazyLoadComponent>           

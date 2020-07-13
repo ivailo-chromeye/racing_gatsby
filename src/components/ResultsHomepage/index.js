@@ -67,7 +67,7 @@ const ResultsHomepage = () => {
                         return (
                             <div className={st.runner}>
                                 <h6>{runner.pos}</h6>
-                                <LazyLoadImage src={runner.silk_image_png}/>
+                                <LazyLoadImage alt={'Silk'} src={runner.silk_image_png}/>
                                 {/* <img src={runner.silk_image_png}/> */}
                                 <div>
                                     <h3>{runner.horse_name}</h3>

@@ -11,7 +11,7 @@ const FreeBetOffer = (data) => {
     return (
         <div key={id} className={st.offer}>
             <div>
-                <LazyLoadImage src={offer.bookmaker_icon ? offer.bookmaker_icon.source_url : "https://via.placeholder.com/150x150"}/>
+                <LazyLoadImage alt={'ico'} src={offer.bookmaker_icon ? offer.bookmaker_icon.source_url : "https://via.placeholder.com/150x150"}/>
                 {/* <img src={offer.bookmaker_icon ? offer.bookmaker_icon.source_url : "https://via.placeholder.com/150x150"} alt=""/> */}
             </div>
             <div>
@@ -29,7 +29,7 @@ const FreeBetOffer = (data) => {
                     </div>
                     <div>
                         <div className="offer-bottom">
-                            <a className={st.offerBtn} rel="nofollow" target="_blank" href={offer.cta_url}>{offer.cta_copy}</a>
+                            <a className={st.offerBtn} rel="noopener" target="_blank" href={offer.cta_url}>{offer.cta_copy}</a>
                         </div>
                     </div>
                     <div className={st.offerTerms} dangerouslySetInnerHTML={{ __html: offer.terms }}></div>

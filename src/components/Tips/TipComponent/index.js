@@ -7,7 +7,7 @@ const TipComponent = (data) => {
     return (
         <div className={st.tip}>
             <div className={st.tipAuthor}>
-                <img src="https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200302133821/David-Jennings.png" />
+                <img alt="img" src="https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200302133821/David-Jennings.png" />
                 <div>
                     <h3>Joe Black</h3>
                     <div className={st.tipType}>

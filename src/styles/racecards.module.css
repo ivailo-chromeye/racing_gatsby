@@ -67,9 +67,9 @@
 }
 .race-detail {
   color: #171717;
-  font-size: 10px;
-  margin: 0px 0 16px;
-  font-family: ProximaNovaA-SemiBold;
+  font-size: 12px;
+  margin: 0 0 16px;
+  font-family: ProximaNovaA-regular;
 }
 .runner {
   display: flex;
