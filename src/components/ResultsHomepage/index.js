@@ -3,6 +3,8 @@ import st from './styles.module.scss';
 
 import SectionTitle from "../SectionTitle"
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 const ResultsHomepage = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -65,7 +67,8 @@ const ResultsHomepage = () => {
                         return (
                             <div className={st.runner}>
                                 <h6>{runner.pos}</h6>
-                                <img src={runner.silk_image_png}/>
+                                <LazyLoadImage src={runner.silk_image_png}/>
+                                {/* <img src={runner.silk_image_png}/> */}
                                 <div>
                                     <h3>{runner.horse_name}</h3>
                                     <p>{runner.jockey_name}</p>

@@ -2,6 +2,8 @@ import React from 'react';
 import s from '../styles/footer.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 //
 // Using options page in order to gather data for the footer
 // Please don't modify, it's for testing purposes
@@ -72,9 +74,9 @@ const Footer = () => {
     <footer>
       <div className={s.container}>
         <a href="https://www.racingpost.com/sport/">
-          <img
-            className={s.img}
-            src="https://rp.chromeye.com/cheltenham-festival/wp-content/themes/Cheltenham/images/rp_logo.svg" />
+          
+          <LazyLoadImage className={s.img} src={"https://rp.chromeye.com/cheltenham-festival/wp-content/themes/Cheltenham/images/rp_logo.svg"}/>
+          {/* <img className={s.img} src="https://rp.chromeye.com/cheltenham-festival/wp-content/themes/Cheltenham/images/rp_logo.svg" /> */}
         </a>
 
         <div className={s.social_area}>
