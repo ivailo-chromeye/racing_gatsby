@@ -1,2 +1,6 @@
-// Transform data from feed.json, wordpress, api in order to get
-// expected results
+export const transformVerdict = verdict => {
+  if(verdict) {
+    return verdict.split("\\b").join("").split("\\p").join("");
+  } 
+  return "";
+}

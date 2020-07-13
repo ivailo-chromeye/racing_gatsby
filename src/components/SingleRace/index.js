@@ -13,7 +13,8 @@ import Modal from '../ModalComponent'
 import RaceInfo from './RaceInfo';
 import RaceRunners from './RaceRunners'
 import CollapseComponent from "../CollapseComponent";
-import BettingForecast from "./BettingForecast"
+import BettingForecast from "./BettingForecast";
+import { transformVerdict } from "../../helper/transform";
 
 const Race = ({ pageContext, location }) => {
   const { 
@@ -47,8 +48,8 @@ const Race = ({ pageContext, location }) => {
     })
   };
 
-  const sortedRunners = sortRunners(richFeed.API_runners, sortObj)
-
+  const sortedRunners = sortRunners(richFeed.API_runners, sortObj);
+  
   return (
     <Layout>
       {/* <Modal modal={modal} setModal={setModal} /> */}
@@ -73,6 +74,7 @@ const Race = ({ pageContext, location }) => {
         raceDate={raceDate}
         raceTime={raceTime}
         winner={richFeed.prizes[0]['prize_sterling']}
+        no_of_runners={richFeed.API_runners.length}
       />
 
       <div className={s.detailed_flex}>
@@ -104,7 +106,7 @@ const Race = ({ pageContext, location }) => {
 
       <CollapseComponent label="VERDICT">
         <div>
-          {richFeed.verdict.verdict.comments.split("\\b").join("").split("\\p").join("")}
+          {transformVerdict(richFeed.verdict.verdict.comments)}
         </div>
       </CollapseComponent>
       <CollapseComponent label="PREVIOUS GOLD CUP WINNERS (table)">
