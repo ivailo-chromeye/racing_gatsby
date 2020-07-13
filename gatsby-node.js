@@ -1,14 +1,14 @@
 const axios = require("axios")
 const { pick } = require("lodash")
 const data = require("./data")
-const runners = require('./runners.json')
-const { 
-	runnerFields,
-	numberWithCommas,
-	months,
-	dateObj,
-	distanceObj,
-} = require("./utility");
+const runners = require("./runners.json")
+const {
+  runnerFields,
+  numberWithCommas,
+  months,
+  dateObj,
+  distanceObj,
+} = require("./utility")
 
 // race functions
 const {
@@ -17,31 +17,21 @@ const {
   getSingleRaceRunners,
   getHorsesWithRaces,
   getRaceMap,
-} = require("./raceFunctions");
-
-
-
+} = require("./raceFunctions")
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  // const feed = await axios.get(
-  //   "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/feed.json"
-  // );
-  const ascotFeed = (await axios.get(
-    "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/RA/feed.json"
-  )).data;
+  const ascotFeed = (
+    await axios.get(
+      "https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/RA/feed.json"
+    )
+  ).data
 
-  const flatRaces = getFlatRaces(ascotFeed);
-  const racesMenu = getRacesMenu(ascotFeed);
-  const horsesWithRaces = getHorsesWithRaces(ascotFeed); 
-  const raceMap = await getRaceMap(ascotFeed);
-
-  const runnersArray = [];
-
-  for (let key in runners.runners) {
-    runnersArray.push(pick(runners.runners[key], runnerFields))
-  }
+  const flatRaces = getFlatRaces(ascotFeed)
+  const racesMenu = getRacesMenu(ascotFeed)
+  const horsesWithRaces = getHorsesWithRaces(ascotFeed)
+  const raceMap = await getRaceMap(ascotFeed)
 
   await graphql(`
     {
@@ -59,13 +49,14 @@ exports.createPages = async ({ actions, graphql }) => {
             distance_yard
             race_class
             rp_ages_allowed_desc
+            racingpost_tip_text
+            racingpost_tip_show
+            race_preview_text
           }
         }
       }
     }
   `).then(async result => {
-    
-    
     //
     // Create Races Page //
     //
@@ -75,8 +66,8 @@ exports.createPages = async ({ actions, graphql }) => {
       context: {
         racesMenu,
         horsesWithRaces,
-      }
-    });
+      },
+    })
 
     //
     // Create Betting odds page https://rp.chromeye.com/royal-ascot/betting-odds/
@@ -86,64 +77,77 @@ exports.createPages = async ({ actions, graphql }) => {
       component: require.resolve(`./src/templates/BettingOdds.js`),
       context: {
         racesMenu,
-      }
+      },
     });
-  
 
-    // console.log(races);
+    //
+    // https://www.racingpost.com/royal-ascot/tips/day-1/
+    // https://www.racingpost.com/royal-ascot/tips/day-2/
+    // etc
+    //
+    Object.entries(racesMenu).forEach(([day, race], index, array) => {
+      const dayNumber = index + 1;
+      createPage({
+        path: `/royal-ascot/tips/day-${index + 1}/`,
+        component: require.resolve(`./src/templates/TipsDay.js`),
+        context: {
+          race,
+          dayNumber,
+          daysNav: Array.from({length: array.length}),
+        },
+      });
+    });
 
-    // Create Page for Every Race
-    // races.nodes.forEach(race => {
-      // console.log(race);
+    const wpRaces = result.data.allWordpressWpRace.nodes
+    flatRaces.forEach(race => {
+      // comparing str and num.......==........................
+      const wpRace = wpRaces.find(
+        wprace => wprace.acf.raceid == race.race_instance_uid
+      )
 
-      const wpRaces = result.data.allWordpressWpRace.nodes
-      
-      flatRaces.forEach(race => {
-        // comparing str and num.......==........................
-        const wpRace = wpRaces.find(wprace => wprace.acf.raceid == race.race_instance_uid);
+      raceDate = race.race_datetime.split("T")[0]
 
-        raceDate = race.race_datetime.split("T")[0];
-        //race_instance_uid: 758810,
-        //"https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/RA/race/758728.json";
+      // Single race
+      createPage({
+        path: `/races/${race.race_instance_uid}/`,
+        component: require.resolve(`./src/templates/race.js`),
+        context: {
+          wpRace,
+          racesMenu,
+          raceid: race.race_instance_uid,
+          raceTime: race.race_time_diffusion,
+          raceDate,
+          horsesWithRaces,
+          finished: race.finished,
+          richFeed: raceMap[race.race_instance_uid],
+        },
+      })
 
-        createPage({
-          path: `/races/${race.race_instance_uid}/`,
-          component: require.resolve(`./src/templates/race.js`),
-          context: {
-            wpRace,
-            racesMenu,
-            raceid: race.race_instance_uid,
-            raceTime: race.race_time_diffusion,
-            raceDate,
-            horsesWithRaces,
-            finished: race.finished,
-            richFeed: raceMap[race.race_instance_uid],
-          },
-        });
+      // Odds
+      createPage({
+        path: `/races/${race.race_instance_uid}/odds/`,
+        component: require.resolve(`./src/templates/raceOdds`),
+        context: {
+          raceid: race.race_instance_uid,
+          raceTime: race.race_time_diffusion,
+          raceDate,
+          componentName: "odds",
+          richFeed: raceMap[race.race_instance_uid],
+        },
+      })
 
-        createPage({
-          path: `/races/${race.race_instance_uid}/odds/`,
-          component: require.resolve(`./src/templates/raceOdds`),
-          context: {
-            raceid: race.race_instance_uid,
-            raceTime: race.race_time_diffusion,
-            raceDate,
-            componentName: "odds",
-            richFeed: raceMap[race.race_instance_uid],
-          }
-        });
-
-        createPage({
-          path: `/races/${race.race_instance_uid}/tips/`,
-          component: require.resolve(`./src/templates/raceTips`),
-          context: {
-            raceid: race.race_instance_uid,
-            raceTime: race.race_time_diffusion,
-            raceDate,
-            componentName: "tips",
-            richFeed: raceMap[race.race_instance_uid],
-          }
-        });
-      }) // end of flatRaces forEach
+      // Tips
+      createPage({
+        path: `/races/${race.race_instance_uid}/tips/`,
+        component: require.resolve(`./src/templates/raceTips`),
+        context: {
+          raceid: race.race_instance_uid,
+          raceTime: race.race_time_diffusion,
+          raceDate,
+          componentName: "tips",
+          richFeed: raceMap[race.race_instance_uid],
+        },
+      })
+    }) // end of flatRaces forEach
   })
 }

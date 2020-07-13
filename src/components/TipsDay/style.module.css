@@ -1,0 +1,22 @@
+.sec_nav {
+  display: flex;
+  justify-content: center;
+  background: var(--lightblue);
+  padding: 16px;
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
+.sec_nav a {
+  font-size: 14px;
+  font-family: ProximaNovaA-Bold;
+  color: #fff;
+  text-decoration: none;
+}
+.sec_nav a.active {
+  color: var(--yellow);
+}
+.sec_nav a:not(:last-child) {
+  margin-right: 8px;
+  padding-right: 8px;
+  border-right: 2px solid #fff;
+}

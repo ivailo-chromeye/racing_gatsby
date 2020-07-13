@@ -29,6 +29,7 @@ const Race = ({ pageContext, location }) => {
     richFeed,
   } = pageContext;
 
+  console.log({racesMenu});
 
   const [state, setState] = useState({
     activeMenuDay: raceDate,
@@ -48,7 +49,6 @@ const Race = ({ pageContext, location }) => {
     })
   };
 
-  console.log(sortObj);
 
   const sortedRunners = sortRunners(richFeed.API_runners, sortObj);
   
