@@ -48,6 +48,8 @@ const Race = ({ pageContext, location }) => {
     })
   };
 
+  console.log(sortObj);
+
   const sortedRunners = sortRunners(richFeed.API_runners, sortObj);
   
   return (
@@ -104,11 +106,11 @@ const Race = ({ pageContext, location }) => {
         betting_forecast={richFeed.betting_forecast}
       />
 
-      {/* <CollapseComponent label="VERDICT">
+      <CollapseComponent label="VERDICT">
         <div>
           {transformVerdict(richFeed.verdict.verdict.comments)}
         </div>
-      </CollapseComponent> */}
+      </CollapseComponent>
       <CollapseComponent label="PREVIOUS GOLD CUP WINNERS (table)">
         <div 
           // dangerouslySetInnerHTML={{__html: race.past_10_winners}}
