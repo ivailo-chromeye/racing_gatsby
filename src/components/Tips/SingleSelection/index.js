@@ -1,6 +1,8 @@
 import React from "react"
 import st from "./styles.module.scss"
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 const SingleSelection = (data) => {
 
     var selection = data.selections[0]
@@ -21,7 +23,8 @@ const SingleSelection = (data) => {
             </div>
           </div>
           <h3>{selection.race.title}</h3>
-          <img src={selection.horse.silk_image_png}/>
+          <LazyLoadImage src={selection.horse.silk_image_png}/>
+          {/* <img src={selection.horse.silk_image_png}/> */}
           <h4>{selection.horse.horse_name}</h4>
           <div style={{textAlign: 'center', marginTop: '12px'}}>
               <a className={[st[data.bookmaker], st.betBtn].join(' ')} href="#bet">Bet here</a>

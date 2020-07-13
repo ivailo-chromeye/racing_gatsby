@@ -1,6 +1,8 @@
 import React from "react"
 import st from "./styles.module.scss"
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 const FreeBetOffer = (data) => {
     console.log(data)
     const id = data.id
@@ -9,7 +11,8 @@ const FreeBetOffer = (data) => {
     return (
         <div key={id} className={st.offer}>
             <div>
-                <img src={offer.bookmaker_icon ? offer.bookmaker_icon.source_url : "https://via.placeholder.com/150x150"} alt=""/>
+                <LazyLoadImage src={offer.bookmaker_icon ? offer.bookmaker_icon.source_url : "https://via.placeholder.com/150x150"}/>
+                {/* <img src={offer.bookmaker_icon ? offer.bookmaker_icon.source_url : "https://via.placeholder.com/150x150"} alt=""/> */}
             </div>
             <div>
                 <div className={st.innerWrap}>
