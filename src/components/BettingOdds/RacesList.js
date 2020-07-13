@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import { Link } from "gatsby"
 import s from "./style.module.css"
 import SectionTitle from "../SectionTitle"
 
@@ -12,14 +13,16 @@ const RacesList = ({ racesMenu }) => {
         {Object.entries(racesMenu).map(([date, day]) => (
           <div key={date} className={s[`day${date.split("-")[2]}`]}>
             {
-              day.list.map(race => (
-                  <a key={race.race_instance_uid} href={`https://www.racingpost.com/results/2/ascot/2020-06-16/758734/`}>
+              day.list.map(race => {
+                return (
+                  <Link key={race.race_instance_uid} to={`/races/${race.race_instance_uid}/odds`}>
                     <div>
                       <span>{race.race_time_diffusion}</span> - {race.race_instance_title}
                     </div>
                     
-                  </a>
-              ))
+                  </Link>
+                )
+              })
             }
           </div>
         ))}
