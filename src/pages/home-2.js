@@ -13,6 +13,8 @@ import WideBanner from '../components/WideBannerIframe'
 import WideBanner2 from '../components/WideBannerIframe2'
 import BottomCopyHomepage from '../components/BottomCopyHomepage'
 
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
+
 const Homepage = () => {
     return (
         <>
@@ -26,22 +28,35 @@ const Homepage = () => {
                 
                 <FreeBetsShortform filter="homepage"/>
                 
-                <TipsShortform/>
+                <LazyLoadComponent>
+                    <TipsShortform/>
+                </LazyLoadComponent>
+
+                <LazyLoadComponent>
+                    <GridLayout responsiveFull={1024} sideGap={12} equalHeight={true} bottomGap={0} responsiveBottomGap={0}>
+                        <NewsSliderComponent width="50%"/>
+                        <BettingGuideHomepage width="50%"/>
+                    </GridLayout>
+                </LazyLoadComponent>
                 
-                <GridLayout responsiveFull={1024} sideGap={12} equalHeight={true} bottomGap={0} responsiveBottomGap={0}>
-                    <NewsSliderComponent width="50%"/>
-                    <BettingGuideHomepage width="50%"/>
-                </GridLayout>
+
                 
                 {/* <WideBanner/> */}
 
-                <GridLayout responsiveFull={1024} sideGap={12} equalHeight={true} bottomGap={0} responsiveBottomGap={0}>
-                    <ResultsHomepage width="calc(100% - 312px)"/>
-                    <BettingGuideHomepage width="312px"/>
-                </GridLayout>
+                <LazyLoadComponent>
+                    <GridLayout responsiveFull={1024} sideGap={12} equalHeight={true} bottomGap={0} responsiveBottomGap={0}>
+                        <ResultsHomepage width="calc(100% - 312px)"/>
+                        <BettingGuideHomepage width="312px"/>
+                    </GridLayout>
+                </LazyLoadComponent>
                 
-                <BottomCopyHomepage/>
-                <FAQ />
+                <LazyLoadComponent>
+                    <BottomCopyHomepage/>
+                </LazyLoadComponent>
+
+                <LazyLoadComponent>
+                    <FAQ />
+                </LazyLoadComponent>
                 </div>
             </Layout>
         </>
