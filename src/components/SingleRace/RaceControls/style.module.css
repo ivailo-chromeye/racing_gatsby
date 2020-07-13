@@ -1,0 +1,6 @@
+.detailed_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+}

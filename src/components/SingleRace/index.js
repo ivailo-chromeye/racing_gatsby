@@ -4,7 +4,7 @@ import Layout from "../layout"
 import RacesListTop from "./RacesListTop"
 import SearchComponent from "../SearchComponent";
 import s from './singleRace.module.css';
-import QuestionSVG from '../../smallComponents/svg/questionSvg'
+
 import Btn from '../../smallComponents/btn/btn'
 import TextBox from '../../smallComponents/textBox';
 import FlexComponent from '../../smallComponents/FlexComponent'
@@ -15,6 +15,7 @@ import RaceRunners from './RaceRunners'
 import CollapseComponent from "../CollapseComponent";
 import BettingForecast from "./BettingForecast";
 import { transformVerdict } from "../../helper/transform";
+import RaceControls from "./RaceControls";
 
 const Race = ({ pageContext, location }) => {
   const { 
@@ -28,7 +29,6 @@ const Race = ({ pageContext, location }) => {
     richFeed,
   } = pageContext;
 
-  console.log({richFeed});
 
   const [state, setState] = useState({
     activeMenuDay: raceDate,
@@ -80,14 +80,11 @@ const Race = ({ pageContext, location }) => {
         no_of_runners={richFeed.API_runners.length}
       />
 
-      <div className={s.detailed_flex}>
-        <QuestionSVG />
-        <Btn 
-          type="black"
-          cta_url={`https://www.racingpost.com/results/2/ascot/${raceDate}/${raceid}/`}>
-            View Full Result
-        </Btn>
-      </div>
+      <RaceControls 
+        raceDate={raceDate}
+        raceid={raceid}
+      />
+
 
       <TextBox
         borderColor="darkblue"

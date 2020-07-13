@@ -77,6 +77,17 @@ exports.createPages = async ({ actions, graphql }) => {
         horsesWithRaces,
       }
     });
+
+    //
+    // Create Betting odds page https://rp.chromeye.com/royal-ascot/betting-odds/
+    //
+    createPage({
+      path: `/royal-ascot-betting-odds/`,
+      component: require.resolve(`./src/templates/BettingOdds.js`),
+      context: {
+        racesMenu,
+      }
+    });
   
 
     // console.log(races);
@@ -91,6 +102,7 @@ exports.createPages = async ({ actions, graphql }) => {
         // comparing str and num.......==........................
         const wpRace = wpRaces.find(wprace => wprace.acf.raceid == race.race_instance_uid);
 
+        raceDate = race.race_datetime.split("T")[0];
         //race_instance_uid: 758810,
         //"https://s3.eu-west-2.amazonaws.com/racipngpost.json.data.lambda/RA/race/758728.json";
 
@@ -102,7 +114,7 @@ exports.createPages = async ({ actions, graphql }) => {
             racesMenu,
             raceid: race.race_instance_uid,
             raceTime: race.race_time_diffusion,
-            raceDate: race.race_datetime.split("T")[0],
+            raceDate,
             horsesWithRaces,
             finished: race.finished,
             richFeed: raceMap[race.race_instance_uid],
@@ -113,6 +125,9 @@ exports.createPages = async ({ actions, graphql }) => {
           path: `/races/${race.race_instance_uid}/odds/`,
           component: require.resolve(`./src/templates/raceOdds`),
           context: {
+            raceid: race.race_instance_uid,
+            raceTime: race.race_time_diffusion,
+            raceDate,
             componentName: "odds",
             richFeed: raceMap[race.race_instance_uid],
           }
@@ -122,6 +137,9 @@ exports.createPages = async ({ actions, graphql }) => {
           path: `/races/${race.race_instance_uid}/tips/`,
           component: require.resolve(`./src/templates/raceTips`),
           context: {
+            raceid: race.race_instance_uid,
+            raceTime: race.race_time_diffusion,
+            raceDate,
             componentName: "tips",
             richFeed: raceMap[race.race_instance_uid],
           }
