@@ -5,7 +5,7 @@ import Btn from "../../smallComponents/btn/btn";
 import SearchContent from "./SearchContent";
 
 
-const Search = ({ horsesWithRaces, showButtons }) => {
+const Search = ({ horsesWithRaces, showButtons, raceid }) => {
 
   const [input, setInput] = useState({
     value: '',
@@ -22,10 +22,10 @@ const Search = ({ horsesWithRaces, showButtons }) => {
     <FlexComponent flexDirection={showSearchList ? "column" : "row"}>
       {showButtons && <FlexComponent flexDirection="row">
         <div className={s.odds_comparison_btn}>
-          <Btn cta_url={`#`} background="hover_red" type="link">Odds Comparison</Btn>
+          <Btn cta_url={`/races/${raceid}/odds`} background="hover_red" type="link">Odds Comparison</Btn>
         </div>
         <div>
-          <Btn cta_url={`#`} background="hover_red" type="link">Tips</Btn>
+          <Btn cta_url={`/races/${raceid}/tips`} background="hover_red" type="link">Tips</Btn>
         </div>
       </FlexComponent>}
       <SearchContent

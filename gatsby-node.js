@@ -107,13 +107,25 @@ exports.createPages = async ({ actions, graphql }) => {
             finished: race.finished,
             richFeed: raceMap[race.race_instance_uid],
           },
-        })
-      })
-      
+        });
 
+        createPage({
+          path: `/races/${race.race_instance_uid}/odds/`,
+          component: require.resolve(`./src/templates/raceOdds`),
+          context: {
+            componentName: "odds",
+            richFeed: raceMap[race.race_instance_uid],
+          }
+        });
 
-
-
-    // })
+        createPage({
+          path: `/races/${race.race_instance_uid}/tips/`,
+          component: require.resolve(`./src/templates/raceTips`),
+          context: {
+            componentName: "tips",
+            richFeed: raceMap[race.race_instance_uid],
+          }
+        });
+      }) // end of flatRaces forEach
   })
 }

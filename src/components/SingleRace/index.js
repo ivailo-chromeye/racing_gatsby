@@ -64,6 +64,7 @@ const Race = ({ pageContext, location }) => {
       />
 
       <SearchComponent 
+        raceid={raceid}
         showButtons={true}
         horsesWithRaces={horsesWithRaces}
       />
