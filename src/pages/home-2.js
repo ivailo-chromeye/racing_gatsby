@@ -25,8 +25,10 @@ const Homepage = () => {
                     <FeedRaces width="80%"/>
                     <a style={{height: '100%', background: '#027b5c', textAlign: 'center'}} href="https://www.bet365.com/olp/racing-post/?affiliate=365_00929317" className="static-offer"><img src="https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/6/20200615143604/bet365_banner_v6.jpg"/></a>
                 </GridLayout>
-                
-                <FreeBetsShortform filter="homepage"/>
+
+                <LazyLoadComponent>           
+                    <FreeBetsShortform filter="homepage"/>
+                </LazyLoadComponent>
                 
                 <LazyLoadComponent>
                     <TipsShortform/>
