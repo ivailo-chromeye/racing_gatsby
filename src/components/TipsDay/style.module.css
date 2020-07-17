@@ -50,7 +50,7 @@
   position: relative;
 }
 .single_race > h3:before {
-  content: '';
+  content: "";
   background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200604104051/header_element_v1.svg);
   width: 5px;
   left: -5px;
@@ -68,11 +68,60 @@
   font-family: ProximaNovaA-Bold;
   margin-right: 12px;
 }
-
-
-
-
-
-
-
-
+.tips {
+  background: #fff;
+  padding: 0px 40px;
+  border-top: 1px solid #066837;
+}
+.rp_tip {
+  border-bottom: 1px solid #e0e0e0;
+}
+.stip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 8px 0;
+}
+.stip:last-child {
+  border: none;
+}
+.tipster {
+  display: flex;
+  align-items: center;
+  margin-right: 2.6em;
+  min-width: 240px;
+}
+.rp_tip .stip .tipster h3 {
+  color: #171717;
+  font-family: ProximaNovaA-Bold;
+  font-size: 18px;
+}
+.stip h3.name {
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-left: 8px;
+  font-family: ProximaNovaA-Bold;
+  color: #171717;
+}
+.stip .short_description {
+  width: 100%;
+}
+.horse {
+  display: flex;
+  align-items: center;
+  margin-right: 2.6em;
+  min-width: 260px;
+}
+.race_info {
+  background: #fff;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e0e0e0;
+}
+@media screen and (max-width: 1024px) {
+  .tipster,
+  .horse {
+    min-width: auto;
+  }
+}

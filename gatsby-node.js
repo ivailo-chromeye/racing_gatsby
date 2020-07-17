@@ -57,6 +57,8 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `).then(async result => {
+    const wpRaces = result.data.allWordpressWpRace.nodes
+
     //
     // Create Races Page //
     //
@@ -87,10 +89,19 @@ exports.createPages = async ({ actions, graphql }) => {
     //
     Object.entries(racesMenu).forEach(([day, dayObject], index, array) => {
       const dayNumber = index + 1;
+
+      const wpRacesForThisDay = wpRaces.filter(wprace => {
+        console.log({day, split: wprace.acf.race_datetime.split("|")[0]});
+        return day === wprace.acf.race_datetime.split("|")[0]
+      });
+
+      console.log({wpRacesForThisDay});
+
       createPage({
         path: `/royal-ascot/tips/day-${index + 1}/`,
         component: require.resolve(`./src/templates/TipsDay.js`),
         context: {
+          wpRaces: wpRacesForThisDay,
           dayObject,
           dayNumber,
           daysNav: Array.from({length: array.length}),
@@ -98,7 +109,7 @@ exports.createPages = async ({ actions, graphql }) => {
       });
     });
 
-    const wpRaces = result.data.allWordpressWpRace.nodes
+    
     flatRaces.forEach(race => {
       // comparing str and num.......==........................
       const wpRace = wpRaces.find(

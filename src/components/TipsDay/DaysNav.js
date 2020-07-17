@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import s from "./style.module.css"
 
 const DaysNav = ({ daysNav, dayNumber }) => {
-  console.log(dayNumber)
+  // console.log(dayNumber)
   return (
     <div className={s.sec_nav}>
       {daysNav.map((u, index) => {
