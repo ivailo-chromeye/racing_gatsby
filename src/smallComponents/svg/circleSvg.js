@@ -4,6 +4,7 @@ import s from "./style.module.css"
 const Circle = () => {
   return (
     <svg
+      style={{paddingRight: 3}}
       className={s.circle}
       xmlns="http://www.w3.org/2000/svg"
       width="70"
