@@ -2,8 +2,8 @@
 [x] when changing a race in races top menu -> open the correct day
 [x] search for modal to link to .../2/ascot/...
 [x] hide logic if race is finished
-[] runners in race info
-
+[x] runners in race info
+[] Single race free bets
 
 
 

@@ -16,6 +16,7 @@ import CollapseComponent from "../CollapseComponent";
 import BettingForecast from "./BettingForecast";
 import { transformVerdict } from "../../helper/transform";
 import RaceControls from "./RaceControls";
+import Offers from "./Offers";
 
 const Race = ({ pageContext, location }) => {
   const { 
@@ -91,6 +92,8 @@ const Race = ({ pageContext, location }) => {
         background="lightblue"
       >{wpRace.acf.custom_text}</TextBox>
 
+      <Offers title={richFeed.race_instance_title} />
+
       <RaceRunners
         finished={finished}
         runners={sortedRunners}
@@ -104,22 +107,34 @@ const Race = ({ pageContext, location }) => {
         betting_forecast={richFeed.betting_forecast}
       />
 
-      <CollapseComponent label="VERDICT">
+      <CollapseComponent 
+        color="var(--black)"
+        backgroundColor="var(--collapse_gray)" 
+        label="VERDICT">
         <div>
           {transformVerdict(richFeed.verdict.verdict.comments)}
         </div>
       </CollapseComponent>
-      <CollapseComponent label="PREVIOUS GOLD CUP WINNERS (table)">
+      <CollapseComponent 
+        color="var(--black)"
+        backgroundColor="var(--collapse_gray)" 
+        label="PREVIOUS GOLD CUP WINNERS (table)">
         <div 
           // dangerouslySetInnerHTML={{__html: race.past_10_winners}}
           ></div>
       </CollapseComponent>
-      <CollapseComponent label="KEY GOLD CUP STATS">
+      <CollapseComponent 
+        color="var(--black)"
+        backgroundColor="var(--collapse_gray)" 
+        label="KEY GOLD CUP STATS">
         <div 
           // dangerouslySetInnerHTML={{__html: race.key_race_stats}}
           ></div>
       </CollapseComponent>
-      <CollapseComponent label="WHAT HAPPENED LAST YEAR">
+      <CollapseComponent 
+        color="var(--black)"
+        backgroundColor="var(--collapse_gray)" 
+        label="WHAT HAPPENED LAST YEAR">
         <div 
           // dangerouslySetInnerHTML={{__html: race.what_happened_last_year}}
           ></div>
