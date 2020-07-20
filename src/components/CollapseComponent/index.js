@@ -11,12 +11,14 @@ const CollapseComponent = ({
   color,
   inactiveImage,
   activeImage,
+  refHook,
 }) => {
   const [toggled, setToggled] = useState(false);
 
   return (
     <>
-      <div  
+      <div 
+        ref={refHook} 
         style={{backgroundColor}}
         className={s.item_header} onClick={() => setToggled(!toggled)}>
         <FlexComponent>

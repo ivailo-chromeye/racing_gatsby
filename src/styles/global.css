@@ -13,6 +13,9 @@
   font-display: swap;
   src: url(../fonts/proxima_nova_a.otf);
 }
+html {
+  scroll-behavior: smooth;
+}
 /* COLORS start */
 :root {
   --white: #fff;

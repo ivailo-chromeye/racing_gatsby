@@ -1,0 +1,13 @@
+.scroll_box {
+  flex-wrap: wrap;
+  display: flex;
+  margin: 20px 0px 20px 0px;
+}
+.scroll_box_item {
+  background-color: var(--collapse_gray);
+  margin: 0px 2px;
+  padding: 6px 10px;
+  font-size: 13px;
+  margin: 2px;
+  cursor: pointer;
+}

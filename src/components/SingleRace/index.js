@@ -17,6 +17,8 @@ import BettingForecast from "./BettingForecast";
 import { transformVerdict } from "../../helper/transform";
 import RaceControls from "./RaceControls";
 import Offers from "./Offers";
+import ScrollBox from "./ScrollBox";
+import { useRef } from "react";
 
 const Race = ({ pageContext, location }) => {
   const { 
@@ -30,7 +32,22 @@ const Race = ({ pageContext, location }) => {
     richFeed,
   } = pageContext;
 
-  console.log({racesMenu});
+//   betting_forecast
+// verdict_header
+// winners_header
+// key_race_stats_header
+// whly_header
+
+  const refs = {
+    bettingForecast: useRef(null),
+    verdict: useRef(null),
+    winners: useRef(null),
+    keyRaceStats: useRef(null),
+    whly: useRef(null),
+  }
+
+
+
 
   const [state, setState] = useState({
     activeMenuDay: raceDate,
@@ -50,6 +67,10 @@ const Race = ({ pageContext, location }) => {
     })
   };
 
+  const scrollToFn = el => {
+    const { offsetTop } = refs[el].current;
+    window.scrollTo(0, offsetTop);
+  }
 
   const sortedRunners = sortRunners(richFeed.API_runners, sortObj);
   
@@ -62,6 +83,11 @@ const Race = ({ pageContext, location }) => {
         racesMenu={racesMenu}
         setState={setState}
         raceid={raceid}
+      />
+
+      <ScrollBox 
+
+        scrollToFn={scrollToFn}
       />
 
       <SearchComponent 
@@ -104,38 +130,49 @@ const Race = ({ pageContext, location }) => {
       />
 
       <BettingForecast 
+        bettingForecastRef={refs.bettingForecast}
         betting_forecast={richFeed.betting_forecast}
       />
 
+
+
       <CollapseComponent 
+        refHook={refs.verdict}
+        
         color="var(--black)"
         backgroundColor="var(--collapse_gray)" 
         label="VERDICT">
-        <div>
+        <div >
           {transformVerdict(richFeed.verdict.verdict.comments)}
         </div>
       </CollapseComponent>
       <CollapseComponent 
+        refHook={refs.winners}
         color="var(--black)"
         backgroundColor="var(--collapse_gray)" 
         label="PREVIOUS GOLD CUP WINNERS (table)">
         <div 
+          
           // dangerouslySetInnerHTML={{__html: race.past_10_winners}}
           ></div>
       </CollapseComponent>
       <CollapseComponent 
+        refHook={refs.keyRaceStats}
         color="var(--black)"
         backgroundColor="var(--collapse_gray)" 
         label="KEY GOLD CUP STATS">
         <div 
+          
           // dangerouslySetInnerHTML={{__html: race.key_race_stats}}
           ></div>
       </CollapseComponent>
       <CollapseComponent 
+        refHook={refs.whly}
         color="var(--black)"
         backgroundColor="var(--collapse_gray)" 
         label="WHAT HAPPENED LAST YEAR">
         <div 
+          
           // dangerouslySetInnerHTML={{__html: race.what_happened_last_year}}
           ></div>
       </CollapseComponent>
