@@ -7,7 +7,11 @@ import st from "./styles.module.scss"
 import '../../../styles/slickSlider.css';
 import '../../../styles/freeBetsShortform.css';
 
-const FreeBetsShortform = (props) => {
+const FreeBetsShortform = ({ 
+  filter, 
+  bet365Only = false,
+  raceid, // not used
+}) => {
     const freeBetsShortformData = useStaticQuery(graphql`
     query freeBetsShortformQuery {
         allWordpressAcfFreebets {
@@ -43,7 +47,15 @@ const FreeBetsShortform = (props) => {
     `)
 
     const freeBets = freeBetsShortformData.allWordpressAcfFreebets.edges
+      .filter(freeBet => {
+        const { bookmaker_name } = freeBet.node.acf;
 
+        if(bet365Only) {
+          return bookmaker_name === "BET365"
+        }
+        return bookmaker_name !== "BET365";
+      })
+    
     const settings = {
         dots: true,
         infinite: true,
@@ -71,7 +83,7 @@ const FreeBetsShortform = (props) => {
           <SectionTitle title={'Royal Ascot Free bets'}/>
           <Slider className={[st.freeBetsSlider, "yellowDots", "equalHeightSlider","homeShortformFreeBets"].join(' ')} {...settings}>
             {freeBets.map(fb => {
-                if (props.filter == 'homepage') {
+                if (filter == 'homepage') {
                     if (fb.node.acf.show_on_homepage) {
                         return (
                             <ShortFreeBetOffer key={fb.node.id} {...fb}/>

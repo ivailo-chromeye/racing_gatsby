@@ -118,7 +118,7 @@ const Race = ({ pageContext, location }) => {
         background="lightblue"
       >{wpRace.acf.custom_text}</TextBox>
 
-      <Offers title={richFeed.race_instance_title} />
+      <Offers raceid={raceid} title={richFeed.race_instance_title} />
 
       <RaceRunners
         finished={finished}

@@ -10,7 +10,7 @@ const imgBaseURL = "https://rp.chromeye.com/royal-ascot/wp-content/themes/RoyalA
 // expand expand_white
 
 
-const Offers = ({ title }) => {
+const Offers = ({ title, raceid }) => {
   return (
     <div>
       <CollapseComponent
@@ -20,7 +20,7 @@ const Offers = ({ title }) => {
         activeImage={`${imgBaseURL}/plus_white.png`}
         inactiveImage={`${imgBaseURL}/expand_white.png`}
       >
-        <FreeBets />
+        <FreeBets raceid={raceid} bet365Only={true} />
       </CollapseComponent>
 
       <CollapseComponent
@@ -30,7 +30,7 @@ const Offers = ({ title }) => {
         activeImage={`${imgBaseURL}/plus.png`}
         inactiveImage={`${imgBaseURL}/expand.png`}
       >
-        <FreeBets />
+        <FreeBets raceid={raceid} bet365Only={false} />
       </CollapseComponent>
 
     </div>
