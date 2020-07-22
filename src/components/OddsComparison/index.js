@@ -4,21 +4,9 @@ import Selector from './Selector';
 import BookiesList from './BookiesList';
 import Odds from './Odds';
 
-const bookies = [
-  {name: "bet365", imgName: "b365"},
-  {name: "skybets", imgName: "skybet_v3"},
-  {name: "betfair", imgName: "bf"},
-  {name: "paddypower", imgName: "pp"},
-  {name: "william hill", imgName: "wh"},
-  {name: "ladbrokes", imgName: "lad"},
-  {name: "coral", imgName: "coral"},
-  {name: "betway", imgName: "betway"},
-  {name: "unibet", imgName: "unibet"},
-  {name: "boyle", imgName: "boyle"},
-  {name: "racebets", imgName: "racebets"},
-]
 
-const OddsComparison = ({ flatRaces }) => {
+
+const OddsComparison = ({ flatRaces = [], bookies }) => {
   const [ activeRaceIndex, setActiveRaceIndex ] = useState(0);
 
   const races = flatRaces.map(({

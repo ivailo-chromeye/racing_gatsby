@@ -6,12 +6,12 @@ import OddsComparison from '../OddsComparison';
 import SectionTitle from '../SectionTitle'
 
 const BettingOdds = ({ pageContext, location }) => {
-  const { racesMenu, flatRaces } = pageContext
+  const { racesMenu, flatRaces, bookies } = pageContext
 
   return (
     <Layout>
       <SectionTitle title="Royal Ascot Odds Comparison" />
-      <OddsComparison flatRaces={flatRaces} />
+      <OddsComparison bookies={bookies} flatRaces={flatRaces} />
       <RacesList 
         racesMenu={racesMenu}
       />

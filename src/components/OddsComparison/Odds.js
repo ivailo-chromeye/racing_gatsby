@@ -2,12 +2,15 @@ import React, { Fragment } from "react"
 import s from "./style.module.css"
 
 const Odds = ({ race, bookies }) => {
-  const { API_runners: runners } = race
+
+  console.log(race);
+
+  const { API_runners } = race
 
 
   return (
     <Fragment>
-      {runners.map(r => {
+      {API_runners.map(r => {
         return (
           <div key={r.horse_uid} className={s.rTableRow}>
             <div className={s.rTableCell} >

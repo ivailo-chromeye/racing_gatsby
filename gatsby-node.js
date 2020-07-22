@@ -19,6 +19,20 @@ const {
   getRaceMap,
 } = require("./raceFunctions")
 
+const bookies = [
+  {name: "bet365", imgName: "b365"},
+  {name: "skybets", imgName: "skybet_v3"},
+  {name: "betfair", imgName: "bf"},
+  {name: "paddypower", imgName: "pp"},
+  {name: "william hill", imgName: "wh"},
+  {name: "ladbrokes", imgName: "lad"},
+  {name: "coral", imgName: "coral"},
+  {name: "betway", imgName: "betway"},
+  {name: "unibet", imgName: "unibet"},
+  {name: "boyle", imgName: "boyle"},
+  {name: "racebets", imgName: "racebets"},
+]
+
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
@@ -78,6 +92,7 @@ exports.createPages = async ({ actions, graphql }) => {
       path: `/royal-ascot-betting-odds/`,
       component: require.resolve(`./src/templates/BettingOdds.js`),
       context: {
+        bookies,
         racesMenu,
         flatRaces,
       },
@@ -145,6 +160,7 @@ exports.createPages = async ({ actions, graphql }) => {
           raceDate,
           componentName: "odds",
           richFeed: raceMap[race.race_instance_uid],
+          bookies,
         },
       })
 

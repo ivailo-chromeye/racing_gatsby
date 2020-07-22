@@ -2,9 +2,12 @@ import React, { useState } from "react"
 import Layout from "../layout"
 import RaceInfo from "../SingleRace/RaceInfo"
 import RaceControls from "../SingleRace/RaceControls"
+import Odds from "../OddsComparison/Odds"
+import BookiesList from "../OddsComparison/BookiesList";
+import oddsStyle from "../OddsComparison/style.module.css"
 
 const SingleRaceOdds = ({ pageContext, location }) => {
-  const { richFeed, raceDate, raceTime, raceid } = pageContext
+  const { richFeed, raceDate, raceTime, raceid, bookies } = pageContext
 
   console.log(richFeed)
 
@@ -21,7 +24,11 @@ const SingleRaceOdds = ({ pageContext, location }) => {
         no_of_runners={richFeed.API_runners.length}
       />
       <RaceControls />
-      single race odds
+      <div className={oddsStyle.odds_comparison}>
+        <BookiesList bookies={bookies} />
+        <Odds bookies={bookies} race={richFeed} />
+      </div>
+      
     </Layout>
   )
 }
