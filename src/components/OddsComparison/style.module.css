@@ -1,0 +1,62 @@
+.odds_comparison {
+  padding: 10px;
+  background: #fff;
+  box-sizing: border-box;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.selector_wrapper {
+  display: flex;
+}
+.selector_wrapper h3 {
+  width: 180px;
+  color: #8d8d8d;
+  font-family: ProximaNovaA-SemiBold;
+  font-size: 12px;
+}
+.selector_wrapper h3:after {
+  content: '';
+  height: 8px;
+  width: 8px;
+  border-top: 2px solid red;
+  border-right: 2px solid red;
+  display: inline-block;
+  margin-left: 8px;
+  transform: rotate(45deg);
+}
+select.comparison_selector {
+  background: #fff;
+  width: calc(100% - 150px);
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #ff1500;
+  outline: none;
+  font-family: ProximaNovaA-Bold;
+  line-height: 1;
+}
+.odd_compare_single_race {
+  margin-top: 12px;
+
+}
+.rTableRow {
+  display: table-row;
+}
+.rTableHead {
+  padding-bottom: 5px;
+}
+.rTableCell, .rTableHead {
+  display: table-cell;
+  vertical-align: middle;
+}
+.rTableCell {
+  cursor: pointer;
+}
+.rTableCell:first-child {
+  font-size: 14px;
+  font-family: ProximaNovaA-SemiBold;
+  width: 80%;
+  padding: 6px 0;
+}
+.rTableCell:not(:first-child) {
+  text-align: center;
+}

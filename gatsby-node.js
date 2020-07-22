@@ -79,6 +79,7 @@ exports.createPages = async ({ actions, graphql }) => {
       component: require.resolve(`./src/templates/BettingOdds.js`),
       context: {
         racesMenu,
+        flatRaces,
       },
     });
 

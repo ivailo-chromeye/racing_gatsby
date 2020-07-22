@@ -4,7 +4,7 @@ import s from "./style.module.css"
 import SectionTitle from "../SectionTitle"
 
 const RacesList = ({ racesMenu }) => {
-  console.log({ racesMenu })
+  // console.log({ racesMenu })
 
   return (
     <div>
