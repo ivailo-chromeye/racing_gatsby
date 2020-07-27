@@ -5,7 +5,6 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-plugin-transition-link`,
     'gatsby-plugin-sass',
     `gatsby-plugin-react-helmet`,
     {
@@ -64,9 +63,14 @@ module.exports = {
           include: /images/
         }
       }
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        // isTSX: true,
+        // jsxPragma: `jsx`,
+        // allExtensions: true
+      }
     }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

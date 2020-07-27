@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import "./header.css";
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Dropdown from "./dropdown";
 
 
@@ -77,14 +76,14 @@ const Header = () => {
     return item.wordpress_children.map(link => {
       // console.log(link);
       return (
-        <AniLink
+        <Link
           partiallyActive={true}
           activeStyle={{color: 'red'}}
           key={link.wordpress_id}
           to={`/stable-tours/${link.object_slug}/`}
         > 
           {link.title}
-        </AniLink>
+        </Link>
       )
     })
   }
@@ -96,15 +95,15 @@ const Header = () => {
       <header>
         <div className="container">
           <div className="logo-wrap">
-            <AniLink 
-              fade
+            <Link 
+              
               duration={0.7}
               to="/">
               <img
                 alt=""
                 src="https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/5/20200605144223/royal_logo_v3.svg"
               />
-            </AniLink>
+            </Link>
           </div>
 
           { doWeShowMenu && (
@@ -118,15 +117,14 @@ const Header = () => {
                         // onMouseEnter={() => hover(item, true)}
                         // onMouseLeave={() => hover(item, false)}
                         key={item.wordpress_id}>
-                        <AniLink
+                        <Link
                           partiallyActive={slug === 'home' ? false : true}
-                          fade
                           duration={0.7} 
                           activeStyle={{
                             color: "var(--btn_red)",
                           }}
                           to={slug !== 'home' ? slug : ''}>{item.title}
-                        </AniLink>
+                        </Link>
                       </li>
                     )
                     }

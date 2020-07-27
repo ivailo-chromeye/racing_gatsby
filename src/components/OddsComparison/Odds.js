@@ -3,7 +3,6 @@ import s from "./style.module.css"
 
 const Odds = ({ race, bookies }) => {
 
-  console.log(race);
 
   const { API_runners } = race
 

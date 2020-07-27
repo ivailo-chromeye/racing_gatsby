@@ -7,7 +7,6 @@ const Selector = ({ races, activeRaceIndex, setActiveRaceIndex }) => {
     setActiveRaceIndex(value);
   }
 
-  console.log(races);
 
   return (
     <div className={s.selector_wrapper}>

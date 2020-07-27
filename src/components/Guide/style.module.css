@@ -1,0 +1,57 @@
+.fb_adsec_copy {
+  margin-top: 12px;
+  background: #fff;
+}
+.fb_adsec_copy .copy_sec {
+  background: #fff;
+  margin: 0px auto;
+  padding: 2em 24px;
+  position: relative;
+  max-width: 980px;
+  font-size: 10px;
+}
+.fb_adsec_copy .copy_sec:first-child {
+  padding-top: 3em;
+}
+.fb_adsec_copy .copy_sec:before {
+  content: '';
+  background: url(https://s3-eu-west-2.amazonaws.com/racingpost-web/wp-content/uploads/sites/6/20200611142231/icon-horse-race_v2.png);
+  width: 7em;
+  height: 7em;
+  display: block;
+  position: absolute;
+  bottom: 0em;
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  z-index: 2;
+  padding: 0 7em;
+  background-size: contain !important;
+}
+.fb_adsec_copy .copy_sec h2 {
+  font-size: 24px;
+  font-family: ProximaNovaA-Bold;
+  line-height: 1;
+  margin: 0 0 0.5em;
+}
+.fb_adsec_copy .copy_sec:after {
+  content: '';
+  display: block;
+  height: 4em;
+  border-bottom: 2px solid var(--darkblue);
+  margin-top: 3em;
+}
+.fb_adsec_copy .copy_sec p {
+  font-size: 16px;
+  line-height: 1.2;
+  margin: 1em 0;
+}
+.copy_sec img {
+  display: block;
+  margin: 2em auto;
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+}

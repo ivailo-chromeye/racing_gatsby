@@ -4,7 +4,6 @@ import Layout from "../layout";
 import { useStaticQuery, graphql, Link, navigate } from "gatsby";
 import s from "./races.module.css";
 import PageHeadline from '../pageHeadline';
-import AniLink from "gatsby-plugin-transition-link/AniLink";
 // import WideBanner from '../WideBannerIframe'
 // import WideBanner2 from '../WideBannerIframe2'
 

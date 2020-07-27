@@ -16,7 +16,7 @@
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sass": "^2.3.0",
     "gatsby-plugin-sharp": "^2.4.13",
-    "gatsby-plugin-transition-link": "^1.18.0",
+    "gatsby-plugin-typescript": "^2.4.16",
     "gatsby-source-filesystem": "^2.1.56",
     "gatsby-source-wordpress": "^3.2.2",
     "gatsby-transformer-sharp": "^2.3.19",
@@ -41,6 +41,9 @@
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
+    "@types/node": "^14.0.25",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
     "prettier": "^1.19.1"
   },
   "keywords": [
